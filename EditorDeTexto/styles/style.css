@@ -1,0 +1,51 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+:root {
+  --cor1: rgb(255, 0, 0);
+  --cor2: rgb(0, 255, 0);
+  --fontDeafault: "Rubik", sans-serif;
+  --fontSizeDefault: 1.8rem;
+}
+
+html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 62.5%;
+  font-family: var(--fontDeafault);
+}
+
+.editor {
+  width: 70vw;
+  height: 80vh;
+  background-color: var(--cor2);
+  border-radius: 30px;
+  overflow: hidden;
+}
+.editor__toolbar {
+  width: 100%;
+  height: 10%;
+  background-color: red;
+  padding: 10px;
+}
+.editor__textField {
+  width: 100%;
+  height: 90%;
+  font-size: 10rem;
+  border: none;
+  background-color: rgb(127, 157, 255);
+  position: relative;
+}
+.editor__textField .editor__text {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+.editor__textField .editor__textIndex {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  border: none;
+}
+.editor__textField .editor__textIndex:focus {
+  outline: none;
+}/*# sourceMappingURL=style.css.map */

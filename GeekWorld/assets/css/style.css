@@ -1,0 +1,143 @@
+:root {
+  --cor1: #161F30;
+  --cor2: #173540;
+  --cor3: #217373;
+  --cor4: #84B026;
+  --cor5: #3D3D3D;
+  --cor6: #1b5a5a;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  background-color: none;
+}
+
+body {
+  width: 100vw;
+  max-width: 1920px;
+  height: 100vh;
+  margin: auto;
+  background-color: var(--cor1);
+}
+
+.secHome {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgb(61, 61, 61) 0%, rgb(22, 31, 48) 100%);
+  position: relative;
+  overflow: hidden;
+}
+.secHome__brandLogo {
+  width: 700px;
+  z-index: 10;
+  opacity: 0%;
+  transition: 1.5s;
+}
+.secHome__navBar {
+  max-width: 1000px;
+  height: 100px;
+  z-index: 10;
+  opacity: 0%;
+  transition: 1.5s;
+}
+.secHome__navBar ul {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  width: 100%;
+  height: 100%;
+  font-size: 2.3rem;
+}
+.secHome__navBar ul li {
+  height: 35px;
+  margin: 0 10px;
+  padding: 5px;
+  background-color: var(--cor3);
+  color: white;
+  border-radius: 5px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.295);
+  transition: 0.3s;
+}
+.secHome__navBar ul li:hover {
+  cursor: pointer;
+  color: var(--cor2);
+  height: 45px;
+  margin: 0 5px;
+  padding: 10px;
+  transition: 0.3s;
+}
+.secHome__imgStatic {
+  position: absolute;
+  top: 0;
+  transition: 1s;
+}
+.secHome__img1 {
+  width: 400px;
+  top: 45%;
+  left: 80%;
+  z-index: 10;
+  transform: translate(100%);
+}
+.secHome__img2 {
+  width: 400px;
+  top: 40%;
+  left: 5%;
+  z-index: 10;
+  transform: translate(-120%);
+}
+.secHome__img3 {
+  width: 330px;
+  top: 19%;
+  left: -2%;
+  z-index: 9;
+  transform: rotate(50deg);
+  transform: translate(-100%);
+}
+.secHome__img4 {
+  width: 300px;
+  top: 20%;
+  left: 50%;
+  z-index: 9;
+  transform: translate(0%, 190%);
+}
+.secHome__img5 {
+  width: 300px;
+  top: 15%;
+  left: 85%;
+  z-index: 9;
+  transform: translate(100%);
+}
+.secHome__img6 {
+  width: 220px;
+  top: 3%;
+  left: 78%;
+  z-index: 8;
+  transform: translate(200%);
+}
+.secHome__img7 {
+  width: 230px;
+  top: 0%;
+  left: 10%;
+  z-index: 8;
+  transform: translate(-190%);
+}
+
+.translateZero {
+  transform: translate(0, 0);
+  transition: 1.5s;
+}
+
+.opacityOff {
+  opacity: 100%;
+  transition: 1.5s;
+}/*# sourceMappingURL=style.css.map */

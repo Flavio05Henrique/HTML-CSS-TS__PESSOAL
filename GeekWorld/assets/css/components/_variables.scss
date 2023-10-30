@@ -1,0 +1,15 @@
+:root {
+    --cor1: #161F30;
+    --cor2: #173540;
+    --cor3: #217373;
+    --cor4: #84B026;
+    --cor5: #3D3D3D;
+    --cor6: #1b5a5a;
+}
+
+@mixin flex-centralize()
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

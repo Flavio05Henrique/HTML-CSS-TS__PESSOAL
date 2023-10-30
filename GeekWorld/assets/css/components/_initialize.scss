@@ -1,0 +1,18 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+    background-color: none;
+}
+
+body {
+    width: 100vw;
+    max-width: 1920px;
+    height: 100vh;
+    margin: auto;
+    background-color: var(--cor1);
+}

@@ -1,0 +1,211 @@
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600&display=swap');
+/* font-family: 'Heebo', sans-serif; */
+
+:root {
+    --cor-1: #FFA919;
+    --cor-2: #47A3FF;
+    --cor-3: #ffda9a;
+    --cor-4: rgb(226, 17, 17);
+    --cor-5: rgb(12, 192, 12);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Heebo', sans-serif;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 15px;
+    width: 100vw;
+    height: 100vh;
+    background: rgb(246,188,50);
+    background: radial-gradient(circle, rgba(246,188,50,1) 0%, rgba(215,155,75,1) 25%, rgba(78,27,3,1) 100%);
+}
+
+.formCreatesExpenseItem {
+    min-width: 500px;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--cor-1);
+    padding: 5px 10px;
+    font-weight: 900;
+    color: white;
+    font-size: 24px;
+    border-radius: 5px;
+}
+
+.formCreatesExpenseItem label {
+    max-width: 5px 0;
+}
+
+.formCreatesExpenseItem input {
+    font-size: 20px;
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+    margin: 5px 0;
+}
+
+.formCreatesExpenseItem__control {
+    margin: 5px 0;
+    display: flex;
+    justify-content: end;
+    gap: 10px;
+}
+
+.formCreatesExpenseItem__control button {
+    font-size: 16px;
+    font-weight: 500;
+    padding: 5px;
+    border: none;
+    background-color: var(--cor-3);
+    cursor: pointer;
+}
+
+.formCreatesExpenseItem__control button:active {
+    background-color: white;
+}
+
+.expenseListCard {
+    min-width: 500px;
+    border-radius: 15px;
+    background-color: var(--cor-3);
+    overflow: hidden;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.171);
+}
+
+.expenseListCard__title {
+    width: 100%;
+    padding: 15px;
+    background-color: var(--cor-1);
+    color: white;
+}
+
+.expenseListCard__totalContainer {
+    display: flex;
+    align-items: center;
+    justify-content: 
+    space-around;
+}
+
+.expenseListCard__totalContainer div {
+    min-width: 120px;
+    padding: 5px;
+    background-color: var(--cor-3);
+    border-radius: 5px;
+}
+
+.expenseListCard__total--red {
+    color: var(--cor-4);
+}
+
+.expenseListCard__total--green{
+    color: var(--cor-5);
+}
+
+.expenseListCard__itemContainer {
+    width: 490px;
+    height: 400px;
+    margin: 5px;
+    padding: 5px;
+    background-color: var(--cor-3);
+    overflow-y: scroll;
+}
+
+.expenseListCard__itemContainer::-webkit-scrollbar {
+    width: 7px;
+}
+
+.expenseListCard__itemContainer::-webkit-scrollbar-thumb {
+    border-radius: 999px;
+    background-color: var(--cor-1);
+}
+
+.expenseListCard__item {
+    display: flex;
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.expenseListCard__description {
+    width: 65%;
+}
+
+.expenseListCard__price {
+    width: 35%;
+}
+
+.expenseListCard__bnt {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.expenseListCard__bntEdit {
+    background: transparent url(/img/pen-solid.svg) no-repeat center center;
+    background-size: 20px;
+}
+
+.expenseListCard__bntEdit:hover {
+    background-color: var(--cor-5);
+}
+
+.expenseListCard__bntDelet {
+    background: transparent url(/img/trash-solid.svg) no-repeat center center; 
+    background-size: 18px;
+}
+
+.expenseListCard__bntDelet:hover {
+    background-color: var(--cor-4);
+}
+
+.expenseListCard__item--red {
+    color: var(--cor-4);
+    border-left: 2px solid var(--cor-4);
+    border-bottom: 2px solid var(--cor-4);
+}
+
+.expenseListCard__item--green {
+    color: var(--cor-5);
+    border-left: 2px solid var(--cor-5);
+    border-bottom: 2px solid var(--cor-5);
+}
+
+.editForm {
+    display: contents;
+    align-items: center;
+}
+
+.editForm input {
+    height: 100%;
+    padding: 5px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    margin: 0 5px 0 0;
+}
+
+.editForm button {
+    width: 30px;
+    height: 30px;
+    border: none;
+    border-radius: 5px;
+    background: transparent url(/img/thumbs-up-solid.svg) no-repeat center center; 
+    background-size: 25px;
+    cursor: pointer;
+}
+
+.editForm button:hover {
+    background-color: var(--cor-5);
+}

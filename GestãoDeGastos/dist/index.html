@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestor de despesas</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <form class="formCreatesExpenseItem" data="formCreatesExpenseItem">
+        <label for="descricao">Descrição</label>
+        <input 
+            type="text" 
+            name="descricao" 
+            id="descricao" 
+            maxlength="40" 
+            required 
+            placeholder="Descricao..." 
+            pattern="^[a-zA-Z]+$"
+            title="Apenas letras"
+        >
+        <label for="preco">Preço</label>
+        <input 
+            type="text" 
+            name="preco" id="preco"
+            id="preco" 
+            pattern="^[+\-]\d{1,3}(?:\.\d{3})*(?:,\d{2})$" 
+            title="formato : (+/-)1.000.000,00..." 
+            required 
+            placeholder="(+/-)1.000.999,00"
+        >
+        <div class="formCreatesExpenseItem__control">
+            <button type="submit">Inserir</button>
+            <button type="button" data="clearForm">Limpar</button>
+        </div>
+    </form>
+    <div class="expenseListCard">
+        <div class="expenseListCard__title">
+            <h1>Despesas</h1>
+            <div class="expenseListCard__totalContainer">
+                <div class="expenseListCard__total expenseListCard__total--green" data="expenseListCard__totalProfil">000.000.000,00</div>
+                <div class="expenseListCard__total expenseListCard__total--red" data="expenseListCard__totalExpense">000.000.000,00</div>
+                <div class="expenseListCard__total" data="expenseListCard__total" >000.000.000,00</div>
+            </div>
+        </div>
+        <ul class="expenseListCard__itemContainer" data="expenseList">
+            <!-- <li class="expenseListCard__item expenseListCard__item--green">
+               <form class="editForm" data="editForm">
+                    <input 
+                        type="text" 
+                        name="descricao" 
+                        class="expenseListCard__description"
+                        maxlength="40" 
+                        required 
+                        placeholder="Descricao..." 
+                        pattern="^[a-zA-Z]+$"
+                        title="Apenas letras"
+                    >
+                    <input 
+                        type="text" 
+                        name="preco" 
+                        class="expenseListCard__price" 
+                        pattern="^[+\-]\d{1,3}(?:\.\d{3})*(?:,\d{2})$" 
+                        title="formato : (+/-)1.000.000,00..." 
+                        required 
+                        placeholder="(+/-)1.000.999,00"
+                    >
+                    <button class="comfirmEditBnt" type="submit"></button>
+               </form>
+            </li>
+            <li class="expenseListCard__item expenseListCard__item--red">
+                <p class="expenseListCard__description">Descricao</p>
+                <p class="expenseListCard__price">preco</p>
+                <button class="expenseListCard__bntEdit expenseListCard__bnt"></button>
+                <button class="expenseListCard__bntDelet expenseListCard__bnt"></button>
+            </li>
+            <li class="expenseListCard__item expenseListCard__item--green">
+                <p class="expenseListCard__description">Descricao</p>
+                <p class="expenseListCard__price">preco</p>
+                <button class="expenseListCard__bntEdit expenseListCard__bnt"></button>
+                <button class="expenseListCard__bntDelet expenseListCard__bnt"></button>
+            </li> -->
+        </ul>
+    </div>
+</body>
+
+    <script src="js/index.js" defer></script>
+</html>
