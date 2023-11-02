@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600;700&display=swap');//font name : 'Josefin Sans'
+
+
 :root {
     --cor1: #161F30;
     --cor2: #173540;
@@ -5,6 +8,9 @@
     --cor4: #84B026;
     --cor5: #3D3D3D;
     --cor6: #1b5a5a;
+    --cor7: #5d2200;
+    --background__defaut: transparent url("/assets/imgs/bkgGamer.png") repeat ;
+    --font__defaut: 'Josefin Sans', sans-serif, Helvetica;
 }
 
 @mixin flex-centralize()

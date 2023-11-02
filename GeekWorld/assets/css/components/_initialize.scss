@@ -6,7 +6,7 @@
 
 html {
     font-size: 62.5%;
-    background-color: none;
+    font-family: var(--font__defaut);
 }
 
 body {
@@ -14,5 +14,5 @@ body {
     max-width: 1920px;
     height: 100vh;
     margin: auto;
-    background-color: var(--cor1);
+    background: radial-gradient(circle, rgba(61,61,61,1) 0%, rgb(37, 37, 37) 100%);
 }

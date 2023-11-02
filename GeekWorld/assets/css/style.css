@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600;700&display=swap");
 :root {
   --cor1: #161F30;
   --cor2: #173540;
@@ -5,6 +6,9 @@
   --cor4: #84B026;
   --cor5: #3D3D3D;
   --cor6: #1b5a5a;
+  --cor7: #5d2200;
+  --background__defaut: transparent url("/assets/imgs/bkgGamer.png") repeat ;
+  --font__defaut: "Josefin Sans", sans-serif, Helvetica;
 }
 
 * {
@@ -15,7 +19,7 @@
 
 html {
   font-size: 62.5%;
-  background-color: none;
+  font-family: var(--font__defaut);
 }
 
 body {
@@ -23,7 +27,7 @@ body {
   max-width: 1920px;
   height: 100vh;
   margin: auto;
-  background-color: var(--cor1);
+  background: radial-gradient(circle, rgb(61, 61, 61) 0%, rgb(37, 37, 37) 100%);
 }
 
 .secHome {
@@ -33,18 +37,19 @@ body {
   flex-direction: column;
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle, rgb(61, 61, 61) 0%, rgb(22, 31, 48) 100%);
+  background: var(--background__defaut);
   position: relative;
   overflow: hidden;
 }
 .secHome__brandLogo {
-  width: 700px;
+  width: 900px;
   z-index: 10;
   opacity: 0%;
   transition: 1.5s;
 }
 .secHome__navBar {
-  max-width: 1000px;
+  width: 680px;
+  background: linear-gradient(to bottom, var(--cor7), transparent);
   height: 100px;
   z-index: 10;
   opacity: 0%;
@@ -52,6 +57,7 @@ body {
 }
 .secHome__navBar ul {
   display: flex;
+  justify-content: center;
   align-items: center;
   list-style: none;
   width: 100%;
@@ -62,14 +68,22 @@ body {
   height: 35px;
   margin: 0 10px;
   padding: 5px;
-  background-color: var(--cor3);
+  background-color: var(--cor4);
   color: white;
   border-radius: 5px;
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.295);
   transition: 0.3s;
 }
+.secHome__navBar ul li a {
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  color: var(--cor2);
+  font-weight: 600;
+}
 .secHome__navBar ul li:hover {
   cursor: pointer;
+  font-size: 2.5rem;
   color: var(--cor2);
   height: 45px;
   margin: 0 5px;
