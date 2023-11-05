@@ -1,0 +1,44 @@
+.secTopA {
+    @include  flex-centralize($direction: column);
+    // display: none;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    background-color: aqua;
+    z-index: 11;
+
+    &__title {
+        width: 75%;
+        text-align: center;
+        font-size: 8rem;
+        margin-bottom: 30px;
+        animation: 3s toEmerge;
+        
+
+        & span {
+            color: var(--cor6);
+        }
+    }
+
+    &__line {
+        max-width: 75%;
+        width: 75%;
+        height: 2px;
+        background-color: black;
+        margin: 20px auto;
+        animation: 3s growWidth;
+    }
+
+    &__CardsContainer {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        gap: 30px;
+        align-items: center;
+        justify-items: center;
+        width: 75%;
+    }
+}

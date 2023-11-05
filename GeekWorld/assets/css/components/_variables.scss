@@ -13,9 +13,10 @@
     --font__defaut: 'Josefin Sans', sans-serif, Helvetica;
 }
 
-@mixin flex-centralize()
+@mixin flex-centralize($direction: row)
 {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: $direction;
 }

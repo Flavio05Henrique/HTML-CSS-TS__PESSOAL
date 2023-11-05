@@ -1,0 +1,20 @@
+@keyframes growWidth {
+    0% {
+      width: 0;
+    }
+  
+    100% {
+      width: 100%;
+    }
+  }
+
+@keyframes toEmerge {
+    0% {
+        transform: translate(0, -50%);
+        opacity: 0;
+    }
+    100% {
+        transform: translate(0, 0);
+        opacity: 100%;
+    }
+}
