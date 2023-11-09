@@ -155,6 +155,7 @@ body {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  display: none;
   width: 100%;
   height: 100%;
   position: absolute;
@@ -162,14 +163,15 @@ body {
   left: 0;
   overflow: hidden;
   background-color: aqua;
-  z-index: 11;
 }
 .secTopA__title {
   width: 75%;
   text-align: center;
   font-size: 8rem;
   margin-bottom: 30px;
-  animation: 3s toEmerge;
+  opacity: 0;
+  transform: translate(0, -50%);
+  transition: 1.5s;
 }
 .secTopA__title span {
   color: var(--cor6);
@@ -180,7 +182,7 @@ body {
   height: 2px;
   background-color: black;
   margin: 20px auto;
-  animation: 3s growWidth;
+  transition: 1.5s;
 }
 .secTopA__CardsContainer {
   display: grid;
@@ -261,5 +263,10 @@ body {
 
 .opacityOff {
   opacity: 100%;
+  transition: 1.5s;
+}
+
+.widthZero {
+  width: 0;
   transition: 1.5s;
 }/*# sourceMappingURL=style.css.map */

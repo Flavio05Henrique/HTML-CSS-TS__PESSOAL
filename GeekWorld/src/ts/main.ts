@@ -1,29 +1,92 @@
-const windowWidth = window.innerWidth;
-const windowHeight = window.innerHeight;
+type Section = HTMLDivElement
 
-console.log("H: " + windowHeight + " W: " + windowWidth)
+type itemMove = {
+    item : HTMLElement | null,
+    itens : NodeListOf<HTMLElement> | null,
+    actionsAboutClass : string[]
+}
 
-const imgsSec1: NodeListOf<HTMLImageElement> = document.querySelectorAll('[data="secHome__imgStatic"]')
-const homeComponents = document.querySelectorAll('[data="secHome"]')
+type itemMoveEx = itemMove & {
+    itensEx : NodeListOf<HTMLElement> | null,
+    isEx : boolean
+}
 
-const sec2 = document.querySelector('[data="secTopA"]') as HTMLDivElement
-const sec2ComponentsCards = sec2.querySelectorAll('[data="card"]') as NodeListOf<HTMLDivElement>
+const secHome = document.querySelector('[data="secHome"]') as Section
 
-console.log(sec2ComponentsCards)
+let imgsSecHome : itemMove = { 
+    item : null,
+    itens : secHome.querySelectorAll('[data="secHome__imgStatic"]') as NodeListOf<HTMLImageElement>,
+    actionsAboutClass :  ["translateZero"]
+}
 
-document.addEventListener('click', event => {
-    // imgsSec1.forEach(img => {
-    //     img.classList.toggle('translateZero')
-    // })
+let logoNavBarSecHome : itemMove = {
+    item : null,
+    itens : secHome.querySelectorAll('[data="secHome__into"]') as NodeListOf<HTMLDivElement>,
+    actionsAboutClass : ["opacityOff"]
+}
 
-    // homeComponents.forEach(comp => {
-    //     comp.classList.toggle('opacityOff')
-    // })
-    let count = 0 
-    sec2ComponentsCards.forEach( e => {
-        setTimeout(() => {
-            e.classList.toggle('translateZero')
-        }, 100 * count);
-        count++
+const secTopA = document.querySelector('[data="secTopA"]') as Section
+
+let lineSecTopA : itemMove = {
+    item : secTopA.querySelector('[data="line"]') as HTMLDivElement,
+    itens : null,
+    actionsAboutClass : ["widthZero"]
+}
+
+let titleSecTopA : itemMove = {
+    item : secTopA.querySelector('[data="title"]') as HTMLTitleElement,
+    itens : null,
+    actionsAboutClass : ["translateZero", "opacityOff"]
+}
+
+let sectionPoint = 0
+const sections = [[imgsSecHome, logoNavBarSecHome], [lineSecTopA, titleSecTopA]] as itemMove[][] | itemMoveEx[][]
+
+// const sec2ComponentsCards = sec2.querySelectorAll('[data="card"]') as NodeListOf<HTMLDivElement>
+// const sec2TitleLine = sec2.querySelector('[data="line"]') as HTMLDivElement
+// const sec2Title = sec2.querySelector('[data="title"]') as HTMLTitleElement
+
+let scrollControl = {
+    active: false
+}
+
+let d = 1
+
+document.addEventListener('wheel', event => {
+    if (!scrollControl.active) return
+
+    scrollControl.active = false
+
+    const currentSection = sections[sectionPoint]
+
+    currentSection.forEach(e => {
+        if (e.item != null) {
+            e.actionsAboutClass.forEach(c => {
+                e.item!.classList.toggle(c)
+            })
+            return
+        }
+        if (e.itens != null) {
+           e.itens.forEach(i => {
+                e.actionsAboutClass.forEach(c => {
+                    i.classList.toggle(c)
+                })
+           })
+           return
+        }
+        if (e.)
     })
+
+    // let count : number
+    // d > 0 ? count = 0 : count = sec2ComponentsCards.length -1
+    // sec2ComponentsCards.forEach( e => {
+    //     setTimeout(() => {
+    //         e.classList.toggle('translateZero')
+    //     }, 100 * count);
+    //     count += d
+    // })
+    // d = d * -1
+    setTimeout(() => scrollControl.active = true, 3000)
 })
+
+setTimeout(() => scrollControl.active = true, 1000)
