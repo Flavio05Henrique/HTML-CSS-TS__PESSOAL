@@ -7,6 +7,8 @@
   --cor5: #3D3D3D;
   --cor6: #1b5a5a;
   --cor7: #5d2200;
+  --cor8: rgb(0, 155, 155);
+  --shadow__defaut: rgba(0, 0, 0, 0.356);
   --background__defaut: transparent url("/assets/imgs/bkgGamer.png") repeat ;
   --font__defaut: "Josefin Sans", sans-serif, Helvetica;
 }
@@ -39,11 +41,12 @@ body {
   flex-direction: column;
   width: 100%;
   height: 100%;
-  background-color: blanchedalmond;
+  background: var(--background__defaut);
   position: absolute;
   top: 0;
   left: 0;
   overflow: hidden;
+  z-index: 0;
 }
 .secHome__brandLogo {
   width: 900px;
@@ -104,14 +107,14 @@ body {
   top: 45%;
   left: 80%;
   z-index: 10;
-  transform: translate(100%);
+  transform: translate(100%, 20%) rotate(30deg);
 }
 .secHome__img2 {
   width: 400px;
   top: 40%;
   left: 5%;
   z-index: 10;
-  transform: translate(-120%);
+  transform: translate(-120%, 50%) rotate(30deg);
 }
 .secHome__img3 {
   width: 330px;
@@ -119,35 +122,35 @@ body {
   left: -2%;
   z-index: 9;
   transform: rotate(50deg);
-  transform: translate(-100%);
+  transform: translate(-100%, 50%) rotate(30deg) scale(0.01, 0.01);
 }
 .secHome__img4 {
   width: 300px;
   top: 20%;
   left: 50%;
   z-index: 9;
-  transform: translate(0%, 190%);
+  transform: translate(-50%, 190%) scale(0.5, 0.5);
 }
 .secHome__img5 {
   width: 300px;
   top: 15%;
   left: 85%;
   z-index: 9;
-  transform: translate(100%);
+  transform: translate(100%) scale(0.5, 0.5);
 }
 .secHome__img6 {
   width: 220px;
   top: 3%;
   left: 78%;
   z-index: 8;
-  transform: translate(200%);
+  transform: translate(200%) rotate(30deg);
 }
 .secHome__img7 {
   width: 230px;
   top: 0%;
   left: 10%;
   z-index: 8;
-  transform: translate(-190%);
+  transform: translate(-190%, -50%) rotate(-30deg);
 }
 
 .secTopA {
@@ -155,19 +158,19 @@ body {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  display: none;
   width: 100%;
   height: 100%;
   position: absolute;
   top: 0;
   left: 0;
   overflow: hidden;
-  background-color: aqua;
+  z-index: 0;
 }
 .secTopA__title {
   width: 75%;
   text-align: center;
   font-size: 8rem;
+  color: white;
   margin-bottom: 30px;
   opacity: 0;
   transform: translate(0, -50%);
@@ -180,7 +183,7 @@ body {
   max-width: 75%;
   width: 75%;
   height: 2px;
-  background-color: black;
+  background-color: white;
   margin: 20px auto;
   transition: 1.5s;
 }
@@ -193,31 +196,50 @@ body {
   justify-items: center;
   width: 75%;
 }
+.secTopA__staticImg {
+  position: absolute;
+  top: 0;
+  transition: 1s;
+}
+.secTopA__img1 {
+  width: 400px;
+  top: 30%;
+  left: 80%;
+  transform: translate(200%);
+}
 
 .card {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  justify-content: space-between;
   width: 240px;
+  height: 350px;
   position: relative;
-  border: 5px solid black;
-  padding: 15px;
-  background-color: blanchedalmond;
+  border: 5px solid white;
+  background-color: var(--cor8);
   border-radius: 5px;
-  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.158);
+  box-shadow: 5px 5px 5px var(--shadow__defaut);
   transform: translate(0%, 300%);
-  transition: 3s;
+  transition: 1.5s;
 }
 .card__title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
   width: 100%;
+  height: 20%;
+  background-color: var(--cor6);
+  padding: 3px;
   font-size: 2.2rem;
   text-align: center;
-  margin: 15px 0 0 0;
 }
 .card__img {
   width: 185px;
-  height: 250px;
+  height: 75%;
+  margin: 10px 0;
 }
 .card__classification {
   display: flex;
@@ -226,16 +248,17 @@ body {
   flex-direction: row;
   width: 60px;
   height: 60px;
-  background-color: rgb(180, 34, 34);
+  background-color: var(--cor1);
   font-size: 3rem;
   font-weight: 700;
+  color: white;
   border-radius: 100%;
-  border: 3px solid black;
+  border: 3px solid white;
   position: absolute;
   top: 100%;
   left: 100%;
   transform: translate(-60%, -60%);
-  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.158);
+  box-shadow: 5px 5px 5px var(--shadow__defaut);
 }
 
 @keyframes growWidth {
@@ -269,4 +292,8 @@ body {
 .widthZero {
   width: 0;
   transition: 1.5s;
+}
+
+.ZIndexUp {
+  z-index: 100;
 }/*# sourceMappingURL=style.css.map */

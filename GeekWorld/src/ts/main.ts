@@ -3,60 +3,108 @@ type Section = HTMLDivElement
 type itemMove = {
     item : HTMLElement | null,
     itens : NodeListOf<HTMLElement> | null,
+    itensEx : Function | null,
     actionsAboutClass : string[]
-}
-
-type itemMoveEx = itemMove & {
-    itensEx : NodeListOf<HTMLElement> | null,
-    isEx : boolean
 }
 
 const secHome = document.querySelector('[data="secHome"]') as Section
 
+let secHomeM : itemMove = {
+    item : secHome,
+    itens : null,
+    itensEx : null,
+    actionsAboutClass :  ["ZIndexUp"]
+}
+
 let imgsSecHome : itemMove = { 
     item : null,
     itens : secHome.querySelectorAll('[data="secHome__imgStatic"]') as NodeListOf<HTMLImageElement>,
+    itensEx : null,
     actionsAboutClass :  ["translateZero"]
 }
 
 let logoNavBarSecHome : itemMove = {
     item : null,
     itens : secHome.querySelectorAll('[data="secHome__into"]') as NodeListOf<HTMLDivElement>,
+    itensEx : null,
     actionsAboutClass : ["opacityOff"]
 }
 
 const secTopA = document.querySelector('[data="secTopA"]') as Section
 
+let secToAM : itemMove = {
+    item : secTopA,
+    itens : null,
+    itensEx : null,
+    actionsAboutClass :  ["ZIndexUp"]
+}
+
 let lineSecTopA : itemMove = {
     item : secTopA.querySelector('[data="line"]') as HTMLDivElement,
     itens : null,
+    itensEx : null,
     actionsAboutClass : ["widthZero"]
 }
 
 let titleSecTopA : itemMove = {
     item : secTopA.querySelector('[data="title"]') as HTMLTitleElement,
     itens : null,
+    itensEx : null,
     actionsAboutClass : ["translateZero", "opacityOff"]
 }
 
-let sectionPoint = 0
-const sections = [[imgsSecHome, logoNavBarSecHome], [lineSecTopA, titleSecTopA]] as itemMove[][] | itemMoveEx[][]
+let d = 1
 
-// const sec2ComponentsCards = sec2.querySelectorAll('[data="card"]') as NodeListOf<HTMLDivElement>
-// const sec2TitleLine = sec2.querySelector('[data="line"]') as HTMLDivElement
-// const sec2Title = sec2.querySelector('[data="title"]') as HTMLTitleElement
+let cardsSecTopA : itemMove = {
+    item : null,
+    itens : null,
+    itensEx : () => {
+        const cards = secTopA.querySelectorAll('[data="card"]')
+        let count : number
+        d > 0 ? count = 0 : count = cards.length -1
+        cards.forEach( e => {
+            setTimeout(() => {
+                e.classList.toggle('translateZero')
+            }, 100 * count);
+            count += d
+        })
+        d = d * -1
+    },
+    actionsAboutClass : []
+}
+
+let imgsSecTopA : itemMove = {
+    item : null,
+    itens : secTopA.querySelectorAll('[data="secHome__imgStatic"]'),
+    itensEx : null,
+    actionsAboutClass : ['translateZero']
+}
+
+let sectionPoint = 0
+//Cada item de sections representa uma secton da pagina onde contain objs representando os elementos(imgs, divs, etc..) da pagina.
+const sections = [[secHomeM, imgsSecHome, logoNavBarSecHome], 
+                  [secToAM, lineSecTopA, titleSecTopA, cardsSecTopA, imgsSecTopA]] as itemMove[][]
 
 let scrollControl = {
     active: false
 }
-
-let d = 1
 
 document.addEventListener('wheel', event => {
     if (!scrollControl.active) return
 
     scrollControl.active = false
 
+    executeActions()
+
+    sectionPoint < sections.length -1 ? sectionPoint++ : sectionPoint = 0
+    console.log(sectionPoint)
+
+    setTimeout(() => executeActions(), 1000)
+
+    setTimeout(() => scrollControl.active = true, 3000)
+})
+
+const executeActions = () => {
     const currentSection = sections[sectionPoint]
 
     currentSection.forEach(e => {
@@ -74,19 +122,11 @@ document.addEventListener('wheel', event => {
            })
            return
         }
-        if (e.)
+        if (e.itensEx != null) {
+            e.itensEx()
+        }
     })
+}
 
-    // let count : number
-    // d > 0 ? count = 0 : count = sec2ComponentsCards.length -1
-    // sec2ComponentsCards.forEach( e => {
-    //     setTimeout(() => {
-    //         e.classList.toggle('translateZero')
-    //     }, 100 * count);
-    //     count += d
-    // })
-    // d = d * -1
-    setTimeout(() => scrollControl.active = true, 3000)
-})
-
+executeActions()
 setTimeout(() => scrollControl.active = true, 1000)

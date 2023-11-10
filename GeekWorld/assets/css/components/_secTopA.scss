@@ -1,19 +1,18 @@
 .secTopA {
     @include  flex-centralize($direction: column);
-    display: none;
     width: 100%;
     height: 100%;
     position: absolute;
     top: 0;
     left: 0;
     overflow: hidden;
-    background-color: aqua;
-    // z-index: 11;
+    z-index: 0;
 
     &__title {
         width: 75%;
         text-align: center;
         font-size: 8rem;
+        color: white;
         margin-bottom: 30px;
         opacity: 0;
         transform: translate(0, -50%);
@@ -29,7 +28,7 @@
         max-width: 75%;
         width: 75%;
         height: 2px;
-        background-color: black;
+        background-color: white;
         margin: 20px auto;
         transition: 1.5s;
     }
@@ -42,5 +41,18 @@
         align-items: center;
         justify-items: center;
         width: 75%;
+    }
+
+    &__staticImg {
+        position: absolute;
+        top: 0;
+        transition: 1s;
+    }
+
+    &__img1 {
+        width: 400px;
+        top: 30%;
+        left: 80%;
+        transform: translate(200%);
     }
 }
