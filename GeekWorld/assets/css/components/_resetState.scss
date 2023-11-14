@@ -1,5 +1,10 @@
 .translateZero {
-    transform: translate(0,0);
+    transform: none;
+    transition: 1.5s;
+}
+
+.filterZero {
+    filter: none;
     transition: 1.5s;
 }
 
@@ -15,4 +20,8 @@
 
 .ZIndexUp {
     z-index: 100;
+}
+
+.ZIndexDown {
+    z-index: 0;
 }

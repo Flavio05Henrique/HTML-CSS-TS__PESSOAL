@@ -1,0 +1,34 @@
+.U-section {
+    @include  flex-centralize($direction: column);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.U-title {
+    width: 75%;
+    text-align: center;
+    font-size: 8rem;
+    color: white;
+    margin-bottom: 30px;
+    opacity: 0;
+    transform: translate(0, -50%);
+    transition: 1.5s;
+        
+    & span {
+        color: var(--cor6);
+    }
+}
+
+.U-line {
+    max-width: 75%;
+    width: 75%;
+    height: 2px;
+    background-color: white;
+    margin: 20px auto;
+    transition: 1.5s;
+}

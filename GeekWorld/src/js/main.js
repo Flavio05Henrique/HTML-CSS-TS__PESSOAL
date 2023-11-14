@@ -1,6 +1,6 @@
 "use strict";
 const secHome = document.querySelector('[data="secHome"]');
-let secHomeM = {
+let secHomeC = {
     item: secHome,
     itens: null,
     itensEx: null,
@@ -19,7 +19,7 @@ let logoNavBarSecHome = {
     actionsAboutClass: ["opacityOff"]
 };
 const secTopA = document.querySelector('[data="secTopA"]');
-let secToAM = {
+let secTopAC = {
     item: secTopA,
     itens: null,
     itensEx: null,
@@ -61,10 +61,30 @@ let imgsSecTopA = {
     itensEx: null,
     actionsAboutClass: ['translateZero']
 };
-let sectionPoint = 0;
+const secReviews = document.querySelector('[data="secReviews"]');
+let secReviewsC = {
+    item: secReviews,
+    itens: null,
+    itensEx: null,
+    actionsAboutClass: ["ZIndexUp"]
+};
+let lineSecReviews = {
+    item: secReviews.querySelector('[data="line"]'),
+    itens: null,
+    itensEx: null,
+    actionsAboutClass: ["widthZero"]
+};
+let titleSecReviews = {
+    item: secReviews.querySelector('[data="title"]'),
+    itens: null,
+    itensEx: null,
+    actionsAboutClass: ["translateZero", "opacityOff"]
+};
+let sectionPoint = 2;
 //Cada item de sections representa uma secton da pagina onde contain objs representando os elementos(imgs, divs, etc..) da pagina.
-const sections = [[secHomeM, imgsSecHome, logoNavBarSecHome],
-    [secToAM, lineSecTopA, titleSecTopA, cardsSecTopA, imgsSecTopA]];
+const sections = [[secHomeC, imgsSecHome, logoNavBarSecHome],
+    [secTopAC, lineSecTopA, titleSecTopA, cardsSecTopA, imgsSecTopA],
+    [secReviewsC, lineSecReviews, titleSecReviews,]];
 let scrollControl = {
     active: false
 };
@@ -73,9 +93,8 @@ document.addEventListener('wheel', event => {
         return;
     scrollControl.active = false;
     executeActions();
-    sectionPoint < sections.length - 1 ? sectionPoint++ : sectionPoint = 0;
-    console.log(sectionPoint);
-    setTimeout(() => executeActions(), 1000);
+    // sectionPoint < sections.length -1 ? sectionPoint++ : sectionPoint = 0
+    // setTimeout(() => executeActions(), 1000)
     setTimeout(() => scrollControl.active = true, 3000);
 });
 const executeActions = () => {

@@ -9,7 +9,7 @@ type itemMove = {
 
 const secHome = document.querySelector('[data="secHome"]') as Section
 
-let secHomeM : itemMove = {
+let secHomeC : itemMove = {
     item : secHome,
     itens : null,
     itensEx : null,
@@ -32,7 +32,7 @@ let logoNavBarSecHome : itemMove = {
 
 const secTopA = document.querySelector('[data="secTopA"]') as Section
 
-let secToAM : itemMove = {
+let secTopAC : itemMove = {
     item : secTopA,
     itens : null,
     itensEx : null,
@@ -80,10 +80,35 @@ let imgsSecTopA : itemMove = {
     actionsAboutClass : ['translateZero']
 }
 
-let sectionPoint = 0
+const secReviews = document.querySelector('[data="secReviews"]') as Section
+
+let secReviewsC : itemMove = {
+    item : secReviews,
+    itens : null,
+    itensEx : null,
+    actionsAboutClass : ["ZIndexUp"]
+}
+
+let lineSecReviews : itemMove = {
+    item : secReviews.querySelector('[data="line"]') as HTMLDivElement,
+    itens : null,
+    itensEx : null,
+    actionsAboutClass : ["widthZero"]
+}
+
+let titleSecReviews : itemMove = {
+    item : secReviews.querySelector('[data="title"]') as HTMLTitleElement,
+    itens : null,
+    itensEx : null,
+    actionsAboutClass : ["translateZero", "opacityOff"]
+}
+
+
+let sectionPoint = 2
 //Cada item de sections representa uma secton da pagina onde contain objs representando os elementos(imgs, divs, etc..) da pagina.
-const sections = [[secHomeM, imgsSecHome, logoNavBarSecHome], 
-                  [secToAM, lineSecTopA, titleSecTopA, cardsSecTopA, imgsSecTopA]] as itemMove[][]
+const sections = [[secHomeC, imgsSecHome, logoNavBarSecHome], 
+                  [secTopAC, lineSecTopA, titleSecTopA, cardsSecTopA, imgsSecTopA],
+                  [secReviewsC, lineSecReviews, titleSecReviews,]] as itemMove[][]
 
 let scrollControl = {
     active: false
@@ -96,10 +121,9 @@ document.addEventListener('wheel', event => {
 
     executeActions()
 
-    sectionPoint < sections.length -1 ? sectionPoint++ : sectionPoint = 0
-    console.log(sectionPoint)
+    // sectionPoint < sections.length -1 ? sectionPoint++ : sectionPoint = 0
 
-    setTimeout(() => executeActions(), 1000)
+    // setTimeout(() => executeActions(), 1000)
 
     setTimeout(() => scrollControl.active = true, 3000)
 })
