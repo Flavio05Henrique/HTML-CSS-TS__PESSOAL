@@ -18,3 +18,11 @@
         opacity: 100%;
     }
 }
+
+@keyframes toRight {
+  0% {
+  }
+  100% {
+    left: 90%;
+  }
+}

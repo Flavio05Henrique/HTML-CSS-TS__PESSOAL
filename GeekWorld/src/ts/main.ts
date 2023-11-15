@@ -103,12 +103,18 @@ let titleSecReviews : itemMove = {
     actionsAboutClass : ["translateZero", "opacityOff"]
 }
 
+let sliderSecReviews : itemMove = {
+    item : secReviews.querySelector('[data="slider"]') as HTMLTitleElement,
+    itens : null,
+    itensEx : null,
+    actionsAboutClass : ["translateZero", "widthZero"]
+}
 
-let sectionPoint = 2
+let sectionPoint = 0
 //Cada item de sections representa uma secton da pagina onde contain objs representando os elementos(imgs, divs, etc..) da pagina.
 const sections = [[secHomeC, imgsSecHome, logoNavBarSecHome], 
                   [secTopAC, lineSecTopA, titleSecTopA, cardsSecTopA, imgsSecTopA],
-                  [secReviewsC, lineSecReviews, titleSecReviews,]] as itemMove[][]
+                  [secReviewsC, lineSecReviews, titleSecReviews, sliderSecReviews]] as itemMove[][]
 
 let scrollControl = {
     active: false
@@ -121,9 +127,9 @@ document.addEventListener('wheel', event => {
 
     executeActions()
 
-    // sectionPoint < sections.length -1 ? sectionPoint++ : sectionPoint = 0
+    sectionPoint < sections.length -1 ? sectionPoint++ : sectionPoint = 0
 
-    // setTimeout(() => executeActions(), 1000)
+    setTimeout(() => executeActions(), 1000)
 
     setTimeout(() => scrollControl.active = true, 3000)
 })

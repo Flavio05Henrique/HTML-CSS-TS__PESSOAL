@@ -10,6 +10,8 @@
         gap: 10px;
         overflow: hidden;
         position: relative;
+        transform: translate(0, -200%);
+        transition: 1s;
     }
 
     &__card {
@@ -23,6 +25,8 @@
         filter: blur(2px);
         z-index: 1;
         position: absolute;
+        transform: scale(.9, .9);
+        transition: 1s;
     }
 
     &__cardHead {
@@ -85,14 +89,6 @@
         left: calc(75% - (var(--cardWidth) / 2));
     }
 
-    &__cardLeft {
-        transform: translate(30%, 0%) scale(.9, .9);
-    }
-
-    &__cardRigth{
-        transform: translate(-30%, 0%) scale(.9, .9);
-    }
-
     &__slider__bnt {
         width: 150px;
         height: 100px;
@@ -103,6 +99,7 @@
         position: absolute;
         transform: translate(-50%, -50%);
         top: 50%;
+        z-index: 11;
         transition: .1s;
     }
 
@@ -121,5 +118,9 @@
     &__slider__forRigth {
         background: transparent url(/assets/imgs/S3/caret-right-solid.svg) no-repeat center center;
         left: 75%;
+    }
+
+    .zIndexMiddle {
+        z-index: 5;
     }
 }

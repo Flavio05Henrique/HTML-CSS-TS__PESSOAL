@@ -80,11 +80,17 @@ let titleSecReviews = {
     itensEx: null,
     actionsAboutClass: ["translateZero", "opacityOff"]
 };
-let sectionPoint = 2;
+let sliderSecReviews = {
+    item: secReviews.querySelector('[data="slider"]'),
+    itens: null,
+    itensEx: null,
+    actionsAboutClass: ["translateZero", "widthZero"]
+};
+let sectionPoint = 0;
 //Cada item de sections representa uma secton da pagina onde contain objs representando os elementos(imgs, divs, etc..) da pagina.
 const sections = [[secHomeC, imgsSecHome, logoNavBarSecHome],
     [secTopAC, lineSecTopA, titleSecTopA, cardsSecTopA, imgsSecTopA],
-    [secReviewsC, lineSecReviews, titleSecReviews,]];
+    [secReviewsC, lineSecReviews, titleSecReviews, sliderSecReviews]];
 let scrollControl = {
     active: false
 };
@@ -93,8 +99,8 @@ document.addEventListener('wheel', event => {
         return;
     scrollControl.active = false;
     executeActions();
-    // sectionPoint < sections.length -1 ? sectionPoint++ : sectionPoint = 0
-    // setTimeout(() => executeActions(), 1000)
+    sectionPoint < sections.length - 1 ? sectionPoint++ : sectionPoint = 0;
+    setTimeout(() => executeActions(), 1000);
     setTimeout(() => scrollControl.active = true, 3000);
 });
 const executeActions = () => {
