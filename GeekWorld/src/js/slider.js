@@ -4,11 +4,20 @@ const sliderItens = slider.querySelectorAll('[data="secReviews__card"]');
 const sliderbuttons = slider.querySelectorAll('[data="sliderBnts"]');
 const sliderPoits = [0, 1, 2];
 const actions = ["translateZero", "filterZero"];
+let sliderStop = false;
 sliderbuttons[0].addEventListener('click', event => {
-    sliderPrevious();
+    if (!sliderStop) {
+        sliderNext();
+        sliderStop = true;
+        setTimeout(() => sliderStop = false, 500);
+    }
 });
 sliderbuttons[1].addEventListener('click', event => {
-    sliderNext();
+    if (!sliderStop) {
+        sliderPrevious();
+        sliderStop = true;
+        setTimeout(() => sliderStop = false, 500);
+    }
 });
 const sliderNext = () => {
     if (sliderItens.length < 2)

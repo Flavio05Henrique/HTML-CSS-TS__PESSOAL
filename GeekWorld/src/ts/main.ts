@@ -110,7 +110,7 @@ let sliderSecReviews : itemMove = {
     actionsAboutClass : ["translateZero", "widthZero"]
 }
 
-let sectionPoint = 0
+let sectionPoint = 2
 //Cada item de sections representa uma secton da pagina onde contain objs representando os elementos(imgs, divs, etc..) da pagina.
 const sections = [[secHomeC, imgsSecHome, logoNavBarSecHome], 
                   [secTopAC, lineSecTopA, titleSecTopA, cardsSecTopA, imgsSecTopA],
@@ -124,14 +124,20 @@ document.addEventListener('wheel', event => {
     if (!scrollControl.active) return
 
     scrollControl.active = false
+    const scrollValue : number = event.deltaY
+    const scrollYDirection : number = scrollValue == 100 ? 1 : -1
 
     executeActions()
 
-    sectionPoint < sections.length -1 ? sectionPoint++ : sectionPoint = 0
+    if (scrollYDirection == 1) {
+        sectionPoint < sections.length -1 ? sectionPoint ++ : sectionPoint = 0
+    } else {
+        sectionPoint > 0 ? sectionPoint-- : sectionPoint = sections.length - 1
+    }
 
     setTimeout(() => executeActions(), 1000)
 
-    setTimeout(() => scrollControl.active = true, 3000)
+    setTimeout(() => scrollControl.active = true, 2500)
 })
 
 const executeActions = () => {
