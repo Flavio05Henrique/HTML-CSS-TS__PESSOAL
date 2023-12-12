@@ -9,6 +9,9 @@
   --cor7: #5d2200;
   --cor8: rgb(0, 155, 155);
   --cor9: rgb(233, 233, 233);
+  --cor10: #8C031C;
+  --cor11: #BF0426;
+  --cor12: #52000f;
   --shadow__defaut: 5px 5px 5px rgba(0, 0, 0, 0.356);
   --background__defaut: transparent url("/assets/imgs/bkgGamer.png") repeat ;
   --font__defaut: "Josefin Sans", sans-serif, Helvetica;
@@ -38,13 +41,13 @@ body {
   background: var(--background__defaut);
 }
 .secHome__brandLogo {
-  width: 900px;
+  width: 850px;
   z-index: 10;
   opacity: 0%;
   transition: 1.5s;
 }
 .secHome__navBar {
-  width: 680px;
+  width: 850px;
   background: linear-gradient(to bottom, var(--cor7), transparent);
   height: 100px;
   z-index: 10;
@@ -60,28 +63,22 @@ body {
   height: 100%;
   font-size: 2.3rem;
 }
-.secHome__navBar ul li {
-  height: 35px;
+.secHome__navBar ul li button {
   margin: 0 10px;
   padding: 5px;
   background-color: var(--cor4);
-  color: white;
+  color: var(--cor1);
+  font-weight: 900;
+  font-size: 2rem;
+  border: none;
   border-radius: 5px;
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.295);
   transition: 0.3s;
 }
-.secHome__navBar ul li a {
-  width: 100%;
-  height: 100%;
-  text-decoration: none;
-  color: var(--cor2);
-  font-weight: 600;
-}
-.secHome__navBar ul li:hover {
+.secHome__navBar ul li button:hover {
   cursor: pointer;
   font-size: 2.5rem;
   color: var(--cor2);
-  height: 45px;
   margin: 0 5px;
   padding: 10px;
   transition: 0.3s;
@@ -115,7 +112,7 @@ body {
 }
 .secHome__img4 {
   width: 300px;
-  top: 20%;
+  top: 10%;
   left: 50%;
   z-index: 9;
   transform: translate(-50%, 190%) scale(0.5, 0.5);
@@ -163,10 +160,82 @@ body {
   transform: translate(200%);
 }
 
-.secReviews {
-  --cardWidth: 450px;
+.secReviews .zIndexMiddle {
+  z-index: 5;
 }
-.secReviews__slider {
+.secReviews__staticImg {
+  position: absolute;
+  top: 0;
+  transition: 2s;
+  z-index: 10;
+}
+.secReviews__img1 {
+  top: 43%;
+  left: -1%;
+  transform: translate(-100%);
+}
+.secReviews__img2 {
+  top: 43%;
+  left: 61%;
+  transform: translate(100%);
+}
+.secReviews__img3 {
+  top: 43%;
+  left: -10%;
+  z-index: 9;
+  transform: translate(-100%) scale(0.5);
+}
+.secReviews__img4 {
+  top: 43%;
+  left: 70%;
+  z-index: 9;
+  transform: translate(100%) scale(0.5);
+}
+.secReviews__imgSplash {
+  transform: scale(1.5);
+}
+
+.secTalkToUs__container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: 30px;
+  width: 100%;
+  height: 90%;
+}
+.secTalkToUs__card {
+  width: 300px;
+  height: 300px;
+  padding: 15px;
+  background-color: aquamarine;
+}
+.secTalkToUs__card h3 {
+  font-size: 4rem;
+  margin-bottom: 30px;
+}
+.secTalkToUs__card p {
+  font-size: 2rem;
+}
+.secTalkToUs__card--cor1 {
+  background: var(--cor4) url(/assets/imgs/S5/gear-solid_gren.png) no-repeat center center;
+  background-size: 90%;
+  background-color: var(--cor4);
+}
+.secTalkToUs__card--cor2 {
+  background-color: var(--cor3);
+}
+.secTalkToUs__card--cor3 {
+  background-color: var(--cor11);
+}
+.secTalkToUs footer {
+  width: 100%;
+  height: 10%;
+  background-color: antiquewhite;
+}
+
+.slider {
+  --cardWidth: 450px;
   display: flex;
   align-items: center;
   width: 1350px;
@@ -177,7 +246,7 @@ body {
   transform: translate(0, -200%);
   transition: 1s;
 }
-.secReviews__card {
+.slider__card {
   width: var(--cardWidth);
   height: 600px;
   background-color: var(--cor2);
@@ -191,7 +260,7 @@ body {
   transform: scale(0.9, 0.9);
   transition: 1s;
 }
-.secReviews__cardHead {
+.slider__cardHead {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -200,50 +269,50 @@ body {
   height: 45%;
   padding: 10px;
 }
-.secReviews__cardHead img {
+.slider__cardHead img {
   width: 45%;
   height: 100%;
   margin: 0 5%;
   background-color: var(--cor8);
 }
-.secReviews__cardHead div {
+.slider__cardHead div {
   display: flex;
   justify-content: space-around;
   flex-direction: column;
   width: 50%;
   height: 100%;
 }
-.secReviews__cardHead div h3 {
+.slider__cardHead div h3 {
   color: var(--cor9);
 }
-.secReviews__cardHead div .name {
+.slider__cardHead div .name {
   width: 115%;
   background-color: var(--cor3);
   padding: 10px;
   font-size: 2.5rem;
   font-weight: 600;
 }
-.secReviews__cardHead div .gender {
+.slider__cardHead div .gender {
   background-color: var(--cor8);
   padding: 10px;
   border-radius: 999px;
 }
-.secReviews__cardBody {
+.slider__cardBody {
   padding: 10px;
   text-align: justify;
   color: var(--cor9);
   border-top: 2px solid var(--cor9);
 }
-.secReviews__cardPosition1 {
+.slider__cardPosition1 {
   left: calc(25% - var(--cardWidth) / 2);
 }
-.secReviews__cardPosition2 {
+.slider__cardPosition2 {
   left: calc(50% - var(--cardWidth) / 2);
 }
-.secReviews__cardPosition3 {
+.slider__cardPosition3 {
   left: calc(75% - var(--cardWidth) / 2);
 }
-.secReviews__slider__bnt {
+.slider__slider__bnt {
   width: 150px;
   height: 100px;
   border-radius: 100%;
@@ -256,22 +325,19 @@ body {
   z-index: 11;
   transition: 0.1s;
 }
-.secReviews__slider__bnt:active {
+.slider__slider__bnt:active {
   width: 125px;
   height: 75px;
   margin: 10px;
   transition: 0.1s;
 }
-.secReviews__slider__forLeft {
-  background: transparent url(/assets/imgs/S3/caret-left-solid.svg) no-repeat center center;
+.slider__slider__forLeft {
+  background: transparent url(/assets/imgs/S3/Slider/caret-left-solid.svg) no-repeat center center;
   left: 25%;
 }
-.secReviews__slider__forRigth {
-  background: transparent url(/assets/imgs/S3/caret-right-solid.svg) no-repeat center center;
+.slider__slider__forRigth {
+  background: transparent url(/assets/imgs/S3/Slider/caret-right-solid.svg) no-repeat center center;
   left: 75%;
-}
-.secReviews .zIndexMiddle {
-  z-index: 5;
 }
 
 .card {
@@ -327,27 +393,21 @@ body {
   box-shadow: 5px 5px 5px var(--shadow__defaut);
 }
 
-@keyframes growWidth {
-  0% {
-    width: 0;
-  }
-  100% {
-    width: 100%;
-  }
+.card--red {
+  background-color: var(--cor11);
 }
-@keyframes toEmerge {
-  0% {
-    transform: translate(0, -50%);
-    opacity: 0;
-  }
-  100% {
-    transform: translate(0, 0);
-    opacity: 100%;
-  }
+
+.card__title--red {
+  background-color: var(--cor10);
 }
-@keyframes toRight {
+
+.card__classification--red {
+  background-color: var(--cor12);
+}
+
+@keyframes Animation-returnToTopBnt {
   100% {
-    left: 90%;
+    top: 95%;
   }
 }
 .U-section {
@@ -385,6 +445,29 @@ body {
   background-color: white;
   margin: 20px auto;
   transition: 1.5s;
+}
+
+.U-returnToTopBnt {
+  width: 60px;
+  height: 60px;
+  border: none;
+  border-radius: 100%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 90%;
+  z-index: 101;
+  animation: Animation-returnToTopBnt 1s alternate infinite;
+  background: transparent url("/assets/imgs/angles-up-solid.svg") no-repeat center center;
+  background-size: 30px;
+  transition: 1s;
+}
+.U-returnToTopBnt:hover {
+  cursor: pointer;
+}
+.U-returnToTopBnt:active {
+  background-color: rgba(255, 255, 255, 0.158);
+  transition: 0.3s;
 }
 
 .translateZero {

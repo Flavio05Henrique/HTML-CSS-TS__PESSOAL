@@ -1,0 +1,45 @@
+.secTalkToUs {
+    &__container {
+        @include flex-centralize();
+        gap: 30px;
+        width: 100%;
+        height: 90%;
+    }
+
+    &__card {
+        width: 300px;
+        height: 300px;
+        padding: 15px;
+        background-color: aquamarine;
+
+        h3 {
+            font-size: 4rem;
+            margin-bottom: 30px;
+        }
+
+        p {
+            font-size: 2rem;
+        }
+    }
+
+    &__card--cor1 {
+        background: var(--cor4) url(/assets/imgs/S5/gear-solid_gren.png) no-repeat center center;
+        background-size: 90%;
+        background-color: var(--cor4);
+    }
+
+    &__card--cor2 {
+        background-color: var(--cor3);
+    }
+
+    &__card--cor3 {
+        background-color: var(--cor11);
+    }
+
+    footer {
+        width: 100%;
+        height: 10%;
+        background-color: antiquewhite;
+    }
+}
+

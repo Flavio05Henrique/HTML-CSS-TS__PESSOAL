@@ -1,0 +1,120 @@
+.slider {
+    --cardWidth : 450px;
+
+    display: flex;
+    align-items: center;
+    width: 1350px;
+    height: 700px;
+    gap: 10px;
+    overflow: hidden;
+    position: relative;
+    transform: translate(0, -200%);
+    transition: 1s;
+
+
+    &__card {
+        width: var(--cardWidth);
+        height: 600px;
+        background-color: var(--cor2);
+        padding: 10px;
+        font-size: 2rem;
+        border-radius: 5px;
+        box-shadow: var(--shadow__defaut);
+        filter: blur(2px);
+        z-index: 1;
+        position: absolute;
+        transform: scale(.9, .9);
+        transition: 1s;
+    }
+
+    &__cardHead {
+        @include flex-centralize;
+        width: 100%;
+        height: 45%;
+        padding: 10px;
+
+        & img {
+            width: 45%;
+            height: 100%;
+            margin: 0 5%;
+            background-color: var(--cor8);
+        }
+
+        & div {
+            display: flex;
+            justify-content: space-around;
+            flex-direction: column;
+            width: 50%;
+            height: 100%;
+            // background-color: rgb(0, 163, 163);
+
+            & h3 {
+                color: var(--cor9);
+            }
+
+            & .name {
+                width: 115%;
+                background-color: var(--cor3);
+                padding: 10px;
+                font-size: 2.5rem;
+                font-weight: 600;
+            }
+
+            & .gender {
+                background-color: var(--cor8);
+                padding: 10px;
+                border-radius: 999px;
+            }
+        }
+    }
+
+    &__cardBody {
+        padding: 10px;
+        text-align: justify;
+        color: var(--cor9);
+        border-top: 2px solid var(--cor9);
+    }
+
+    &__cardPosition1 {
+        left: calc(25% - (var(--cardWidth) / 2));
+    }
+
+    &__cardPosition2 {
+        left: calc(50% - (var(--cardWidth) / 2));
+    }
+
+    &__cardPosition3 {
+        left: calc(75% - (var(--cardWidth) / 2));
+    }
+
+    &__slider__bnt {
+        width: 150px;
+        height: 100px;
+        border-radius: 100%;
+        border: none;
+        cursor: pointer;
+        background-color: red;
+        position: absolute;
+        transform: translate(-50%, -50%);
+        top: 50%;
+        z-index: 11;
+        transition: .1s;
+    }
+
+    &__slider__bnt:active {
+        width: 125px;
+        height: 75px;
+        margin: 10px;
+        transition: .1s;
+    }
+
+    &__slider__forLeft {
+        background: transparent url(/assets/imgs/S3/Slider/caret-left-solid.svg) no-repeat center center;
+        left: 25%;
+    }
+
+    &__slider__forRigth {
+        background: transparent url(/assets/imgs/S3/Slider/caret-right-solid.svg) no-repeat center center;
+        left: 75%;
+    }
+}

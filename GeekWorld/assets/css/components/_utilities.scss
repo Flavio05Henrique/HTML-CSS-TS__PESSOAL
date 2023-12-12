@@ -32,3 +32,28 @@
     margin: 20px auto;
     transition: 1.5s;
 }
+
+.U-returnToTopBnt {
+    width: 60px;
+    height: 60px;
+    border: none;
+    border-radius: 100%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 90%;
+    z-index: 101;
+    animation: Animation-returnToTopBnt 1s alternate infinite;
+    background: transparent url('/assets/imgs/angles-up-solid.svg') no-repeat center center;
+    background-size: 30px;
+    transition: 1s;
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    &:active {
+        background-color: rgba(255, 255, 255, 0.158);
+        transition: .3s;
+    }
+}

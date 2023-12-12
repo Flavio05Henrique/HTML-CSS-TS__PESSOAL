@@ -53,22 +53,11 @@ let titleSecTopA : itemMove = {
     actionsAboutClass : ["translateZero", "opacityOff"]
 }
 
-let d = 1
-
 let cardsSecTopA : itemMove = {
     item : null,
     itens : null,
     itensEx : () => {
-        const cards = secTopA.querySelectorAll('[data="card"]')
-        let count : number
-        d > 0 ? count = 0 : count = cards.length -1
-        cards.forEach( e => {
-            setTimeout(() => {
-                e.classList.toggle('translateZero')
-            }, 100 * count);
-            count += d
-        })
-        d = d * -1
+        slideOneByOneAnimation(secTopA)
     },
     actionsAboutClass : []
 }
@@ -110,11 +99,68 @@ let sliderSecReviews : itemMove = {
     actionsAboutClass : ["translateZero", "widthZero"]
 }
 
-let sectionPoint = 2
+let imgsSecReviews : itemMove = {
+    item : null,
+    itens : secReviews.querySelectorAll('[data="secReviews__imgStatic"]'),
+    itensEx : null,
+    actionsAboutClass : ["translateZero"]
+}
+
+let imgsSecReviews2 : itemMove = {
+    item : null,
+    itens : secReviews.querySelectorAll('[data="secReviews__imgStatic2"]'),
+    itensEx : null,
+    actionsAboutClass : ["secReviews__imgSplash"]
+}
+
+const secTopB = document.querySelector('[data="secTopB"]') as Section
+
+let secTopBC : itemMove = {
+    item : secTopB,
+    itens : null,
+    itensEx : null,
+    actionsAboutClass : ["ZIndexUp"]
+}
+
+let lineSecTopB : itemMove = {
+    item : secTopB.querySelector('[data="line"]') as HTMLDivElement,
+    itens : null,
+    itensEx : null,
+    actionsAboutClass : ["widthZero"]
+}
+
+let titleSecTopB : itemMove = {
+    item : secTopB.querySelector('[data="title"]') as HTMLTitleElement,
+    itens : null,
+    itensEx : null,
+    actionsAboutClass : ["translateZero", "opacityOff"]
+}
+
+let cardsSecTopB : itemMove = {
+    item : null,
+    itens : null,
+    itensEx : () => {
+        slideOneByOneAnimation(secTopB)
+    },
+    actionsAboutClass : []
+}
+
+const secTalkToUs = document.querySelector('[data="secTalkToUs"]') as Section
+
+let secTalkToUsC : itemMove = {
+    item : secTalkToUs,
+    itens : null,
+    itensEx : null,
+    actionsAboutClass : ["ZIndexUp"]
+}
+
+let sectionPoint = 4
 //Cada item de sections representa uma secton da pagina onde contain objs representando os elementos(imgs, divs, etc..) da pagina.
 const sections = [[secHomeC, imgsSecHome, logoNavBarSecHome], 
                   [secTopAC, lineSecTopA, titleSecTopA, cardsSecTopA, imgsSecTopA],
-                  [secReviewsC, lineSecReviews, titleSecReviews, sliderSecReviews]] as itemMove[][]
+                  [secReviewsC, lineSecReviews, titleSecReviews, sliderSecReviews, imgsSecReviews, imgsSecReviews2],
+                  [secTopBC, lineSecTopB, titleSecTopB, cardsSecTopB],
+                  [secTalkToUsC]] as itemMove[][]
 
 let scrollControl = {
     active: false
@@ -127,7 +173,7 @@ document.addEventListener('wheel', event => {
     const scrollValue : number = event.deltaY
     const scrollYDirection : number = scrollValue == 100 ? 1 : -1
 
-    executeActions()
+    executeAnimetionActions(null)
 
     if (scrollYDirection == 1) {
         sectionPoint < sections.length -1 ? sectionPoint ++ : sectionPoint = 0
@@ -135,12 +181,19 @@ document.addEventListener('wheel', event => {
         sectionPoint > 0 ? sectionPoint-- : sectionPoint = sections.length - 1
     }
 
-    setTimeout(() => executeActions(), 1000)
+    setTimeout(() => executeAnimetionActions(null), 1000)
 
     setTimeout(() => scrollControl.active = true, 2500)
+    
+    activateReturnToTopBnt()
 })
 
-const executeActions = () => {
+const executeAnimetionActions = (value : number | null) => {
+
+    value != null ? sectionPoint = value : 0
+
+    if(sectionPoint > sections.length -1 || sectionPoint < 0) sectionPoint = 0
+
     const currentSection = sections[sectionPoint]
 
     currentSection.forEach(e => {
@@ -164,5 +217,24 @@ const executeActions = () => {
     })
 }
 
-executeActions()
+let d = 1
+
+const slideOneByOneAnimation = (section : Section) => {
+    const cards = section.querySelectorAll('[data="card"]')
+        let count : number
+        d > 0 ? count = 0 : count = cards.length -1
+        cards.forEach( e => {
+            setTimeout(() => {
+                e.classList.toggle('translateZero')
+            }, 100 * count);
+            count += d
+        })
+        d = d * -1
+}
+
+const getCurrentSection =  () : number => {
+    return sectionPoint
+}
+
+executeAnimetionActions(null)
 setTimeout(() => scrollControl.active = true, 1000)
