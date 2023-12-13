@@ -12,6 +12,7 @@
   --cor10: #8C031C;
   --cor11: #BF0426;
   --cor12: #52000f;
+  --cor13: #0e131d;
   --shadow__defaut: 5px 5px 5px rgba(0, 0, 0, 0.356);
   --background__defaut: transparent url("/assets/imgs/bkgGamer.png") repeat ;
   --font__defaut: "Josefin Sans", sans-serif, Helvetica;
@@ -205,21 +206,30 @@ body {
   height: 90%;
 }
 .secTalkToUs__card {
+  display: flex;
+  flex-direction: column;
   width: 300px;
   height: 300px;
   padding: 15px;
-  background-color: aquamarine;
+  cursor: pointer;
+  transition: 0.5s;
+  text-align: justify;
 }
 .secTalkToUs__card h3 {
   font-size: 4rem;
   margin-bottom: 30px;
+  transition: 0.5s;
 }
 .secTalkToUs__card p {
   font-size: 2rem;
+  transition: 0.5s;
+}
+.secTalkToUs__card:hover {
+  box-shadow: 0 0 15px rgb(255, 255, 255);
 }
 .secTalkToUs__card--cor1 {
   background: var(--cor4) url(/assets/imgs/S5/gear-solid_gren.png) no-repeat center center;
-  background-size: 90%;
+  background-size: 80%;
   background-color: var(--cor4);
 }
 .secTalkToUs__card--cor2 {
@@ -229,9 +239,19 @@ body {
   background-color: var(--cor11);
 }
 .secTalkToUs footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
   width: 100%;
   height: 10%;
-  background-color: antiquewhite;
+  background-color: var(--cor13);
+}
+.secTalkToUs footer a {
+  height: 90%;
+}
+.secTalkToUs footer a img {
+  height: 100%;
 }
 
 .slider {
