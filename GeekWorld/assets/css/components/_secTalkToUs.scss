@@ -13,7 +13,7 @@
         height: 300px;
         padding: 15px;
         cursor: pointer;
-        transition: .5s;
+        transition: 1s;
         text-align: justify;
 
         h3 {
@@ -29,28 +29,35 @@
 
         &:hover {
             box-shadow: 0 0 15px rgb(255, 255, 255);
+            transition: .2s;
         }
     }
 
     &__card--cor1 {
         background: var(--cor4) url(/assets/imgs/S5/gear-solid_gren.png) no-repeat center center;
         background-size: 80%;
-        background-color: var(--cor4);
+        transform: translate(-300%);
     }
 
     &__card--cor2 {
-        background-color: var(--cor3);
+        background: var(--cor3) url(/assets/imgs/S5/file-pen-solid.png) no-repeat center center;
+        background-size: 80%;
+        transform: translate(0, -200%);
     }
 
     &__card--cor3 {
-        background-color: var(--cor11);
+        background: var(--cor11) url(/assets/imgs/S5/user-tie-solid.png) no-repeat center center;
+        background-size: 70%;
+        transform: translate(300%);
     }
 
-    footer {
+    &__footer {
         @include flex-centralize();
         width: 100%;
         height: 10%;
         background-color: var(--cor13);
+        transform: translate(0, 100%);
+        transition: 1s;
 
         a {
             height: 90%;

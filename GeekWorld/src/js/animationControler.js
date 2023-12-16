@@ -122,13 +122,25 @@ let secTalkToUsC = {
     itensEx: null,
     actionsAboutClass: ["ZIndexUp"]
 };
-let sectionPoint = 4;
+let cardsSecTalkToUsC = {
+    item: null,
+    itens: secTalkToUs.querySelectorAll('[dara="secTalkToUs__card"]'),
+    itensEx: null,
+    actionsAboutClass: ["translateZero"]
+};
+let footerSecTalkToUsC = {
+    item: secTalkToUs.querySelector('[data="secTalkToUs__footer"]'),
+    itens: null,
+    itensEx: null,
+    actionsAboutClass: ["translateZero"]
+};
+let sectionPoint = 0;
 //Cada item de sections representa uma secton da pagina onde contain objs representando os elementos(imgs, divs, etc..) da pagina.
 const sections = [[secHomeC, imgsSecHome, logoNavBarSecHome],
     [secTopAC, lineSecTopA, titleSecTopA, cardsSecTopA, imgsSecTopA],
     [secReviewsC, lineSecReviews, titleSecReviews, sliderSecReviews, imgsSecReviews, imgsSecReviews2],
     [secTopBC, lineSecTopB, titleSecTopB, cardsSecTopB],
-    [secTalkToUsC]];
+    [secTalkToUsC, cardsSecTalkToUsC, footerSecTalkToUsC]];
 let scrollControl = {
     active: false
 };
