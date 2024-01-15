@@ -69,3 +69,25 @@
     }
 }
 
+
+@media screen and (max-width: 800px) {
+    .secTalkToUs {
+        &__container {
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        &__card {
+            width: 200px;
+            height: 150px;
+
+            h3 {
+                font-size: 2.5rem;
+            }
+    
+            p {
+                font-size: 1.5rem;
+            }
+        }
+    }
+}

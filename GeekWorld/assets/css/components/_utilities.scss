@@ -57,3 +57,20 @@
         transition: .3s;
     }
 }
+
+@media screen and (max-width: 800px) {
+    .U-title {
+        margin-bottom: 15px;
+        margin-top: 15px;
+    }
+    
+}
+
+@media screen and (max-width: 500px) {
+    .U-title {
+        margin-bottom: 0px;
+        margin-top: 10px;
+        font-size: 4rem;
+    }
+    
+}

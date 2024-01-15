@@ -3,7 +3,7 @@
 
     &__brandLogo {
         width: 850px;
-        z-index: 10;
+        z-index: 11;
         opacity: 0%;
         transition: 1.5s;
     }
@@ -12,7 +12,7 @@
         width: 850px;
         background: linear-gradient(to bottom, var(--cor7), transparent);
         height: 100px;
-        z-index: 10;
+        z-index: 11;
         opacity: 0%;
         transition: 1.5s;
 
@@ -115,6 +115,130 @@
         left: 10%;
         z-index: 8;
         transform: translate(-190%, -50%) rotate(-30deg);
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .secHome {
+
+        &__brandLogo {
+            width: 100%;
+            z-index: 11;
+            opacity: 0%;
+            transition: 1.5s;
+        }
+    
+        &__navBar {
+            width: 100%;
+    
+            & ul {
+                flex-wrap: wrap;
+    
+                & li {
+    
+                    & button {
+    
+                        &:hover {
+                            cursor: pointer;
+                            font-size: 2rem;
+                            color: var(--cor2);
+                            margin: 0 10px;
+                            padding: 5px;
+                            transition: .3s;
+                        } 
+                    }
+    
+                    
+                }
+            }
+        }
+
+        &__img1 {
+            display: none;
+        }
+    
+        &__img2 {
+            display: none;
+        }
+    
+        &__img3 {
+            width: 35%;
+        }
+    
+        &__img4 {
+            width: 35%;
+            left: 40%;
+        }
+    
+        &__img5 {
+            width: 35%;
+            left: 75%;
+        }
+    
+        &__img6 {
+            width: 35%;
+            left: 60%;
+        }
+
+        &__img7 {
+            width: 35%;
+        }
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .secHome {
+    
+        &__navBar {
+            width: 100%;
+    
+            & ul {
+                flex-wrap: wrap;
+    
+                & li {
+    
+                    & button {
+                        margin-bottom: 10px;
+                        
+                        &:hover {
+                            cursor: pointer;
+                            font-size: 2rem;
+                            color: var(--cor2);
+                            margin: 0 10px;
+                            padding: 5px;
+                            transition: .3s;
+                        } 
+                    }
+    
+                    
+                }
+            }
+        }
+    
+        &__img3 {
+            width: 45%;
+            top: 30%;
+        }
+    
+        &__img4 {
+            width: 45%;
+            left: 32%;
+            top: 20%;
+        }
+    
+        &__img5 {
+            width: 45%;
+            left: 75%;
+            top: 25%;
+        }
+    
+        &__img6 {
+            display: none;
+        }
+
+        &__img7 {
+            display: none;
+        }
     }
 }
 
