@@ -116,7 +116,7 @@ body {
   top: 10%;
   left: 50%;
   z-index: 9;
-  transform: translate(-50%, 190%) scale(0.5, 0.5);
+  transform: translate(-50%, 300%) scale(0.5, 0.5);
 }
 .secHome__img5 {
   width: 300px;
@@ -252,6 +252,9 @@ body {
     width: 100%;
     overflow: scroll;
   }
+  .secTopA__CardsContainer::-webkit-scrollbar {
+    width: 0px;
+  }
   .secTopA__img1 {
     display: none;
   }
@@ -372,7 +375,7 @@ body {
 .secTalkToUs__card--cor2 {
   background: var(--cor3) url(/assets/imgs/S5/file-pen-solid.png) no-repeat center center;
   background-size: 80%;
-  transform: translate(0, -200%);
+  transform: translate(0, -500%);
 }
 .secTalkToUs__card--cor3 {
   background: var(--cor11) url(/assets/imgs/S5/user-tie-solid.png) no-repeat center center;
@@ -570,7 +573,7 @@ body {
   background-color: var(--cor8);
   border-radius: 5px;
   box-shadow: 5px 5px 5px var(--shadow__defaut);
-  transform: translate(0%, 300%);
+  transform: translate(0%, 1200%);
   transition: 1.5s;
 }
 .card__title {
