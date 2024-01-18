@@ -1,0 +1,19 @@
+header {
+    @include flex-centralize(row);
+    justify-content: flex-start;
+    width: 100%;
+    height: 100px;
+    background-color: var(--cor_1);
+    padding: 30px;
+    border-bottom: 1px solid var(--cor_2);
+
+    & h1 {
+        font-size: 4rem;
+
+        & span {
+            padding: 0px 6px;
+            background-color: var(--cor_3);
+            font-size: 5rem;
+        }
+    }
+}

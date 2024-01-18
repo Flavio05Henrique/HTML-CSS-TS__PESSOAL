@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+    --cor_1: #012030;
+    --cor_2: #9AEBA3;
+    --cor_3: #ec1955;
+    --cor_4: #256585;
+    --cor_5: #c0e7c4;
+    --font_default: 'Rubik', sans-serif;
+}
+
+@mixin flex-centralize($direcrion) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: $direcrion;
+}
