@@ -6,6 +6,9 @@ header {
     background-color: var(--cor_1);
     padding: 30px;
     border-bottom: 1px solid var(--cor_2);
+    position: fixed;
+    top: 0;
+    z-index: 10;
 
     & h1 {
         font-size: 4rem;

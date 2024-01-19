@@ -44,4 +44,38 @@
         }
     }
 
+    .search__filterBnt {
+        width: 50px;
+        height: 50px;
+        border: none;
+        border-radius: 999px;
+        margin-left: 10px;
+        cursor: pointer;
+        background: transparent url(/assets/img/filter-solid.svg) no-repeat center center;
+        background-size: 30px;
+        transition: .5s;
+
+        &:hover {
+            background-color: var(--cor_1);
+            transition: .5s;
+        }
+    }
+
+    .createNewCardBnt {
+        width: 50px;
+        height: 50px;
+        border: none;
+        border-radius: 999px;
+        margin-left: 10px;
+        cursor: pointer;
+        background: transparent url(/assets/img/plus-solid.svg) no-repeat center center;
+        background-size: 30px;
+        transition: .5s;
+
+        &:hover {
+            background-color: var(--cor_1);
+            transition: .5s;
+        }
+    }
+
 }

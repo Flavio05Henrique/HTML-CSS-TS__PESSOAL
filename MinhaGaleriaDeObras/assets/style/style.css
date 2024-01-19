@@ -12,6 +12,7 @@ html {
 }
 
 body {
+  padding-top: 100px;
   background-color: var(--cor_4);
 }
 
@@ -21,6 +22,8 @@ body {
   --cor_3: #ec1955;
   --cor_4: #256585;
   --cor_5: #c0e7c4;
+  --cor_6: #535353;
+  --cor_7: #868686;
   --font_default: "Rubik", sans-serif;
 }
 
@@ -35,6 +38,9 @@ header {
   background-color: var(--cor_1);
   padding: 30px;
   border-bottom: 1px solid var(--cor_2);
+  position: fixed;
+  top: 0;
+  z-index: 10;
 }
 header h1 {
   font-size: 4rem;
@@ -83,9 +89,45 @@ header h1 span {
   transform: translate(-50%, -50%);
   transition: 0.5s;
 }
+.search__container .search__filterBnt {
+  width: 50px;
+  height: 50px;
+  border: none;
+  border-radius: 999px;
+  margin-left: 10px;
+  cursor: pointer;
+  background: transparent url(/assets/img/filter-solid.svg) no-repeat center center;
+  background-size: 30px;
+  transition: 0.5s;
+}
+.search__container .search__filterBnt:hover {
+  background-color: var(--cor_1);
+  transition: 0.5s;
+}
+.search__container .createNewCardBnt {
+  width: 50px;
+  height: 50px;
+  border: none;
+  border-radius: 999px;
+  margin-left: 10px;
+  cursor: pointer;
+  background: transparent url(/assets/img/plus-solid.svg) no-repeat center center;
+  background-size: 30px;
+  transition: 0.5s;
+}
+.search__container .createNewCardBnt:hover {
+  background-color: var(--cor_1);
+  transition: 0.5s;
+}
 
 .cards__container {
-  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  align-items: center;
+  justify-items: center;
+  gap: 5px;
+  width: 90%;
+  margin: auto;
 }
 .cards__container .card {
   display: flex;
@@ -98,6 +140,14 @@ header h1 span {
   padding: 6px;
   background-color: var(--cor_1);
   border-radius: 5px;
+  position: relative;
+}
+.cards__container .card div {
+  width: 100%;
+  height: 100%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 .cards__container .card img {
   width: 100%;
@@ -105,7 +155,195 @@ header h1 span {
 }
 .cards__container .card h3 {
   width: 100%;
+  height: 10%;
   font-size: 1.5rem;
   text-align: center;
   padding: 5px;
+}
+.cards__container .card__capa {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  opacity: 0%;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.411);
+  position: absolute;
+  top: 0;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.cards__container .card__capa h3 {
+  font-size: 3rem;
+}
+.cards__container .card__capa:hover {
+  opacity: 100%;
+}
+
+.cardExtended__container {
+  display: flex;
+  width: 95%;
+  height: 900px;
+  margin: auto;
+  background-color: var(--cor_1);
+  border-radius: 15px;
+  overflow: hidden;
+}
+.cardExtended__container img {
+  width: 35%;
+  height: 100%;
+}
+.cardExtended__container .cardExtended__info {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(8, 1fr);
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  width: 65%;
+  height: 100%;
+  padding: 20px;
+  font-size: 3rem;
+  font-weight: 800;
+}
+.cardExtended__container .cardExtended__centralize {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+.cardExtended__container .cardExtended__input input, .cardExtended__container .cardExtended__input select {
+  height: 50px;
+  background-color: var(--cor_6);
+  border: none;
+  font-size: 3rem;
+  border-radius: 5px;
+}
+.cardExtended__container .cardExtended__changeColor {
+  grid-column-start: 7;
+  justify-self: flex-end;
+  width: 50px;
+  height: 50px;
+  border: none;
+}
+.cardExtended__container .cardExtended__bntDelete {
+  grid-column-start: 8;
+  justify-self: flex-end;
+  justify-content: center;
+  width: 100px;
+  height: 50px;
+  font-size: 2.2rem;
+  background-color: var(--cor_3);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.cardExtended__container .cardExtended__title {
+  grid-column-start: 1;
+  grid-column-end: 7;
+  width: 100%;
+  height: 50px;
+}
+.cardExtended__container .cardExtended__title div {
+  width: 75%;
+  padding: 3px 5px;
+  margin-left: 5px;
+  border-radius: 5px;
+  background-color: var(--cor_6);
+  font-weight: 400;
+  cursor: text;
+}
+.cardExtended__container .cardExtended__title input {
+  width: 75%;
+}
+.cardExtended__container .cardExtended__bntActive {
+  grid-column-start: 7;
+  grid-column-end: 9;
+  width: 100%;
+  height: 50px;
+  border: none;
+}
+.cardExtended__container .cardExtended__bntActive button {
+  width: 100px;
+  height: 90%;
+  border-radius: 999px;
+  border: none;
+}
+.cardExtended__container .cardExtended__season {
+  grid-column-start: 1;
+  grid-column-end: 4;
+  width: 100%;
+  height: 50px;
+}
+.cardExtended__container .cardExtended__season div {
+  padding: 3px 5px;
+  margin-left: 5px;
+  border-radius: 5px;
+  background-color: var(--cor_6);
+  font-weight: 400;
+  cursor: text;
+}
+.cardExtended__container .cardExtended__chapter {
+  grid-column-start: 4;
+  grid-column-end: 9;
+  width: 100%;
+  height: 50px;
+}
+.cardExtended__container .cardExtended__chapter div {
+  padding: 3px 5px;
+  margin-left: 5px;
+  border-radius: 5px;
+  background-color: var(--cor_6);
+  font-weight: 400;
+  cursor: text;
+}
+.cardExtended__container .cardExtended__chapter input {
+  width: 100px;
+}
+.cardExtended__container .cardExtended__assessment {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  width: 100%;
+  height: 50px;
+}
+.cardExtended__container .cardExtended__assessment div {
+  padding: 3px 5px;
+  margin-left: 5px;
+  border-radius: 5px;
+  background-color: var(--cor_6);
+  font-weight: 400;
+  cursor: text;
+}
+.cardExtended__container .cardExtended__tag {
+  grid-column-start: 3;
+  grid-column-end: 9;
+  width: 100%;
+  height: 50px;
+}
+.cardExtended__container .cardExtended__tag div {
+  width: 80%;
+  padding: 3px 5px;
+  margin-left: 5px;
+  border-radius: 5px;
+  background-color: var(--cor_6);
+  font-weight: 400;
+  cursor: text;
+}
+.cardExtended__container .cardExtended__comments {
+  grid-row-start: 5;
+  grid-row-end: 9;
+  grid-column-start: 1;
+  grid-column-end: 9;
+  background-color: var(--cor_6);
+  padding: 15px;
+  border-radius: 5px;
+}
+.cardExtended__container .cardExtended__comments textarea {
+  width: 100%;
+  height: 100%;
+  font-size: 3rem;
+  padding: 5px;
+  background-color: var(--cor_7);
 }/*# sourceMappingURL=style.css.map */
