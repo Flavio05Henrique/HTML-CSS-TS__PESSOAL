@@ -17,89 +17,17 @@
                 <label for="search">Busque suas obras</label>
             </form>
             <button class="search__filterBnt" ></button>
-            <button class="createNewCardBnt"></button>
+            <button class="createNewCardBnt" data="openCreateNewCardBnt"></button>
         </div>
 
-        <div class="cards__container">
+        <div class="cards__container" data="cards__container">
             <div class="card">
                 <div>
                     <img src="https://cdn.kobo.com/book-images/2c51ebd3-5134-41fc-8a1d-1bc83610fd55/1200/1200/False/solo-leveling-vol-3-comic.jpg" alt="">
                     <h3>Turma da monicaaaaaaaaaaa</h3>
                 </div> 
-                <div class="card__capa">
-                    <h3>Abrir</h3>
-                </div>
-            </div>
-            <div class="card">
-                <div>
-                    <img src="https://cdn.kobo.com/book-images/2c51ebd3-5134-41fc-8a1d-1bc83610fd55/1200/1200/False/solo-leveling-vol-3-comic.jpg" alt="">
-                    <h3>Turma da monicaaaaaaaaaaa</h3>
-                </div> 
-                <div class="card__capa">
-                    <h3>Abrir</h3>
-                </div>
-            </div>
-            <div class="card">
-                <div>
-                    <img src="https://cdn.kobo.com/book-images/2c51ebd3-5134-41fc-8a1d-1bc83610fd55/1200/1200/False/solo-leveling-vol-3-comic.jpg" alt="">
-                    <h3>Turma da monicaaaaaaaaaaa</h3>
-                </div> 
-                <div class="card__capa">
-                    <h3>Abrir</h3>
-                </div>
-            </div>
-            <div class="card">
-                <div>
-                    <img src="https://cdn.kobo.com/book-images/2c51ebd3-5134-41fc-8a1d-1bc83610fd55/1200/1200/False/solo-leveling-vol-3-comic.jpg" alt="">
-                    <h3>Turma da monicaaaaaaaaaaa</h3>
-                </div> 
-                <div class="card__capa">
-                    <h3>Abrir</h3>
-                </div>
-            </div>
-            <div class="card">
-                <div>
-                    <img src="https://cdn.kobo.com/book-images/2c51ebd3-5134-41fc-8a1d-1bc83610fd55/1200/1200/False/solo-leveling-vol-3-comic.jpg" alt="">
-                    <h3>Turma da monicaaaaaaaaaaa</h3>
-                </div> 
-                <div class="card__capa">
-                    <h3>Abrir</h3>
-                </div>
-            </div>
-            <div class="card">
-                <div>
-                    <img src="https://cdn.kobo.com/book-images/2c51ebd3-5134-41fc-8a1d-1bc83610fd55/1200/1200/False/solo-leveling-vol-3-comic.jpg" alt="">
-                    <h3>Turma da monicaaaaaaaaaaa</h3>
-                </div> 
-                <div class="card__capa">
-                    <h3>Abrir</h3>
-                </div>
-            </div>
-            <div class="card">
-                <div>
-                    <img src="https://cdn.kobo.com/book-images/2c51ebd3-5134-41fc-8a1d-1bc83610fd55/1200/1200/False/solo-leveling-vol-3-comic.jpg" alt="">
-                    <h3>Turma da monicaaaaaaaaaaa</h3>
-                </div> 
-                <div class="card__capa">
-                    <h3>Abrir</h3>
-                </div>
-            </div>
-            <div class="card">
-                <div>
-                    <img src="https://cdn.kobo.com/book-images/2c51ebd3-5134-41fc-8a1d-1bc83610fd55/1200/1200/False/solo-leveling-vol-3-comic.jpg" alt="">
-                    <h3>Turma da monicaaaaaaaaaaa</h3>
-                </div> 
-                <div class="card__capa">
-                    <h3>Abrir</h3>
-                </div>
-            </div>
-            <div class="card">
-                <div>
-                    <img src="https://cdn.kobo.com/book-images/2c51ebd3-5134-41fc-8a1d-1bc83610fd55/1200/1200/False/solo-leveling-vol-3-comic.jpg" alt="">
-                    <h3>Turma da monicaaaaaaaaaaa</h3>
-                </div> 
-                <div class="card__capa">
-                    <h3>Abrir</h3>
+                <div class="card__capa open" id="1">
+                    <h3 class="open" id="1">Abrir</h3>
                 </div>
             </div>
         </div>
@@ -124,52 +52,61 @@
                 </span>
             </div>
         </div>
-        <div class="cardExtended__container">
-            <img src="" alt="">
-            <div class="cardExtended__info">
-                <input type="color" class="cardExtended__changeColor">
-                <button class="cardExtended__bntDelete cardExtended__centralize">Criar</button>
-                <span class="cardExtended__title cardExtended__centralize cardExtended__input">Nome da obra <input type="text" maxlength="100"></span>
-                <div class="cardExtended__bntActive cardExtended__centralize">
-                    Obra ativa
-                    <button></button>
-                </div>
-                <span class="cardExtended__season cardExtended__centralize cardExtended__input">Temporada/Volume<input type="number" min="1" max="5"></span>
-                <span class="cardExtended__chapter cardExtended__centralize cardExtended__input">Ultimo capitulo visto : <input type="number"></span>
-                <span class="cardExtended__assessment cardExtended__centralize cardExtended__input">Sua nota: 
-                    <select>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                        <option value="10">10</option>
-                    </select>
-                </span>
-                <span class="cardExtended__tag cardExtended__centralize cardExtended__input">Gênero: 
-                    <select>
-                        <option value="Fantasia">Fantasia</option>
-                        <option value="Ficção científica">Ficção científica</option>
-                        <option value="Distipia">Distipia</option>
-                        <option value="Ação">Ação</option>
-                        <option value="Aventura">Aventura</option>
-                        <option value="Horror">Horror</option>
-                        <option value="Suspense">Suspense</option>
-                        <option value="Romance">Romance</option>
-                        <option value="Graphic Novel">Graphic Novel</option>
-                        <option value="Humor">Humor</option>
-                    </select>
-                </span>
-                <span class="cardExtended__comments">
-                    <h3>Comentarios</h3>
-                    <textarea name="" id="" cols="30" rows="10">aaaaaaaaaaaa</textarea>
-                </span>
+        
+
+            <div class="popUpContainer " data="popUpContainer">
+                <button data="popUpContainer__bntClose">X</button>
+                <div class="cardExtended__container" data="cardExtended__CreateNewCard">
+                    <div class="cardExtended__choseImg cardExtended__input">
+                        <label>Insira o link da imagem</label>
+                        <input type="text" maxlength="300" data="inputChoseImg">
+                    </div>
+                    <div class="cardExtended__info">
+                        <input type="color" class="cardExtended__changeColor" data="inputChoseCardColor">
+                        <button class="cardExtended__bntDelete cardExtended__centralize" data="createNewCardBnt">Criar</button>
+                        <span class="cardExtended__title cardExtended__centralize cardExtended__input">Nome da obra <input type="text" maxlength="100" data="inputChoseName"></span>
+                        <div class="cardExtended__bntActive cardExtended__centralize" data="activeCardBnt">
+                            Obra ativa
+                            <button><div></div></button>
+                        </div>
+                        <span class="cardExtended__season cardExtended__centralize cardExtended__input">Temporada/Volume<input type="number" data="inputChoseSeason"></span>
+                        <span class="cardExtended__chapter cardExtended__centralize cardExtended__input">Ultimo capitulo visto : <input type="number" data="inputChoseChapter"></span>
+                        <span class="cardExtended__assessment cardExtended__centralize cardExtended__input">Sua nota: 
+                            <select data="inputChoseAssessment">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                            </select>
+                        </span>
+                        <span class="cardExtended__tag cardExtended__centralize cardExtended__input">Gênero: 
+                            <select data="inputChoseTag">
+                                <option value="Fantasia">Fantasia</option>
+                                <option value="Ficção científica">Ficção científica</option>
+                                <option value="Distipia">Distipia</option>
+                                <option value="Ação">Ação</option>
+                                <option value="Aventura">Aventura</option>
+                                <option value="Horror">Horror</option>
+                                <option value="Suspense">Suspense</option>
+                                <option value="Romance">Romance</option>
+                                <option value="Graphic Novel">Graphic Novel</option>
+                                <option value="Humor">Humor</option>
+                            </select>
+                        </span>
+                        <span class="cardExtended__comments">
+                            <h3>Comentarios</h3>
+                            <textarea name="" id="" cols="30" rows="10" data="cardComments">aaaaaaaaaaaa</textarea>
+                        </span>
+                    </div>
             </div>
         </div>
     </main>
+    <script src="src/js/main.js"></script>
 </body>
 </html>

@@ -10,9 +10,22 @@
     & img {
         width: 35%;
         height: 100%;
+        cursor: pointer;
     }
 
     .cardExtended {
+        &__choseImg {
+            @include flex-centralize(column);
+            width: 35%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.233);
+
+            & label {
+                font-size: 3rem;
+                font-weight: 500;
+            }
+        }
+
         &__info {
             display: grid;
             grid-template-columns: repeat(8, 1fr);
@@ -38,6 +51,11 @@
             border:  none;
             font-size: 3rem;
             border-radius: 5px;
+            padding: 10px 5px;
+        }
+
+        &__input select {
+            cursor: pointer;
         }
 
         &__changeColor {
@@ -97,10 +115,34 @@
             // background-color: rgb(46, 3, 148);
 
             & button {
+                display: flex;
+                justify-content: start;
                 width: 100px;
                 height: 90%;
                 border-radius: 999px;
                 border: none;
+                padding: 2px;
+                cursor: pointer;
+                transition: .5s;
+                
+                & div {
+                    width: 45%;
+                    height: 100%;
+                    background-color: black;
+                    border-radius: 100%;
+                    transition: .5s;
+                }
+            }
+
+            &_--AC {
+                & button {
+                    background-color: var(--cor_2);
+
+                    & > div {
+                        margin-left: 55%;
+                        transition: .5s;
+                    }
+                }    
             }
         }
 
