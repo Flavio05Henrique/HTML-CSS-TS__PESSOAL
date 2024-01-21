@@ -46,14 +46,29 @@
             background-color: rgba(0, 0, 0, 0.411);
             position: absolute;
             top: 0;
-            cursor: pointer;
             border-radius: 5px;
 
             h3 {
                 font-size: 3rem;
+                pointer-events: none;
             }
 
             &:hover {
+                opacity: 100%;
+            }
+        }
+
+        &__capaClickable {
+            width: 100%;
+            height: 100%;
+            background-color: transparent;
+            position: absolute;
+            top: 0;
+            border-radius: 5px;
+            cursor: pointer;
+            z-index: 1;
+
+            &:hover ~ .card__capa{
                 opacity: 100%;
             }
         }

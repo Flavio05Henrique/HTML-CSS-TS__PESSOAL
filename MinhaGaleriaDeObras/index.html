@@ -21,15 +21,16 @@
         </div>
 
         <div class="cards__container" data="cards__container">
-            <div class="card">
+            <!-- <div class="card">
                 <div>
                     <img src="https://cdn.kobo.com/book-images/2c51ebd3-5134-41fc-8a1d-1bc83610fd55/1200/1200/False/solo-leveling-vol-3-comic.jpg" alt="">
                     <h3>Turma da monicaaaaaaaaaaa</h3>
-                </div> 
-                <div class="card__capa open" id="1">
-                    <h3 class="open" id="1">Abrir</h3>
                 </div>
-            </div>
+                <div class="card__capaClickable" data="interactable"></div>
+                <div class="card__capa">
+                    <h3>Abrir</h3>
+                </div>
+            </div> -->
         </div>
 
         <div class="cardExtended__container">
@@ -54,15 +55,17 @@
         </div>
         
 
-            <div class="popUpContainer " data="popUpContainer">
+        <div class="popUpContainer display__none" data="popUpContainer">
                 <button data="popUpContainer__bntClose">X</button>
                 <div class="cardExtended__container" data="cardExtended__CreateNewCard">
-                    <div class="cardExtended__choseImg cardExtended__input">
-                        <label>Insira o link da imagem</label>
-                        <input type="text" maxlength="300" data="inputChoseImg">
+                    <div class="cardExtended__img">
+                        <div class="cardExtended__choseImg cardExtended__input">
+                            <label>Insira o link da imagem</label>
+                            <input type="text" maxlength="300" data="inputChoseImg">
+                        </div>
                     </div>
                     <div class="cardExtended__info">
-                        <input type="color" class="cardExtended__changeColor" data="inputChoseCardColor">
+                        <input type="color" class="cardExtended__changeColor" data="inputChoseCardColor" value="#012030">
                         <button class="cardExtended__bntDelete cardExtended__centralize" data="createNewCardBnt">Criar</button>
                         <span class="cardExtended__title cardExtended__centralize cardExtended__input">Nome da obra <input type="text" maxlength="100" data="inputChoseName"></span>
                         <div class="cardExtended__bntActive cardExtended__centralize" data="activeCardBnt">
@@ -104,6 +107,31 @@
                             <textarea name="" id="" cols="30" rows="10" data="cardComments">aaaaaaaaaaaa</textarea>
                         </span>
                     </div>
+            </div>
+        </div>
+        <div class="popUpContainer display__none" data="popUpContainerDynamic">
+            <button data="popUpContainerDynamic__bntClose">X</button>
+            <div data="popUpContainerDynamicConatiner">
+                <div class="cardExtended__container">
+                    <img src="https://cdn.kobo.com/book-images/2c51ebd3-5134-41fc-8a1d-1bc83610fd55/1200/1200/False/solo-leveling-vol-3-comic.jpg" alt="">
+                    <div class="cardExtended__info">
+                        <input type="color" class="cardExtended__changeColor">
+                        <button class="cardExtended__bntDelete cardExtended__centralize">DELETAR</button>
+                        <span class="cardExtended__title cardExtended__centralize">Nome da obra <div>Solo leving</div></span>
+                        <div class="cardExtended__bntActive cardExtended__centralize">
+                            Obra ativa
+                            <button></button>
+                        </div>
+                        <span class="cardExtended__season cardExtended__centralize">Temporada/Volume <div>1</div></span>
+                        <span class="cardExtended__chapter cardExtended__centralize">Ultimo capitulo visto : <div>100</div></span>
+                        <span class="cardExtended__assessment cardExtended__centralize">Sua nota: <div>10</div></span>
+                        <span class="cardExtended__tag cardExtended__centralize">Gênero: <div>Ficção Contemporânea</div></span>
+                        <span class="cardExtended__comments">
+                            <h3>Comentarios</h3>
+                            <textarea name="" id="" cols="30" rows="10">aaaaaaaaaaaa</textarea>
+                        </span>
+                    </div>
+                </div>
             </div>
         </div>
     </main>
