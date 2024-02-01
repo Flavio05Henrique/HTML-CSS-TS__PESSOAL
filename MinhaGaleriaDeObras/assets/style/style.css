@@ -24,6 +24,8 @@ body {
   --cor_5: #c0e7c4;
   --cor_6: #535353;
   --cor_7: #868686;
+  --cor_8: rgb(199, 22, 22);
+  --cor_9: rgb(22, 209, 22);
   --font_default: "Rubik", sans-serif;
 }
 
@@ -280,6 +282,29 @@ header h1 span {
   border-radius: 5px;
   cursor: pointer;
 }
+.cardExtended__container .cardExtended__confirmBnts {
+  gap: 5px;
+}
+.cardExtended__container .cardExtended__confirmBnts .bnt {
+  width: 50px;
+  height: 50px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.cardExtended__container .cardExtended__confirmBnts .confirm {
+  background: transparent url(/assets/img/square-check-regular.svg) no-repeat center center;
+}
+.cardExtended__container .cardExtended__confirmBnts .confirm:hover {
+  background-color: var(--cor_9);
+}
+.cardExtended__container .cardExtended__confirmBnts .cancel {
+  background: transparent url(/assets/img/ban-solid.svg) no-repeat center center;
+  background-size: 45px;
+}
+.cardExtended__container .cardExtended__confirmBnts .cancel:hover {
+  background-color: var(--cor_8);
+}
 .cardExtended__container .cardExtended__title {
   grid-column-start: 1;
   grid-column-end: 7;
@@ -394,6 +419,8 @@ header h1 span {
   cursor: text;
 }
 .cardExtended__container .cardExtended__comments {
+  width: 100%;
+  height: 100%;
   grid-row-start: 5;
   grid-row-end: 9;
   grid-column-start: 1;
@@ -402,12 +429,13 @@ header h1 span {
   padding: 15px;
   border-radius: 5px;
 }
-.cardExtended__container .cardExtended__comments textarea {
+.cardExtended__container .cardExtended__comments textarea, .cardExtended__container .cardExtended__comments div {
   width: 100%;
-  height: 100%;
+  height: 90%;
   font-size: 3rem;
   padding: 5px;
   background-color: var(--cor_7);
+  cursor: text;
 }
 
 .popUpContainer {

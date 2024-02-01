@@ -33,11 +33,17 @@
             </div> -->
         </div>
 
-        <div class="cardExtended__container">
+        <!-- <div class="cardExtended__container">
             <img src="https://cdn.kobo.com/book-images/2c51ebd3-5134-41fc-8a1d-1bc83610fd55/1200/1200/False/solo-leveling-vol-3-comic.jpg" alt="">
             <div class="cardExtended__info">
                 <input type="color" class="cardExtended__changeColor">
-                <button class="cardExtended__bntDelete cardExtended__centralize">DELETAR</button>
+                <div data="cardExtended__containerBnt">
+                    <button class="cardExtended__bntDelete cardExtended__centralize">DELETAR</button>
+                    <div class="cardExtended__confirmBnts cardExtended__centralize">
+                        <button class="confirm bnt"></button>
+                        <button class="cancel bnt"></button>
+                    </div>
+                </div>
                 <span class="cardExtended__title cardExtended__centralize">Nome da obra <div>Solo leving</div></span>
                 <div class="cardExtended__bntActive cardExtended__centralize">
                     Obra ativa
@@ -52,7 +58,7 @@
                     <textarea name="" id="" cols="30" rows="10">aaaaaaaaaaaa</textarea>
                 </span>
             </div>
-        </div>
+        </div> -->
         
 
         <div class="popUpContainer display__none" data="popUpContainer">
@@ -74,7 +80,8 @@
                         </div>
                         <span class="cardExtended__season cardExtended__centralize cardExtended__input">Temporada/Volume<input type="number" data="inputChoseSeason"></span>
                         <span class="cardExtended__chapter cardExtended__centralize cardExtended__input">Ultimo capitulo visto : <input type="number" data="inputChoseChapter"></span>
-                        <span class="cardExtended__assessment cardExtended__centralize cardExtended__input">Sua nota: 
+                        <span class="cardExtended__assessment cardExtended__centralize cardExtended__input">
+                            Sua nota: 
                             <select data="inputChoseAssessment">
                                 <option value="1">1</option>
                                 <option value="2">2</option>
@@ -88,7 +95,8 @@
                                 <option value="10">10</option>
                             </select>
                         </span>
-                        <span class="cardExtended__tag cardExtended__centralize cardExtended__input">Gênero: 
+                        <span class="cardExtended__tag cardExtended__centralize cardExtended__input">
+                            Gênero: 
                             <select data="inputChoseTag">
                                 <option value="Fantasia">Fantasia</option>
                                 <option value="Ficção científica">Ficção científica</option>
