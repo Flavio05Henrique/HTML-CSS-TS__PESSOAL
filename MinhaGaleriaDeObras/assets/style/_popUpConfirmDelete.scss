@@ -1,0 +1,32 @@
+.popUp__confirmDelete {
+    @include flex-centralize(column);
+    width: 400px;
+    height: 200px;
+    background-color: rgb(37, 138, 138);
+    position: absolute;
+    gap: 15px;
+    border-radius: 5px;
+
+    h3 {
+        font-size: 4rem;
+    }
+
+    button {
+        width: 30%;
+        height: 15%;
+        font-size: 2rem;
+        font-weight: 500;
+        color: var(--cor_1);
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+    }
+
+    .popUp__confirmDelete__confirm:hover {
+        box-shadow: 0px 0px 10px 1px var(--cor_8);
+    }
+
+    .popUp__confirmDelete__cancel:hover {
+        box-shadow: 0px 0px 10px 1px var(--cor_9);
+    }
+}

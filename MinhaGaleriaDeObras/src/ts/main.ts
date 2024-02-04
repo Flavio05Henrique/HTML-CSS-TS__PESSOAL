@@ -3,10 +3,12 @@ type card = {
     'image': string,
     'color': string,
     'name': string,
+    'searchName': string,
     'season': string,
     'chapeter': string,
     'assessment': string,
     'tag': string,
+    'type': string,
     'comments': string,
     'active': boolean
 }
@@ -97,6 +99,7 @@ createNewCardBnt.addEventListener('click', event => {
     const inputChapter = cardExtendedCreateNewCard.querySelector('[data="inputChoseChapter"]') as HTMLInputElement
     const inputAssessment = cardExtendedCreateNewCard.querySelector('[data="inputChoseAssessment"]') as HTMLSelectElement
     const inputTag = cardExtendedCreateNewCard.querySelector('[data="inputChoseTag"]') as HTMLSelectElement
+    const inputType = cardExtendedCreateNewCard.querySelector('[data="inputChoseType"]') as HTMLSelectElement
     const cardComments = cardExtendedCreateNewCard.querySelector('[data="cardComments"]') as HTMLTextAreaElement
 
     const inputImgValue: string = inputImg.value
@@ -106,6 +109,7 @@ createNewCardBnt.addEventListener('click', event => {
     const inputChapterValue: string = inputChapter.value == '' ? '0' : inputChapter.value
     const inputAssessmentValue: string = inputAssessment.value
     const inputTagValue: string = inputTag.value
+    const inputTypeValue: string = inputType.value
     const cardCommentsValue: string = cardComments.value
     const checkIfCardIsActivate: boolean = activeCardBnt.classList.contains('cardExtended__bntActive_--AC') ? true : false
 
@@ -114,10 +118,12 @@ createNewCardBnt.addEventListener('click', event => {
         'image': inputImgValue,
         'color': inputCardColorValue,
         'name': inputNameValue,
+        'searchName': inputNameValue.toLocaleLowerCase().replaceAll(' ', ''),
         'season': inputSeasonValue,
         'chapeter': inputChapterValue,
         'assessment': inputAssessmentValue,
         'tag': inputTagValue,
+        'type': inputTypeValue,
         'comments': cardCommentsValue,
         'active': checkIfCardIsActivate
     }
@@ -165,7 +171,6 @@ const seachCardInMyList = (id: number):number => {
 
 const makeCardExtendedInDom = (card: card):void => {
     editMode = false
-
     popUpContainerDynamicContainer.innerHTML = `
         <div class="cardExtended__container" style="background-color: ${card.color};" data="cardExtended__container">
             <div class="cardExtended__img">
@@ -174,17 +179,18 @@ const makeCardExtendedInDom = (card: card):void => {
             <div class="cardExtended__info">
                 <input type="color" class="cardExtended__changeColor" data="interactable" id="color" value="${card.color}">
                 <div data="cardExtended__containerBnt">
-                    <button class="cardExtended__bntDelete cardExtended__centralize">DELETAR</button>
+                    <button class="cardExtended__bntDelete cardExtended__centralize" data="interactable" id="delete" >DELETAR</button>
                 </div>
-                <span class="cardExtended__title cardExtended__centralize cardExtended__input">Nome da obra <div data="interactable" id="name">${card.name}</div></span>
+                <span class="cardExtended__title cardExtended__centralize cardExtended__input"><h3>Nome da obra</h3> <div data="interactable" id="name">${card.name}</div></span>
                 <div class="cardExtended__bntActive cardExtended__centralize ${card.active == true ? 'cardExtended__bntActive_--AC' : 0}" >
-                    Obra ativa
+                    <h3>Obra ativa</h3>
                     <button data="interactable" id="activeBnt"><div></div></button>
                 </div>
-                <span class="cardExtended__season cardExtended__centralize cardExtended__input">Temporada/Volume <div data="interactable" id="season">${card.season}</div></span>
-                <span class="cardExtended__chapter cardExtended__centralize cardExtended__input">Ultimo capitulo visto : <div data="interactable" id="chapeter">${card.chapeter}</div></span>
-                <span class="cardExtended__assessment cardExtended__centralize cardExtended__input">Sua nota: <div data="interactable" id="assessment">${card.assessment}</div></span>
-                <span class="cardExtended__tag cardExtended__centralize cardExtended__input">Gênero: <div data="interactable" id="tag">${card.tag}</div></span>
+                <span class="cardExtended__season cardExtended__centralize cardExtended__input"><h3>Temporada/Volume :</h3> <div data="interactable" id="season">${card.season}</div></span>
+                <span class="cardExtended__chapter cardExtended__centralize cardExtended__input"><h3>Ultimo capitulo visto :</h3> <div data="interactable" id="chapeter">${card.chapeter}</div></span>
+                <span class="cardExtended__assessment cardExtended__centralize cardExtended__input"><h3>Sua nota :</h3> <div data="interactable" id="assessment">${card.assessment}</div></span>
+                <span class="cardExtended__tag cardExtended__centralize cardExtended__input"><h3>Gênero :</h3> <div data="interactable" id="tag">${card.tag}</div></span>
+                <span class="cardExtended__type cardExtended__centralize cardExtended__input"><h3>Tipo :</h3> <div data="interactable" id="type">${card.type}</div></span>
                 <span class="cardExtended__comments">
                     <h3>Comentarios</h3>
                     <div data="interactable" id="comments">${card.comments}</div>
@@ -231,18 +237,22 @@ const ChangeFunctions = (event:Event) => {
             break;
             case 'tag': componente = openInputTag()
             break;
+            case 'type': componente = openInputType()
+            break;
             case 'comments': componente = openInputComments()
             break;
             case 'activeBnt': activeBntChangeState(container)
             break;
             case 'color': activeColorChange(elementClickd, container)
             break;
+            case 'delete': openConfirmPopUp()
+            break;
             case 'confirm': changeConfirm(elementClickd)
             break;
-            case 'cancel': makeCardExtendedInDom(MyList[MyListCurrentItem])
+            case 'cancel': activateBntCancel()
             break;
         }
-
+        
         if(componente == ``) return
         container.innerHTML = componente
     }
@@ -261,6 +271,10 @@ const activateBntConfirm = ():void => {
     editMode = true
 }
 
+const activateBntCancel = () => {
+    makeCardExtendedInDom(MyList[MyListCurrentItem])
+}
+
 const changeConfirm = (elementClickd:any):void => {
     const inputs = CurrentExtendedCard.querySelectorAll('input')
     const selects = CurrentExtendedCard.querySelectorAll('select')
@@ -275,7 +289,9 @@ const changeConfirm = (elementClickd:any):void => {
         switch(item.getAttribute('data')) {
             case'inputChoseImg': cardTochange.image = item.value
             break;
-            case'inputChoseName': cardTochange.name = item.value
+            case'inputChoseName':
+                cardTochange.name = item.value
+                cardTochange.searchName = item.value.toLocaleLowerCase().replaceAll(' ', '')
             break
             case'inputChoseSeason': cardTochange.season = item.value
             break;
@@ -292,6 +308,8 @@ const changeConfirm = (elementClickd:any):void => {
             break;
             case'inputChoseTag': cardTochange.tag = item.value
             break
+            case'inputChoseType': cardTochange.type = item.value
+            break
         }
    })
 
@@ -304,10 +322,24 @@ const changeConfirm = (elementClickd:any):void => {
 
    saveInBrowser(MyList)
    makeCardExtendedInDom(MyList[MyListCurrentItem])
-
-   editMode = false
-//    `
 }
+
+const deleteItemFromMyList = ():void => {
+    
+    MyList.splice(MyListCurrentItem, 1)
+    saveInBrowser(MyList)
+}
+
+const openConfirmPopUp = () => {
+    popUpContainerDynamic.innerHTML += `
+        <div class="popUp__confirmDelete">
+            <h3>Tem certeza ?</h3>
+            <button class="popUp__confirmDelete__confirm" data="confirm">SIM</button>
+            <button class="popUp__confirmDelete__cancel" data="cancel">NÃO</button>
+        </div>
+    `
+    return
+}   
 
 const openInputImg = ():string => {
     const string = 
@@ -322,7 +354,7 @@ const openInputImg = ():string => {
 
 const openInputName = ():string => {
     const string = `
-        Nome da obra <input type="text" maxlength="100" data="inputChoseName" value="${MyList[MyListCurrentItem].name}">
+        <h3>Nome da obra</h3> <input type="text" maxlength="100" data="inputChoseName" value="${MyList[MyListCurrentItem].name}">
     `
 
     return string
@@ -330,7 +362,7 @@ const openInputName = ():string => {
 
 const openInputSeason = ():string => {
     const string  = `
-        Temporada/Volume<input type="number" data="inputChoseSeason" value="${MyList[MyListCurrentItem].season}">
+        <h3>Temporada/Volume :</h3><input type="number" data="inputChoseSeason" value="${MyList[MyListCurrentItem].season}">
     `
 
     return string
@@ -338,7 +370,7 @@ const openInputSeason = ():string => {
 
 const openInputChapeter = ():string => {
     const string = `
-        Ultimo capitulo visto : <input type="number" data="inputChoseChapter" value="${MyList[MyListCurrentItem].chapeter}">
+        <h3>Ultimo capitulo visto :</h3> <input type="number" data="inputChoseChapter" value="${MyList[MyListCurrentItem].chapeter}">
     `
 
     return string
@@ -346,7 +378,7 @@ const openInputChapeter = ():string => {
 
 const openInputAssessment = ():string => {
     const string = `
-        Sua nota: 
+        <h3>Sua nota :</h3> 
         <select data="inputChoseAssessment">
             <option value=""></option>
             <option value="1">1</option>
@@ -367,20 +399,35 @@ const openInputAssessment = ():string => {
 
 const openInputTag= ():string => {
     const string = `
-        Gênero: 
+        <h3>Gênero : </h3>
         <select data="inputChoseTag">
-            <option value=""></option>
             <option value="Fantasia">Fantasia</option>
             <option value="Ficção científica">Ficção científica</option>
-            <option value="Distipia">Distipia</option>
+            <option value="Distopia">Distipia</option>
             <option value="Ação">Ação</option>
             <option value="Aventura">Aventura</option>
             <option value="Horror">Horror</option>
             <option value="Suspense">Suspense</option>
             <option value="Romance">Romance</option>
-            <option value="Graphic Novel">Graphic Novel</option>
             <option value="Humor">Humor</option>
         </select>
+    `
+
+    return string
+}
+
+const openInputType= ():string => {
+    const string = `
+        <span class="cardExtended__type cardExtended__centralize cardExtended__input">
+            <h3>Tipo : </h3>
+            <select data="inputChoseType">
+                <option value="Anime">Anime</option>
+                <option value="Serie">Serie</option>
+                <option value="Mangá">Mangá</option>
+                <option value="Graphic Novel">Graphic Novel</option>
+                <option value="Livro">Livro</option>
+            </select>
+        </span>
     `
 
     return string
