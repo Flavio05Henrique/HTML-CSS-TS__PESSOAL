@@ -18,13 +18,13 @@ const loadMyList = () => {
     if (list == null)
         return;
     MyList = JSON.parse(list);
-    console.log(MyList);
 };
 const loadMyListInDom = () => {
     const cards = [];
     MyList.forEach(card => {
         cards.push(makeCardInDom(card));
     });
+    cardsContainer.innerHTML = '';
     cardsContainer.innerHTML += cards.join(' ');
 };
 openCardCreatorBnt.addEventListener('click', event => {
@@ -101,7 +101,7 @@ createNewCardBnt.addEventListener('click', event => {
     };
     makeCardInDom(newCard);
     saveNewCardInMyList(newCard);
-    console.log(MyList);
+    loadMyListInDom();
     inputImg.value = '';
     inputCardColor.value = '#012030';
     inputName.value = '';
@@ -135,13 +135,15 @@ const seachCardInMyList = (id) => {
     return MyList.findIndex(item => item.id == id);
 };
 const makeCardExtendedInDom = (card) => {
-    editMode = false;
     popUpContainerDynamicContainer.innerHTML = `
         <div class="cardExtended__container" style="background-color: ${card.color};" data="cardExtended__container">
             <div class="cardExtended__img">
                 <img src="${card.image}" alt="" data="interactable" id="img">
             </div>
             <div class="cardExtended__info">
+                <div class="cardExtended__yourColors cardExtended__centralize" data="cardExtended__yourColors">
+                    <div style="background-color: #012030;" title="Cor padão" data="interactable" id="defaultCorlor"></div>
+                </div>
                 <input type="color" class="cardExtended__changeColor" data="interactable" id="color" value="${card.color}">
                 <div data="cardExtended__containerBnt">
                     <button class="cardExtended__bntDelete cardExtended__centralize" data="interactable" id="delete" >DELETAR</button>
@@ -181,37 +183,36 @@ const ChangeFunctions = (event) => {
     if (elementClickd.getAttribute('data') == 'interactable') {
         const container = elementClickd.parentNode;
         let componente = ``;
-        editMode == false ? activateBntConfirm() : 0;
         switch (elementClickd.id) {
             case 'img':
-                componente = openInputImg();
+                componente = openGenericInput(openInputImg);
                 break;
             case 'name':
-                componente = openInputName();
+                componente = openGenericInput(openInputName);
                 break;
             case 'season':
-                componente = openInputSeason();
+                componente = openGenericInput(openInputSeason);
                 break;
             case 'chapeter':
-                componente = openInputChapeter();
+                componente = openGenericInput(openInputChapeter);
                 break;
             case 'assessment':
-                componente = openInputAssessment();
+                componente = openGenericInput(openInputAssessment);
                 break;
             case 'tag':
-                componente = openInputTag();
+                componente = openGenericInput(openInputTag);
                 break;
             case 'type':
-                componente = openInputType();
+                componente = openGenericInput(openInputType);
                 break;
             case 'comments':
-                componente = openInputComments();
+                componente = openGenericInput(openInputComments);
                 break;
             case 'activeBnt':
                 activeBntChangeState(container);
                 break;
             case 'color':
-                activeColorChange(elementClickd, container);
+                activeColorChange(elementClickd);
                 break;
             case 'delete':
                 openConfirmPopUp();
@@ -221,6 +222,9 @@ const ChangeFunctions = (event) => {
                 break;
             case 'cancel':
                 activateBntCancel();
+                break;
+            case 'defaultCorlor':
+                setColor(elementClickd.style.backgroundColor);
                 break;
         }
         if (componente == ``)
@@ -240,6 +244,7 @@ const activateBntConfirm = () => {
 };
 const activateBntCancel = () => {
     makeCardExtendedInDom(MyList[MyListCurrentItem]);
+    editMode = false;
 };
 const changeConfirm = (elementClickd) => {
     const inputs = CurrentExtendedCard.querySelectorAll('input');
@@ -286,23 +291,40 @@ const changeConfirm = (elementClickd) => {
         cardTochange.comments = textArea.value;
     }
     cardTochange.active = activeSeriesBnt.classList.contains('cardExtended__bntActive_--AC') ? true : false;
-    cardTochange.color = inputColor.value;
+    cardTochange.color = rgbToHex(CurrentExtendedCard.style.backgroundColor.match(/\d+/g));
     saveInBrowser(MyList);
     makeCardExtendedInDom(MyList[MyListCurrentItem]);
+    editMode = false;
 };
 const deleteItemFromMyList = () => {
     MyList.splice(MyListCurrentItem, 1);
     saveInBrowser(MyList);
 };
 const openConfirmPopUp = () => {
-    popUpContainerDynamic.innerHTML += `
+    popUpContainerDynamicContainer.innerHTML += `
         <div class="popUp__confirmDelete">
             <h3>Tem certeza ?</h3>
             <button class="popUp__confirmDelete__confirm" data="confirm">SIM</button>
             <button class="popUp__confirmDelete__cancel" data="cancel">NÃO</button>
         </div>
     `;
-    return;
+    const bntConfirm = popUpContainerDynamicContainer.querySelector('[data="confirm"]');
+    const bntCancel = popUpContainerDynamicContainer.querySelector('[data="cancel"]');
+    console.log(bntConfirm, bntCancel);
+    bntConfirm.addEventListener('click', event => {
+        deleteItemFromMyList();
+        popUpContainerDynamicClose();
+    });
+    bntCancel.addEventListener('click', event => {
+        makeCardExtendedInDom(MyList[MyListCurrentItem]);
+    });
+};
+const activateEditeMode = () => {
+    editMode == false ? activateBntConfirm() : 0;
+};
+const openGenericInput = (func) => {
+    activateEditeMode();
+    return func();
 };
 const openInputImg = () => {
     const string = `
@@ -390,13 +412,28 @@ const openInputComments = () => {
     return string;
 };
 const activeBntChangeState = (button) => {
+    activateEditeMode();
     button.classList.toggle('cardExtended__bntActive_--AC');
 };
-const activeColorChange = (elementClickd, container) => {
+const activeColorChange = (elementClickd) => {
     elementClickd.addEventListener('input', () => {
-        container.style.backgroundColor = elementClickd.value;
+        setColor(elementClickd.value);
     });
 };
+const setColor = (colorValue) => {
+    activateEditeMode();
+    const hexRegex = /^#?([0-9A-Fa-f]{3}|[0-9A-Fa-f]{6})$/;
+    console.log(hexRegex.test(colorValue));
+    if (!hexRegex.test(colorValue)) {
+        CurrentExtendedCard.style.backgroundColor = rgbToHex(colorValue.match(/\d+/g));
+        return;
+    }
+    CurrentExtendedCard.style.backgroundColor = colorValue;
+};
+const rgbToHex = (rgb) => '#' + [rgb[0], rgb[1], rgb[2]].map(x => {
+    const hex = parseInt(x).toString(16);
+    return hex.length === 1 ? '0' + hex : hex;
+}, '').join('');
 const saveInBrowser = (MyList) => {
     localStorage.setItem('MinhaListaDeObras', JSON.stringify(MyList));
 };

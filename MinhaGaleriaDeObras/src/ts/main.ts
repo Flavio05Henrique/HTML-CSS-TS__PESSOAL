@@ -33,7 +33,6 @@ const loadMyList = () => {
     const list: string | null = localStorage.getItem('MinhaListaDeObras')
     if(list == null) return
     MyList = JSON.parse(list)
-    console.log(MyList)
 }
 
 const loadMyListInDom = () => {
@@ -41,6 +40,7 @@ const loadMyListInDom = () => {
     MyList.forEach(card => {
         cards.push(makeCardInDom(card))
     })
+    cardsContainer.innerHTML = ''
     cardsContainer.innerHTML += cards.join(' ')
 }
 
@@ -130,7 +130,7 @@ createNewCardBnt.addEventListener('click', event => {
 
     makeCardInDom(newCard)
     saveNewCardInMyList(newCard)
-    console.log(MyList)
+    loadMyListInDom()
     
     inputImg.value = ''
     inputCardColor.value = '#012030'
@@ -170,13 +170,15 @@ const seachCardInMyList = (id: number):number => {
 }
 
 const makeCardExtendedInDom = (card: card):void => {
-    editMode = false
     popUpContainerDynamicContainer.innerHTML = `
         <div class="cardExtended__container" style="background-color: ${card.color};" data="cardExtended__container">
             <div class="cardExtended__img">
                 <img src="${card.image}" alt="" data="interactable" id="img">
             </div>
             <div class="cardExtended__info">
+                <div class="cardExtended__yourColors cardExtended__centralize" data="cardExtended__yourColors">
+                    <div style="background-color: #012030;" title="Cor padão" data="interactable" id="defaultCorlor"></div>
+                </div>
                 <input type="color" class="cardExtended__changeColor" data="interactable" id="color" value="${card.color}">
                 <div data="cardExtended__containerBnt">
                     <button class="cardExtended__bntDelete cardExtended__centralize" data="interactable" id="delete" >DELETAR</button>
@@ -222,34 +224,34 @@ const ChangeFunctions = (event:Event) => {
         const container = elementClickd.parentNode as HTMLDivElement
         let componente: string = ``
 
-        editMode == false ? activateBntConfirm() : 0
-
         switch(elementClickd.id){
-            case 'img': componente = openInputImg()
+            case 'img': componente = openGenericInput(openInputImg)
             break;
-            case 'name': componente = openInputName()
+            case 'name': componente = openGenericInput(openInputName)
             break;
-            case 'season': componente = openInputSeason()
+            case 'season': componente = openGenericInput(openInputSeason)
             break;
-            case 'chapeter': componente = openInputChapeter()
+            case 'chapeter': componente = openGenericInput(openInputChapeter)
             break;
-            case 'assessment': componente = openInputAssessment()
+            case 'assessment': componente = openGenericInput(openInputAssessment)
             break;
-            case 'tag': componente = openInputTag()
+            case 'tag': componente = openGenericInput(openInputTag)
             break;
-            case 'type': componente = openInputType()
+            case 'type': componente = openGenericInput(openInputType)
             break;
-            case 'comments': componente = openInputComments()
+            case 'comments': componente = openGenericInput(openInputComments)
             break;
             case 'activeBnt': activeBntChangeState(container)
             break;
-            case 'color': activeColorChange(elementClickd, container)
+            case 'color': activeColorChange(elementClickd)
             break;
             case 'delete': openConfirmPopUp()
             break;
             case 'confirm': changeConfirm(elementClickd)
             break;
             case 'cancel': activateBntCancel()
+            break;
+            case 'defaultCorlor': setColor(elementClickd.style.backgroundColor)
             break;
         }
         
@@ -273,6 +275,7 @@ const activateBntConfirm = ():void => {
 
 const activateBntCancel = () => {
     makeCardExtendedInDom(MyList[MyListCurrentItem])
+    editMode = false
 }
 
 const changeConfirm = (elementClickd:any):void => {
@@ -318,28 +321,50 @@ const changeConfirm = (elementClickd:any):void => {
    }
 
    cardTochange.active = activeSeriesBnt.classList.contains('cardExtended__bntActive_--AC') ? true : false
-   cardTochange.color = inputColor.value
+   cardTochange.color = rgbToHex(CurrentExtendedCard.style.backgroundColor.match(/\d+/g)!)
 
    saveInBrowser(MyList)
    makeCardExtendedInDom(MyList[MyListCurrentItem])
+   editMode = false
 }
 
-const deleteItemFromMyList = ():void => {
-    
+const deleteItemFromMyList = ():void => {  
     MyList.splice(MyListCurrentItem, 1)
     saveInBrowser(MyList)
 }
 
 const openConfirmPopUp = () => {
-    popUpContainerDynamic.innerHTML += `
+    popUpContainerDynamicContainer.innerHTML += `
         <div class="popUp__confirmDelete">
             <h3>Tem certeza ?</h3>
             <button class="popUp__confirmDelete__confirm" data="confirm">SIM</button>
             <button class="popUp__confirmDelete__cancel" data="cancel">NÃO</button>
         </div>
     `
-    return
-}   
+    const bntConfirm = popUpContainerDynamicContainer.querySelector('[data="confirm"]') as HTMLButtonElement
+    const bntCancel = popUpContainerDynamicContainer.querySelector('[data="cancel"]') as HTMLButtonElement
+
+    console.log(bntConfirm, bntCancel)
+
+    bntConfirm.addEventListener('click', event => {
+        deleteItemFromMyList()
+        popUpContainerDynamicClose()
+    })
+    
+    bntCancel.addEventListener('click', event => {
+        makeCardExtendedInDom(MyList[MyListCurrentItem])
+    })
+}  
+
+const activateEditeMode = () => {
+    editMode == false ? activateBntConfirm() : 0
+}
+
+const openGenericInput = (func: Function): string => {
+    activateEditeMode()
+
+    return func()
+}
 
 const openInputImg = ():string => {
     const string = 
@@ -443,14 +468,33 @@ const openInputComments= ():string => {
 }
 
 const activeBntChangeState = (button: any): void => {
+    activateEditeMode()
     button.classList.toggle('cardExtended__bntActive_--AC')
 }
 
-const activeColorChange = (elementClickd: any, container: any) => {
+const activeColorChange = (elementClickd: any) => { 
     elementClickd.addEventListener('input', () => {
-        container.style.backgroundColor = elementClickd.value
+        setColor(elementClickd.value)
     })
 }
+
+const setColor = (colorValue: string) => {
+    activateEditeMode()
+    const hexRegex = /^#?([0-9A-Fa-f]{3}|[0-9A-Fa-f]{6})$/
+    console.log(hexRegex.test(colorValue))
+
+    if(!hexRegex.test(colorValue)) {
+        CurrentExtendedCard.style.backgroundColor = rgbToHex(colorValue.match(/\d+/g)!)
+        return
+    }
+
+    CurrentExtendedCard.style.backgroundColor = colorValue
+}
+
+const rgbToHex = (rgb: RegExpMatchArray) => '#' + [rgb[0],rgb[1], rgb[2]].map(x => {
+    const hex = parseInt(x).toString(16)
+    return hex.length === 1 ? '0' + hex : hex
+  },'').join('')
 
 const saveInBrowser = (MyList: card[]):void => {
     localStorage.setItem('MinhaListaDeObras', JSON.stringify(MyList));

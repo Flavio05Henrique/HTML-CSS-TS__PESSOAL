@@ -3,9 +3,13 @@
     width: 400px;
     height: 200px;
     background-color: rgb(37, 138, 138);
-    position: absolute;
     gap: 15px;
     border-radius: 5px;
+    z-index: 20;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
 
     h3 {
         font-size: 4rem;

@@ -266,9 +266,21 @@ header h1 span {
 .cardExtended__container .cardExtended__input select {
   cursor: pointer;
 }
+.cardExtended__container .cardExtended__yourColors {
+  grid-column-start: 6;
+  flex-direction: row;
+  gap: 5px;
+  justify-content: flex-end;
+}
+.cardExtended__container .cardExtended__yourColors div {
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  border: 2px solid white;
+}
 .cardExtended__container .cardExtended__changeColor {
   grid-column-start: 7;
-  justify-self: flex-end;
+  justify-self: flex-start;
   width: 50px;
   height: 50px;
   border: none;
@@ -503,9 +515,13 @@ header h1 span {
   width: 400px;
   height: 200px;
   background-color: rgb(37, 138, 138);
-  position: absolute;
   gap: 15px;
   border-radius: 5px;
+  z-index: 20;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  top: 50%;
+  left: 50%;
 }
 .popUp__confirmDelete h3 {
   font-size: 4rem;
