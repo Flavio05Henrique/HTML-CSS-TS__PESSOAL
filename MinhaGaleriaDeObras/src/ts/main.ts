@@ -28,6 +28,8 @@ let MyList: card[] = []
 let MyListCurrentItem: number = 0
 let CurrentExtendedCard: HTMLDivElement
 let editMode: boolean = false
+const genresCard: string[] = ["Fantasia", "Ficção",  "Distopia", "Ação", "Aventura", "Horror", "Suspense", "Romance", "Humor"]
+const typesCard: string[] = ["Anime", "Serie", "Mangá", "Graphic Novel", "Livro" ]
 
 const loadMyList = () => {
     const list: string | null = localStorage.getItem('MinhaListaDeObras')
@@ -35,9 +37,9 @@ const loadMyList = () => {
     MyList = JSON.parse(list)
 }
 
-const loadMyListInDom = () => {
+const loadMyListInDom = (list: card[]) => {
     const cards: string[] = []
-    MyList.forEach(card => {
+    list.forEach(card => {
         cards.push(makeCardInDom(card))
     })
     cardsContainer.innerHTML = ''
@@ -130,7 +132,7 @@ createNewCardBnt.addEventListener('click', event => {
 
     makeCardInDom(newCard)
     saveNewCardInMyList(newCard)
-    loadMyListInDom()
+    loadMyListInDom(MyList)
     
     inputImg.value = ''
     inputCardColor.value = '#012030'
@@ -426,15 +428,9 @@ const openInputTag= ():string => {
     const string = `
         <h3>Gênero : </h3>
         <select data="inputChoseTag">
-            <option value="Fantasia">Fantasia</option>
-            <option value="Ficção científica">Ficção científica</option>
-            <option value="Distopia">Distipia</option>
-            <option value="Ação">Ação</option>
-            <option value="Aventura">Aventura</option>
-            <option value="Horror">Horror</option>
-            <option value="Suspense">Suspense</option>
-            <option value="Romance">Romance</option>
-            <option value="Humor">Humor</option>
+            ${genresCard.map(item => {
+                return `<option value="${item}">${item}</option>`
+            })}
         </select>
     `
 
@@ -446,11 +442,9 @@ const openInputType= ():string => {
         <span class="cardExtended__type cardExtended__centralize cardExtended__input">
             <h3>Tipo : </h3>
             <select data="inputChoseType">
-                <option value="Anime">Anime</option>
-                <option value="Serie">Serie</option>
-                <option value="Mangá">Mangá</option>
-                <option value="Graphic Novel">Graphic Novel</option>
-                <option value="Livro">Livro</option>
+                ${typesCard.map(item => {
+                    return `<option value="${item}">${item}</option>`
+                })}
             </select>
         </span>
     `
@@ -507,4 +501,4 @@ const saveNewCardInMyList = (newCard: card):void => {
 
 
 loadMyList()
-loadMyListInDom()
+loadMyListInDom(MyList)

@@ -59,6 +59,7 @@ header h1 span {
   align-items: center;
   flex-direction: row;
   width: 100%;
+  gap: 15px;
 }
 .search__container form {
   position: relative;
@@ -91,35 +92,31 @@ header h1 span {
   transform: translate(-50%, -50%);
   transition: 0.5s;
 }
-.search__container .search__filterBnt {
+.search__container .search__bnt {
   width: 50px;
   height: 50px;
   border: none;
   border-radius: 999px;
-  margin-left: 10px;
   cursor: pointer;
+  transition: 0.5s;
+}
+.search__container .search__bnt:hover {
+  background-color: var(--cor_2);
+  transition: 0.5s;
+}
+.search__container .seach__reset {
+  font-size: 3rem;
+  font-weight: 500;
+  background-color: transparent;
+  color: black;
+}
+.search__container .search__filterBnt {
   background: transparent url(/assets/img/filter-solid.svg) no-repeat center center;
   background-size: 30px;
-  transition: 0.5s;
-}
-.search__container .search__filterBnt:hover {
-  background-color: var(--cor_1);
-  transition: 0.5s;
 }
 .search__container .createNewCardBnt {
-  width: 50px;
-  height: 50px;
-  border: none;
-  border-radius: 999px;
-  margin-left: 10px;
-  cursor: pointer;
   background: transparent url(/assets/img/plus-solid.svg) no-repeat center center;
   background-size: 30px;
-  transition: 0.5s;
-}
-.search__container .createNewCardBnt:hover {
-  background-color: var(--cor_1);
-  transition: 0.5s;
 }
 
 .cards__container {
@@ -541,6 +538,53 @@ header h1 span {
 }
 .popUp__confirmDelete .popUp__confirmDelete__cancel:hover {
   box-shadow: 0px 0px 10px 1px var(--cor_9);
+}
+
+.searchPopUp__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 250px;
+  background-color: var(--cor_1);
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.199);
+  gap: 5px;
+  position: absolute;
+  z-index: 10;
+}
+.searchPopUp__title {
+  font-size: 2rem;
+}
+.searchPopUp__container div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+.searchPopUp__container input {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+.searchPopUp__container select {
+  width: 60%;
+  height: 30px;
+  background-color: var(--cor_7);
+  cursor: pointer;
+}
+.searchPopUp__bnt {
+  font-size: 2rem;
+  padding: 5px;
+  background-color: var(--cor_7);
+  color: var(--cor_1);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 15px;
 }
 
 .display__none {

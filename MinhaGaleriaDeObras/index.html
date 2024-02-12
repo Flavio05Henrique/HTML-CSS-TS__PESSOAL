@@ -6,19 +6,44 @@
     <title>MinhaGaleriaDeObras</title>
     <link rel="stylesheet" href="assets/style/style.css">
 </head>
-<body>
+<body data="body">
     <header>
         <h1><span>M</span>inhaGaleriaDeObras</h1>
     </header>
-    <main>
+    <main >
         <div class="search__container">
-            <form action="">
-                <input type="text" id="search" required>
-                <label for="search">Busque suas obras</label>
+            <button class="seach__reset search__bnt" title="reset" data="seach__reset">X</button>
+            <form data="formSearchName">
+                <input type="text" id="search" data="inputSearchName" required>
+                <label for="search">Busque pelo nome</label>
             </form>
-            <button class="search__filterBnt" ></button>
-            <button class="createNewCardBnt" data="openCreateNewCardBnt"></button>
+            <button class="search__filterBnt search__bnt" data="seachFilter"></button>
+            <button class="createNewCardBnt search__bnt" data="openCreateNewCardBnt" title="new"></button>
         </div>
+        <!-- <div class="searchPopUp__container">
+            <div>
+                <h3 class="searchPopUp__title">Obra ativa :</h3>
+                <input type="checkbox">
+            </div>
+            <div>
+                <h3 class="searchPopUp__title">Nota :</h3>
+                <select>
+                
+                </select>
+            </div>
+            <div>
+                <h3 class="searchPopUp__title">Gênero :</h3>
+                <select>
+                
+                </select>
+            </div>
+            <div>
+                <h3 class="searchPopUp__title">Tipo :</h3>
+                <select>
+                </select>
+            </div>
+            <button class="searchPopUp__bnt">Busca</button>
+        </div> -->
 
         <div class="cards__container" data="cards__container">
             <!-- <div class="card">
@@ -71,9 +96,9 @@
                         </div>
                     </div>
                     <div class="cardExtended__info">
-                        <div class="cardExtended__yourColors cardExtended__centralize" data="cardExtended__yourColors">
+                        <!-- <div class="cardExtended__yourColors cardExtended__centralize" data="cardExtended__yourColors">
                             <div style="background-color: var(--cor_1);" title="Cor padão"></div>
-                        </div>
+                        </div> -->
                         <input type="color" class="cardExtended__changeColor" data="inputChoseCardColor" value="#012030">
                         <button class="cardExtended__bntDelete cardExtended__centralize" data="createNewCardBnt">Criar</button>
                         <span class="cardExtended__title cardExtended__centralize cardExtended__input"><h3>Nome da obra</h3> <input type="text" maxlength="100" data="inputChoseName"></span>
@@ -161,5 +186,6 @@
         </div>
     </main>
     <script src="src/js/main.js"></script>
+    <script src="src/js/seach.js"></script>
 </body>
 </html>
