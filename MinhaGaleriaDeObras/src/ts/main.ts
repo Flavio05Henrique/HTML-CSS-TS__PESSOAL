@@ -407,20 +407,9 @@ const openInputAssessment = ():string => {
     const string = `
         <h3>Sua nota :</h3> 
         <select data="inputChoseAssessment">
-            <option value=""></option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
+            ${optionGenerationAssessment()}
         </select>
     `
-
     return string
 }
 
@@ -428,9 +417,7 @@ const openInputTag= ():string => {
     const string = `
         <h3>Gênero : </h3>
         <select data="inputChoseTag">
-            ${genresCard.map(item => {
-                return `<option value="${item}">${item}</option>`
-            })}
+            ${optionGenerationTag()}
         </select>
     `
 
@@ -442,9 +429,7 @@ const openInputType= ():string => {
         <span class="cardExtended__type cardExtended__centralize cardExtended__input">
             <h3>Tipo : </h3>
             <select data="inputChoseType">
-                ${typesCard.map(item => {
-                    return `<option value="${item}">${item}</option>`
-                })}
+                ${optionGenerationType()}
             </select>
         </span>
     `
@@ -459,6 +444,27 @@ const openInputComments= ():string => {
     `
 
     return string
+}
+
+const optionGenerationAssessment = () => {
+    const itens: string[] = []
+    for(let i = 1; i <= 10; i ++ ) {
+        itens.push(`<option value="${i}">${i}</option>`) 
+    }
+    return itens
+}
+
+const optionGenerationTag = () => {
+    return genresCard.map(item => {
+        return `<option value="${item}">${item}</option>`
+    })
+}
+
+const optionGenerationType = () => {
+    return typesCard.map(item => {
+        console.log(item)
+        return `<option value="${item}">${item}</option>`
+    })
 }
 
 const activeBntChangeState = (button: any): void => {

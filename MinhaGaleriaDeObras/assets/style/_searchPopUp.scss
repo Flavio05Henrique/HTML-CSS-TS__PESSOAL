@@ -1,4 +1,13 @@
 .searchPopUp {
+    &__closeArea {
+        width: 100vw;
+        height: 100vh;
+        position: absolute;
+        top: 0;
+        z-index: 10;
+        cursor: pointer;
+    }
+
     &__container {
         @include flex-centralize(column);
         width: 250px;
