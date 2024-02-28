@@ -77,7 +77,6 @@ const activateSearchBnt = () => {
         const filter3 = filters[2].value;
         if (!filter.checked && filter1 == '' && filter2 == '' && filter3 == '')
             return;
-        console.log(filter1, filter2, filter3);
         const filteredList = MyList.filter(item => {
             if (filter.checked) {
                 if (item.active === true)
