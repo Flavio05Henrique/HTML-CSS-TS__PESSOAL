@@ -20,6 +20,7 @@ const saveMyListFile = (list) => {
     downloadLink.click();
     window.URL.revokeObjectURL(url);
     downloadLink.remove();
+    showMessageSuccess("Download", "Download iniciado com sucesso!");
 };
 const loadMyListFile = () => {
     const inputFile = document.createElement('input');
@@ -27,15 +28,20 @@ const loadMyListFile = () => {
     inputFile.style.display = 'none';
     document.body.appendChild(inputFile);
     inputFile.addEventListener('change', () => {
-        if (inputFile.files == null)
+        if (inputFile.files == null) {
+            showMessageError("Sem arquivo", "Nenhum arquivo detectado!");
             return;
+        }
         const file = inputFile.files[0];
-        const name = file.name;
-        if (!name.includes('MinhaListaDeObras'))
+        const fileName = file.name;
+        if (!fileName.includes('MinhaListaDeObras')) {
+            showMessageError("Nome invalido", "Nome do arquivo não deve ser alterado após ser baixado!");
             return;
+        }
         const reader = new FileReader();
         reader.addEventListener('load', () => {
             saveInBrowser(MyList = JSON.parse(reader.result));
+            showMessageSuccess("Sucesso", "Sua lista foi carregada com sucesso!");
         });
         reader.readAsText(file);
     });

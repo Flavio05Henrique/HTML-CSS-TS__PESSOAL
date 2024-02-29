@@ -111,6 +111,7 @@ createNewCardBnt.addEventListener('click', event => {
     inputChapter.value = '';
     cardComments.value = '';
     activeCardBnt.classList.remove('cardExtended__bntActive_--AC');
+    showMessageSuccess("Criado", "Sucesso ao adicionar nova obra!");
 });
 const generatesId = () => {
     let id = 0;
@@ -296,11 +297,13 @@ const changeConfirm = (elementClickd) => {
     cardTochange.color = rgbToHex(CurrentExtendedCard.style.backgroundColor.match(/\d+/g));
     saveInBrowser(MyList);
     makeCardExtendedInDom(MyList[MyListCurrentItem]);
+    showMessageSuccess("Modificado", "Sua alteração foi feita com sucesso!");
     editMode = false;
 };
 const deleteItemFromMyList = () => {
     MyList.splice(MyListCurrentItem, 1);
     saveInBrowser(MyList);
+    showMessageSuccess("Deletado", "Item deletado com sucesso!");
 };
 const openConfirmPopUp = () => {
     popUpContainerDynamicContainer.innerHTML += `
@@ -312,7 +315,6 @@ const openConfirmPopUp = () => {
     `;
     const bntConfirm = popUpContainerDynamicContainer.querySelector('[data="confirm"]');
     const bntCancel = popUpContainerDynamicContainer.querySelector('[data="cancel"]');
-    console.log(bntConfirm, bntCancel);
     bntConfirm.addEventListener('click', event => {
         deleteItemFromMyList();
         popUpContainerDynamicClose();

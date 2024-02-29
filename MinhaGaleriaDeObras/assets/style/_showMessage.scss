@@ -1,0 +1,59 @@
+.showMessage {
+    &__container {
+        width: 500px;
+        height: 100px;
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 20;
+        overflow: hidden;
+
+        --corSM_1: var(--cor_1);
+        --corSM_2: var(--cor_5);
+    }
+
+    &__message {
+        width: 100%;
+        padding: 8px;
+        background-color: var(--corSM_1);
+        border-radius: 5px;
+        transition: .5s;
+    }
+
+    &__title {     
+        font-size: 2rem;
+        font-weight: 700;
+        color: black;
+    }
+
+    &__text {
+        font-size: 1.5rem;
+        padding: 8px;
+        color: black;
+        background-color: var(--corSM_2);
+    }
+
+    &__message--error {
+        --corSM_1: var(--cor_10);
+        --corSM_2: var(--cor_11);
+    }
+
+    &__message--success {
+        --corSM_1: var(--cor_12);
+        --corSM_2: var(--cor_13);
+    }
+
+    &__animation {
+        animation: showMessageAnimation 1s;
+    }
+
+    @keyframes showMessageAnimation {
+        0% {
+            transform: translateY(200%);
+        }
+        100% {
+            transform: translateY(0%);
+        }
+    }
+}
