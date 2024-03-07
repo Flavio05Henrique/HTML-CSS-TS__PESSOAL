@@ -33,11 +33,6 @@ const loadMyListFile = () => {
             return;
         }
         const file = inputFile.files[0];
-        const fileName = file.name;
-        if (!fileName.includes('MinhaListaDeObras')) {
-            showMessageError("Nome invalido", "Nome do arquivo não deve ser alterado após ser baixado!");
-            return;
-        }
         const reader = new FileReader();
         reader.addEventListener('load', () => {
             saveInBrowser(MyList = JSON.parse(reader.result));

@@ -77,9 +77,23 @@ createNewCardBnt.addEventListener('click', event => {
     const inputTag = cardExtendedCreateNewCard.querySelector('[data="inputChoseTag"]');
     const inputType = cardExtendedCreateNewCard.querySelector('[data="inputChoseType"]');
     const cardComments = cardExtendedCreateNewCard.querySelector('[data="cardComments"]');
+    const clearInputs = () => {
+        inputImg.value = '';
+        inputCardColor.value = '#012030';
+        inputName.value = '';
+        inputSeason.value = '';
+        inputChapter.value = '';
+        cardComments.value = '';
+        activeCardBnt.classList.remove('cardExtended__bntActive_--AC');
+    };
+    if (inputName.value == '') {
+        clearInputs();
+        showMessageError('ERRO', 'Nome é obrigatorio');
+        return;
+    }
     const inputImgValue = inputImg.value;
     const inputCardColorValue = inputCardColor.value;
-    const inputNameValue = inputName.value == '' ? 'Nome' : inputName.value;
+    const inputNameValue = inputName.value;
     const inputSeasonValue = inputSeason.value == '' ? '0' : inputSeason.value;
     const inputChapterValue = inputChapter.value == '' ? '0' : inputChapter.value;
     const inputAssessmentValue = inputAssessment.value;
@@ -104,13 +118,7 @@ createNewCardBnt.addEventListener('click', event => {
     makeCardInDom(newCard);
     saveNewCardInMyList(newCard);
     loadMyListInDom(MyList);
-    inputImg.value = '';
-    inputCardColor.value = '#012030';
-    inputName.value = '';
-    inputSeason.value = '';
-    inputChapter.value = '';
-    cardComments.value = '';
-    activeCardBnt.classList.remove('cardExtended__bntActive_--AC');
+    clearInputs();
     showMessageSuccess("Criado", "Sucesso ao adicionar nova obra!");
 });
 const generatesId = () => {
@@ -317,6 +325,7 @@ const openConfirmPopUp = () => {
     const bntCancel = popUpContainerDynamicContainer.querySelector('[data="cancel"]');
     bntConfirm.addEventListener('click', event => {
         deleteItemFromMyList();
+        loadMyListInDom(MyList);
         popUpContainerDynamicClose();
     });
     bntCancel.addEventListener('click', event => {

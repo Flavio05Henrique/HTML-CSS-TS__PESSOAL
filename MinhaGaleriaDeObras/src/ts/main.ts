@@ -103,10 +103,26 @@ createNewCardBnt.addEventListener('click', event => {
     const inputTag = cardExtendedCreateNewCard.querySelector('[data="inputChoseTag"]') as HTMLSelectElement
     const inputType = cardExtendedCreateNewCard.querySelector('[data="inputChoseType"]') as HTMLSelectElement
     const cardComments = cardExtendedCreateNewCard.querySelector('[data="cardComments"]') as HTMLTextAreaElement
+    
+    const clearInputs = () => {
+        inputImg.value = ''
+        inputCardColor.value = '#012030'
+        inputName.value = ''
+        inputSeason.value = ''
+        inputChapter.value = ''
+        cardComments.value = ''
+        activeCardBnt.classList.remove('cardExtended__bntActive_--AC')
+    }
+
+    if(inputName.value == '') {
+        clearInputs()
+        showMessageError('ERRO', 'Nome é obrigatorio')
+        return
+    }
 
     const inputImgValue: string = inputImg.value
     const inputCardColorValue: string = inputCardColor.value
-    const inputNameValue: string = inputName.value == '' ? 'Nome' : inputName.value 
+    const inputNameValue: string = inputName.value
     const inputSeasonValue: string = inputSeason.value == '' ? '0' : inputSeason.value
     const inputChapterValue: string = inputChapter.value == '' ? '0' : inputChapter.value
     const inputAssessmentValue: string = inputAssessment.value
@@ -114,6 +130,8 @@ createNewCardBnt.addEventListener('click', event => {
     const inputTypeValue: string = inputType.value
     const cardCommentsValue: string = cardComments.value
     const checkIfCardIsActivate: boolean = activeCardBnt.classList.contains('cardExtended__bntActive_--AC') ? true : false
+
+    
 
     const newCard: card = {
         'id': generatesId(),
@@ -134,13 +152,7 @@ createNewCardBnt.addEventListener('click', event => {
     saveNewCardInMyList(newCard)
     loadMyListInDom(MyList)
     
-    inputImg.value = ''
-    inputCardColor.value = '#012030'
-    inputName.value = ''
-    inputSeason.value = ''
-    inputChapter.value = ''
-    cardComments.value = ''
-    activeCardBnt.classList.remove('cardExtended__bntActive_--AC')
+    clearInputs()
 
     showMessageSuccess("Criado", "Sucesso ao adicionar nova obra!")  
 })
@@ -351,6 +363,7 @@ const openConfirmPopUp = () => {
 
     bntConfirm.addEventListener('click', event => {
         deleteItemFromMyList()
+        loadMyListInDom(MyList)
         popUpContainerDynamicClose()
     })
     
