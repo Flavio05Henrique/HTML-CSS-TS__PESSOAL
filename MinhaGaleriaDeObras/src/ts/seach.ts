@@ -95,6 +95,11 @@ const activateSearchBnt = () => {
             if(item.tag === filter2) return item
             if(item.type === filter3) return item
         })
+
+        if(filteredList.length == 0) {
+            showMessageError('Lista vazia', 'Nenhuma de suas obras atende a esses filtros.')
+            return
+        }
         
         loadMyListInDom(filteredList)
     })

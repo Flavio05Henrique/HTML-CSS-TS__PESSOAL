@@ -89,6 +89,10 @@ const activateSearchBnt = () => {
             if (item.type === filter3)
                 return item;
         });
+        if (filteredList.length == 0) {
+            showMessageError('Lista vazia', 'Nenhuma de suas obras atende a esses filtros.');
+            return;
+        }
         loadMyListInDom(filteredList);
     });
 };

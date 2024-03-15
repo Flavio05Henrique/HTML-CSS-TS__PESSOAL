@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Madimi+One&display=swap');
+
+header {
+    width: 20%;
+    height: 100vh;
+    background: url(../img/header_bg_1.png) no-repeat center center;
+    background-size: cover;
+    animation: bgAnimated 1s alternate-reverse;
+
+    .navBar {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        position: relative;
+
+        &__aboutMe {
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            top: 14.6%;
+            cursor: pointer;
+            background-color: transparent;
+            border: none;
+        }
+
+        ul {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            // background-color: aqua;
+            height: 33%;
+            position: absolute;
+            top: 49%;
+
+            li {
+                list-style: none;
+            }
+        }
+
+        &__bnt {
+            width: 300px;
+            height: 60px;
+            font-family: "Madimi One", sans-serif;
+            font-size: 3rem;
+            color: #363636;
+            background: transparent url(../img/bar.png)no-repeat center center;
+            background-size: cover;
+            border: none;
+            cursor: pointer;
+
+            &:hover {
+                background-image: url(../img/bar_hover.png);
+            }
+        }
+    }
+}
+
+@keyframes bgAnimated {
+    0% {
+        background: url(../img/header_bg_1.png) no-repeat center center;
+        background-size: cover;
+    }
+    25% {
+        background: url(../img/header_bg_2.png) no-repeat center center;
+        background-size: cover;
+    }
+    50% {
+        background: url(../img/header_bg_3.png) no-repeat center center;
+        background-size: cover;
+    }
+    75% {
+        background: url(../img/header_bg_4.png) no-repeat center center;
+        background-size: cover;
+    }
+}
