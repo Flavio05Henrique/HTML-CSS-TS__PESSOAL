@@ -1,0 +1,21 @@
+.secSkills {
+    width: 100%;
+    height: 100%;
+
+    &__imgBg {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: var(--skillsBg);
+        background-size: 100% 100%;
+    }
+
+    &__bg {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        transform: translate(0, 65%);
+        background-color: #A2F5E0;
+        transition: 15s;
+    }
+}

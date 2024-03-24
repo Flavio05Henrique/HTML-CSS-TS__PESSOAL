@@ -1,11 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Madimi+One&display=swap');
-
 header {
     width: 20%;
     height: 100vh;
     background: url(../img/header_bg_1.png) no-repeat center center;
     background-size: cover;
-    animation: bgAnimated 1s alternate-reverse;
+    // animation: bgAnimated 5s infinite;
 
     .navBar {
         display: flex;
@@ -16,6 +14,18 @@ header {
         height: 100%;
         position: relative;
 
+        &__pointer {
+            transform: translate(-100%, -50%);
+            position: absolute;
+            top: 25%;
+            left: 100%;
+            z-index: 10;
+            border-top: 15px solid transparent;
+            border-right: 15px solid var(--cor_1);
+            border-bottom: 15px solid transparent;
+            transition: .5s;
+        }
+
         &__aboutMe {
             width: 200px;
             height: 200px;
@@ -24,13 +34,16 @@ header {
             cursor: pointer;
             background-color: transparent;
             border: none;
+
+            &:hover {
+                background: radial-gradient(circle, rgba(125, 179, 201, 0.226) 0%,rgba(255,255,255,0) 75%, rgba(255,255,255,0) 100%);
+            }
         }
 
         ul {
             display: flex;
             flex-direction: column;
             justify-content: space-around;
-            // background-color: aqua;
             height: 33%;
             position: absolute;
             top: 49%;
@@ -63,16 +76,36 @@ header {
         background: url(../img/header_bg_1.png) no-repeat center center;
         background-size: cover;
     }
-    25% {
+    2% {
         background: url(../img/header_bg_2.png) no-repeat center center;
         background-size: cover;
     }
-    50% {
+    4% {
         background: url(../img/header_bg_3.png) no-repeat center center;
         background-size: cover;
     }
-    75% {
+    6% {
         background: url(../img/header_bg_4.png) no-repeat center center;
+        background-size: cover;
+    }
+    8% {
+        background: url(../img/header_bg_4.png) no-repeat center center;
+        background-size: cover;
+    }
+    10% {
+        background: url(../img/header_bg_3.png) no-repeat center center;
+        background-size: cover;
+    }
+    12% {
+        background: url(../img/header_bg_2.png) no-repeat center center;
+        background-size: cover;
+    }
+    14% {
+        background: url(../img/header_bg_1.png) no-repeat center center;
+        background-size: cover;
+    }
+    100% {
+        background: url(../img/header_bg_1.png) no-repeat center center;
         background-size: cover;
     }
 }

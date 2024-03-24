@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" data="html">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,15 +8,57 @@
 </head>
 <body>
     <header>
-        <nav class="navBar">
-            <button class="navBar__aboutMe"></button>
+        <nav class="navBar" data="navBar">
+            <div class="navBar__pointer" data="navBar__pointer"></div>
+            <button class="navBar__aboutMe" value="0"></button>
             <ul>
-                <li><button class="navBar__bnt">SKILLS</button></li>
-                <li><button class="navBar__bnt">Projetos</button></li>
-                <li><button class="navBar__bnt">Contato</button></li>
+                <li><button class="navBar__bnt" value="1">SKILLS</button></li>
+                <li><button class="navBar__bnt" value="2">Projetos</button></li>
+                <li><button class="navBar__bnt" value="3">Contato</button></li>
             </ul>
         </nav>
     </header>
-    <main></main>
+    <main>
+        <div class="modeControl">
+            <button class="modeControl__bnt modeControl__liteBnt U-reset_transform" data="modeControl__bnt"></button>
+            <button class="modeControl__bnt modeControl__darkBnt" data="modeControl__bnt"></button>
+        </div>
+        <section class="secAboutMe" data="secAboutMe" id="sec1">
+            <div class="secAboutMe__container">
+                <div class="secAboutMe__presentation">
+                    <h1>Flavio Henrique</h1>
+                    <h2>Programador Font-End</h2>
+                    <p>
+                        Ola aqui uma breve apresentação! <br>
+                        &nbsp Sou estudante de programação, estou nessa jornada há um ano e meio atualmente buscando
+                        oportunidades na área para me aprimorar na programação quero aprender cada dia mais. <br>
+                        &nbsp Adoro jogos, art e logica oque posso aplicar e aprofundar na programação e por isso
+                        posso dizer que me dou muito bem com a programação e nunca penso em parar.
+                    </p>
+                </div>
+            </div>
+            <img src="assets/img/secAbouteMe.png" alt="ilustração do criador do site" class="secAboutMe__img">
+
+            <img src="assets/img/cloud_1.png" alt="nuvens" class="cloud">
+            <img src="assets/img/cloud_2.png" alt="nuvens" class="cloud_2">
+            <img src="assets/img/cloud_3.png" alt="nuvens" class="cloud_3">
+            <img src="assets/img/cloud_4.png" alt="nuvens" class="cloud_4">
+            <img src="assets/img/cloud_5.png" alt="nuvens" class="cloud_5">
+        </section>
+        <section class="secSkills" id="sec2">
+            <div class="secSkills__bg" data="secSkills__bg"></div>
+            <div class="secSkills__imgBg">
+
+            </div>
+        </section>
+
+        <div class="U-display__none">
+            <ul>
+                <li><a href="#sec1" data="section"></a></li>
+                <li><a href="#sec2" data="section"></a></li>
+            </ul>
+        </div>
+    </main>
+    <script type="module" src="src/js/main.js"></script>
 </body>
 </html>

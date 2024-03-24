@@ -1,3 +1,23 @@
+// font name : "Madimi One"
+@import url('https://fonts.googleapis.com/css2?family=Madimi+One&display=swap');
+// font name :  "Bungee Shade"
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Shade&display=swap');
+// "Coustard"
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Shade&family=Coustard:wght@400;900&display=swap');
+
+
+:root {
+    --cor_1: #3DA6E7;
+    --cor_font: black;
+    --skillsBg : transparent url(../img/skills.png) no-repeat center center;
+}
+
+.modeDark {
+    --cor_1: #000932;
+    --cor_font: rgb(192, 212, 231);
+    --skillsBg : transparent url(../img/skillsDark.png) no-repeat center center;
+}
+
 * {
     margin: 0;
     padding: 0;

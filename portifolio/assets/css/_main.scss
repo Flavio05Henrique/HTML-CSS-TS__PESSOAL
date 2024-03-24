@@ -1,5 +1,12 @@
 main {
     width: 80%;
     height: 100vh;
-    background-color: rgb(110, 140, 224);
+    overflow: hidden;
+    position: relative;
+    scroll-behavior: smooth;
 }
+
+
+@import "modeControl";
+@import "secBoutMe";
+@import "secSkills"
