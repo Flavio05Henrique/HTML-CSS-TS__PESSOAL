@@ -20,8 +20,9 @@
 
     h1 {
         font-size: 4rem;
-        font-family:  "Bungee Shade", sans-serif;
+        font-family:  var(--font_title);
         color: var(--cor_font);
+        animation: U-animationBasic 1.5s;
     }
 
     h2 {
@@ -29,14 +30,15 @@
         margin-bottom: 50px;
         margin-left: 2px;
         font-size: 2rem;
-        font-family: "Coustard", sans-serif;
+        font-family: var(--font_subTitle);
         font-weight: 500;
         color: var(--cor_font);
+        // animation: U-animationBasic 1.5s;
     }
 
     p {
         font-size: 1.5rem;
-        font-family: "Coustard", sans-serif;
+        font-family: var(--font_default);
         font-weight: 500;
         padding: 15px;
         background-color: rgba(255, 255, 255, 0.233);

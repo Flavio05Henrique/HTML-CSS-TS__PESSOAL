@@ -2,7 +2,7 @@ header {
     width: 20%;
     height: 100vh;
     background: url(../img/header_bg_1.png) no-repeat center center;
-    background-size: cover;
+    background-size: 100% 100%;
     // animation: bgAnimated 5s infinite;
 
     .navBar {
@@ -23,7 +23,7 @@ header {
             border-top: 15px solid transparent;
             border-right: 15px solid var(--cor_1);
             border-bottom: 15px solid transparent;
-            transition: .5s;
+            transition: 1s;
         }
 
         &__aboutMe {
@@ -56,7 +56,7 @@ header {
         &__bnt {
             width: 300px;
             height: 60px;
-            font-family: "Madimi One", sans-serif;
+            font-family: var(--font_subTitle);
             font-size: 3rem;
             color: #363636;
             background: transparent url(../img/bar.png)no-repeat center center;
@@ -74,38 +74,38 @@ header {
 @keyframes bgAnimated {
     0% {
         background: url(../img/header_bg_1.png) no-repeat center center;
-        background-size: cover;
+        background-size: 100% 100%;
     }
     2% {
         background: url(../img/header_bg_2.png) no-repeat center center;
-        background-size: cover;
+        background-size: 100% 100%;
     }
     4% {
         background: url(../img/header_bg_3.png) no-repeat center center;
-        background-size: cover;
+        background-size: 100% 100%;
     }
     6% {
         background: url(../img/header_bg_4.png) no-repeat center center;
-        background-size: cover;
+        background-size: 100% 100%;
     }
     8% {
         background: url(../img/header_bg_4.png) no-repeat center center;
-        background-size: cover;
+        background-size: 100% 100%;
     }
     10% {
         background: url(../img/header_bg_3.png) no-repeat center center;
-        background-size: cover;
+        background-size: 100% 100%;
     }
     12% {
         background: url(../img/header_bg_2.png) no-repeat center center;
-        background-size: cover;
+        background-size: 100% 100%;
     }
     14% {
         background: url(../img/header_bg_1.png) no-repeat center center;
-        background-size: cover;
+        background-size: 100% 100%;
     }
     100% {
         background: url(../img/header_bg_1.png) no-repeat center center;
-        background-size: cover;
+        background-size: 100% 100%;
     }
 }

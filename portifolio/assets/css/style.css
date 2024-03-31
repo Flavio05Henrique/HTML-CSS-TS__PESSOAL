@@ -3,12 +3,18 @@
 @import url("https://fonts.googleapis.com/css2?family=Bungee+Shade&family=Coustard:wght@400;900&display=swap");
 :root {
   --cor_1: #3DA6E7;
+  --cor_2: #A0A0A0;
+  --cor_3: #6B655D;
   --cor_font: black;
+  --font_default: "Coustard", sans-serif;
+  --font_title: "Bungee Shade", sans-serif;
+  --font_subTitle: "Madimi One", sans-serif;
   --skillsBg: transparent url(../img/skills.png) no-repeat center center;
 }
 
 .modeDark {
   --cor_1: #000932;
+  --cor_2: #787878;
   --cor_font: rgb(192, 212, 231);
   --skillsBg: transparent url(../img/skillsDark.png) no-repeat center center;
 }
@@ -31,7 +37,7 @@ header {
   width: 20%;
   height: 100vh;
   background: url(../img/header_bg_1.png) no-repeat center center;
-  background-size: cover;
+  background-size: 100% 100%;
 }
 header .navBar {
   display: flex;
@@ -51,7 +57,7 @@ header .navBar__pointer {
   border-top: 15px solid transparent;
   border-right: 15px solid var(--cor_1);
   border-bottom: 15px solid transparent;
-  transition: 0.5s;
+  transition: 1s;
 }
 header .navBar__aboutMe {
   width: 200px;
@@ -79,7 +85,7 @@ header .navBar ul li {
 header .navBar__bnt {
   width: 300px;
   height: 60px;
-  font-family: "Madimi One", sans-serif;
+  font-family: var(--font_subTitle);
   font-size: 3rem;
   color: #363636;
   background: transparent url(../img/bar.png) no-repeat center center;
@@ -94,39 +100,39 @@ header .navBar__bnt:hover {
 @keyframes bgAnimated {
   0% {
     background: url(../img/header_bg_1.png) no-repeat center center;
-    background-size: cover;
+    background-size: 100% 100%;
   }
   2% {
     background: url(../img/header_bg_2.png) no-repeat center center;
-    background-size: cover;
+    background-size: 100% 100%;
   }
   4% {
     background: url(../img/header_bg_3.png) no-repeat center center;
-    background-size: cover;
+    background-size: 100% 100%;
   }
   6% {
     background: url(../img/header_bg_4.png) no-repeat center center;
-    background-size: cover;
+    background-size: 100% 100%;
   }
   8% {
     background: url(../img/header_bg_4.png) no-repeat center center;
-    background-size: cover;
+    background-size: 100% 100%;
   }
   10% {
     background: url(../img/header_bg_3.png) no-repeat center center;
-    background-size: cover;
+    background-size: 100% 100%;
   }
   12% {
     background: url(../img/header_bg_2.png) no-repeat center center;
-    background-size: cover;
+    background-size: 100% 100%;
   }
   14% {
     background: url(../img/header_bg_1.png) no-repeat center center;
-    background-size: cover;
+    background-size: 100% 100%;
   }
   100% {
     background: url(../img/header_bg_1.png) no-repeat center center;
-    background-size: cover;
+    background-size: 100% 100%;
   }
 }
 main {
@@ -183,21 +189,22 @@ main {
 }
 .secAboutMe h1 {
   font-size: 4rem;
-  font-family: "Bungee Shade", sans-serif;
+  font-family: var(--font_title);
   color: var(--cor_font);
+  animation: U-animationBasic 1.5s;
 }
 .secAboutMe h2 {
   margin-top: -55px;
   margin-bottom: 50px;
   margin-left: 2px;
   font-size: 2rem;
-  font-family: "Coustard", sans-serif;
+  font-family: var(--font_subTitle);
   font-weight: 500;
   color: var(--cor_font);
 }
 .secAboutMe p {
   font-size: 1.5rem;
-  font-family: "Coustard", sans-serif;
+  font-family: var(--font_default);
   font-weight: 500;
   padding: 15px;
   background-color: rgba(255, 255, 255, 0.233);
@@ -263,6 +270,13 @@ main {
   height: 100%;
   background: var(--skillsBg);
   background-size: 100% 100%;
+  transition: 1s;
+}
+.secSkills__imgBg h2 {
+  font-family: var(--font_title);
+  font-size: 5rem;
+  color: var(--cor_3);
+  margin-left: 35.5%;
 }
 .secSkills__bg {
   position: absolute;
@@ -273,10 +287,86 @@ main {
   transition: 15s;
 }
 
+.secProjects {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: transparent url(../img/molduraProjetos.jpg) no-repeat center center;
+  background-size: 100% 100%;
+  z-index: 5;
+}
+.secProjects h2 {
+  position: relative;
+  top: 14%;
+  font-family: var(--font_title);
+  font-size: 3.8rem;
+  text-align: center;
+  margin-left: 38px;
+}
+.secProjects__projectsContainer {
+  position: relative;
+  top: 18%;
+  width: 80%;
+  height: 55%;
+  margin: auto;
+  overflow: auto;
+}
+.secProjects__projectsContainer::-webkit-scrollbar {
+  width: 10px;
+}
+.secProjects__projectsContainer::-webkit-scrollbar-thumb {
+  background: #D69664;
+  border-radius: 15px;
+}
+.secProjects__projectsContainer ul {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  align-items: center;
+  justify-items: center;
+  width: 100%;
+  height: 100%;
+}
+.secProjects__projectsContainer ul li {
+  position: relative;
+  list-style: none;
+  width: 350px;
+  height: 350px;
+  padding: 5px;
+  background-color: bisque;
+  background: transparent url(../img/postit.png) no-repeat center center;
+  background-size: 100% 100%;
+}
+.secProjects__projectsContainer ul li h3 {
+  position: relative;
+  font-family: var(--font_subTitle);
+  font-weight: 400;
+  text-align: center;
+  z-index: 1;
+}
+.secProjects__itemProject {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: 97.2%;
+  height: 89.5%;
+  background-color: aqua;
+  margin: auto;
+}
+
 .U-reset_transform {
   transform: none;
 }
 
 .U-display__none {
   display: none;
+}
+
+@keyframes U-animationBasic {
+  0% {
+    transform: translate(0, -20%);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
 }/*# sourceMappingURL=style.css.map */

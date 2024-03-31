@@ -5,3 +5,12 @@
 .U-display__none {
     display: none;
 }
+
+@keyframes U-animationBasic {
+    0%{
+        transform: translate(0,-20%);
+    }
+    100% {
+        transform: translate(0,0);
+    }
+}

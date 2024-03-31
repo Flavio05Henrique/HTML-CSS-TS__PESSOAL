@@ -8,12 +8,18 @@
 
 :root {
     --cor_1: #3DA6E7;
+    --cor_2: #A0A0A0;
+    --cor_3: #6B655D;
     --cor_font: black;
+    --font_default: "Coustard", sans-serif;
+    --font_title: "Bungee Shade", sans-serif;
+    --font_subTitle: "Madimi One", sans-serif;
     --skillsBg : transparent url(../img/skills.png) no-repeat center center;
 }
 
 .modeDark {
     --cor_1: #000932;
+    --cor_2: #787878;
     --cor_font: rgb(192, 212, 231);
     --skillsBg : transparent url(../img/skillsDark.png) no-repeat center center;
 }
