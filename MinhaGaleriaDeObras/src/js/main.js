@@ -59,6 +59,7 @@ cardsContainer.addEventListener('click', event => {
 });
 popUpContainerDynamicCloseBnt.addEventListener('click', event => {
     popUpContainerDynamicClose();
+    editMode == true ? editMode = false : 0;
 });
 const popUpContainerDynamicClose = () => {
     disableChangeFunctions();
@@ -77,6 +78,7 @@ createNewCardBnt.addEventListener('click', event => {
     const inputTag = cardExtendedCreateNewCard.querySelector('[data="inputChoseTag"]');
     const inputType = cardExtendedCreateNewCard.querySelector('[data="inputChoseType"]');
     const cardComments = cardExtendedCreateNewCard.querySelector('[data="cardComments"]');
+    const cardLink = cardExtendedCreateNewCard.querySelector('[data="inputChoseLink"]');
     const clearInputs = () => {
         inputImg.value = '';
         inputCardColor.value = '#012030';
@@ -100,6 +102,7 @@ createNewCardBnt.addEventListener('click', event => {
     const inputTagValue = inputTag.value;
     const inputTypeValue = inputType.value;
     const cardCommentsValue = cardComments.value;
+    const cardLinkValue = cardLink.value == '' ? '...' : cardLink.value;
     const checkIfCardIsActivate = activeCardBnt.classList.contains('cardExtended__bntActive_--AC') ? true : false;
     const newCard = {
         'id': generatesId(),
@@ -113,6 +116,7 @@ createNewCardBnt.addEventListener('click', event => {
         'tag': inputTagValue,
         'type': inputTypeValue,
         'comments': cardCommentsValue,
+        'link': cardLinkValue,
         'active': checkIfCardIsActivate
     };
     makeCardInDom(newCard);
@@ -173,6 +177,10 @@ const makeCardExtendedInDom = (card) => {
                     <h3>Comentarios</h3>
                     <div data="interactable" id="comments">${card.comments}</div>
                 </span>
+                <span class="cardExtended__link cardExtended__centralize cardExtended__input">
+                    <h3>Link onde você acompanha a obra :</h3> 
+                    <div data="interactable" id="link">${card.link}</div>
+                </span>
             </div>
         </div>
     `;
@@ -218,6 +226,9 @@ const ChangeFunctions = (event) => {
                 break;
             case 'comments':
                 componente = openGenericInput(openInputComments);
+                break;
+            case 'link':
+                componente = openGenericInput(openInputLink);
                 break;
             case 'activeBnt':
                 activeBntChangeState(container);
@@ -280,6 +291,9 @@ const changeConfirm = (elementClickd) => {
                 break;
             case 'inputChoseChapter':
                 cardTochange.chapeter = item.value;
+                break;
+            case 'inputChoseLink':
+                cardTochange.link = item.value;
                 break;
         }
     });
@@ -399,6 +413,13 @@ const openInputComments = () => {
     const string = `
         <h3>Comentarios</h3>
         <textarea name="" id="" cols="30" rows="10">${MyList[MyListCurrentItem].comments}</textarea>
+    `;
+    return string;
+};
+const openInputLink = () => {
+    const string = `
+        <h3>Coloque aqui o link onde você acompanha a obra :</h3> 
+        <input type="text" maxlength="1000" data="inputChoseLink" value="${MyList[MyListCurrentItem].link}">
     `;
     return string;
 };

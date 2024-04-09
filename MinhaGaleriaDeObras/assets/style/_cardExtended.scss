@@ -97,7 +97,6 @@
         }
 
         &__bntDelete {
-            // grid-row-start: 1;
             grid-column-start: 8;
             justify-self: flex-end;
             justify-content: center;
@@ -139,15 +138,12 @@
         }
 
         &__title {
-            // display: inline-block;
-            // grid-row-start: 2;
             grid-column-start: 1;
             grid-column-end: 7;
             width: 100%;
             height: 50px;
             flex-direction: column;
             justify-content: center;
-            // background-color: rgb(46, 3, 148);
 
             & div {
                 width: 100%;
@@ -169,16 +165,13 @@
         }
 
         &__bntActive {
-            // grid-row-start: 2;
             grid-column-start: 7;
             grid-column-end: 9;
-            // justify-self: flex-end;
             width: 100%;
             height: 50px;
             border: none;
             flex-direction: column;
             justify-content: center;
-            // background-color: rgb(46, 3, 148);
 
             
 
@@ -212,12 +205,10 @@
         }
 
         &__season {
-            // grid-row-start: 3;
             grid-column-start: 1;
             grid-column-end: 4;
             width: 100%;
             height: 50px;
-            // background-color: rgb(46, 3, 148);
 
             & div {
                 padding: 3px 5px;
@@ -238,7 +229,6 @@
             grid-column-end: 9;
             width: 100%;
             height: 50px;
-            // background-color: rgb(46, 3, 148); 
 
             & div {
                 padding: 3px 5px;
@@ -255,12 +245,10 @@
         }
 
         &__assessment {
-            // grid-row-start: 4;
             grid-column-start: 1;
             grid-column-end: 3;
             width: 100%;
             height: 50px;
-            // background-color: rgb(46, 3, 148);
 
             & div {
                 padding: 3px 5px;
@@ -273,12 +261,10 @@
         }
 
         &__tag {
-            // grid-row-start: 3;
             grid-column-start: 3;
             grid-column-end: 6;
             width: 100%;
             height: 50px;
-            // background-color: rgb(46, 3, 148);
 
             & div {
                 width: 60%;
@@ -296,7 +282,6 @@
             grid-column-end: 9;
             width: 100%;
             height: 50px;
-            // background-color: rgb(46, 3, 148);
 
             & div {
                 width: 60%;
@@ -313,7 +298,7 @@
             width: 100%;
             height: 100%;
             grid-row-start: 5;
-            grid-row-end:9;
+            grid-row-end:7;
             grid-column-start: 1;
             grid-column-end: 9;
             background-color: var(--cor_6);
@@ -322,12 +307,46 @@
 
             & textarea, div {
                 width: 100%;
-                height: 90%;
+                height: 80%;
                 font-size: 3rem;
                 padding: 5px;
                 background-color: var(--cor_7);
                 cursor: text;
             }
         }
+
+        &__link {
+            grid-column-start: 1;
+            grid-column-end: 7;
+            width: 100%;
+            height: 50px;
+            flex-direction: column;
+            justify-content: center;
+
+            & input {
+                width: 100%;
+            }
+
+            & h3 {
+                width: 100%;
+            }
+
+            & div {
+                width: 100%;
+                padding: 3px 5px;
+                margin-left: 5px;
+                border-radius: 5px;
+                background-color: var(--cor_6);
+                font-weight: 400;
+                cursor: text;
+            }
+        }
+    }
+}
+
+@media (max-width: 1500px) {
+    .cardExtended__container {
+        width: 1400px;
+        height: 725px;
     }
 }

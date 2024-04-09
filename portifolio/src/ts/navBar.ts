@@ -2,7 +2,7 @@ const navBar = document.querySelector('[data="navBar"]') as HTMLDivElement
 const navBarPointer = navBar.querySelector('[data="navBar__pointer"]') as HTMLDivElement
 const sections = document.querySelectorAll('[data="section"]') as NodeListOf<HTMLDivElement>
 let firstInteraction = false
-const navBarPointerColors: string[] = ["var(--cor_1)", "var(--cor_2)"]
+const navBarPointerColors: string[] = ["var(--cor_1)", "var(--cor_2)", "var(--cor_2)"]
 
 export const navBarActivateFunctions = () => {
     setTimeout(() => navBar.style.animation = "bgAnimated 5s infinite", 1000)

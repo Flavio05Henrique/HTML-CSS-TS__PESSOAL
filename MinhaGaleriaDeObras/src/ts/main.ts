@@ -10,6 +10,7 @@ type card = {
     'tag': string,
     'type': string,
     'comments': string,
+    'link': string,
     'active': boolean
 }
 
@@ -82,6 +83,7 @@ cardsContainer.addEventListener('click', event => {
 
 popUpContainerDynamicCloseBnt.addEventListener('click', event => {
     popUpContainerDynamicClose()
+    editMode == true ? editMode = false : 0
 })
 
 const popUpContainerDynamicClose = ():void => {
@@ -103,6 +105,7 @@ createNewCardBnt.addEventListener('click', event => {
     const inputTag = cardExtendedCreateNewCard.querySelector('[data="inputChoseTag"]') as HTMLSelectElement
     const inputType = cardExtendedCreateNewCard.querySelector('[data="inputChoseType"]') as HTMLSelectElement
     const cardComments = cardExtendedCreateNewCard.querySelector('[data="cardComments"]') as HTMLTextAreaElement
+    const cardLink = cardExtendedCreateNewCard.querySelector('[data="inputChoseLink"]') as HTMLInputElement
     
     const clearInputs = () => {
         inputImg.value = ''
@@ -129,6 +132,7 @@ createNewCardBnt.addEventListener('click', event => {
     const inputTagValue: string = inputTag.value
     const inputTypeValue: string = inputType.value
     const cardCommentsValue: string = cardComments.value
+    const cardLinkValue: string = cardLink.value == '' ? '...' : cardLink.value
     const checkIfCardIsActivate: boolean = activeCardBnt.classList.contains('cardExtended__bntActive_--AC') ? true : false
 
     
@@ -145,6 +149,7 @@ createNewCardBnt.addEventListener('click', event => {
         'tag': inputTagValue,
         'type': inputTypeValue,
         'comments': cardCommentsValue,
+        'link': cardLinkValue,
         'active': checkIfCardIsActivate
     }
 
@@ -212,6 +217,10 @@ const makeCardExtendedInDom = (card: card):void => {
                     <h3>Comentarios</h3>
                     <div data="interactable" id="comments">${card.comments}</div>
                 </span>
+                <span class="cardExtended__link cardExtended__centralize cardExtended__input">
+                    <h3>Link onde você acompanha a obra :</h3> 
+                    <div data="interactable" id="link">${card.link}</div>
+                </span>
             </div>
         </div>
     `
@@ -255,6 +264,8 @@ const ChangeFunctions = (event:Event) => {
             case 'type': componente = openGenericInput(openInputType)
             break;
             case 'comments': componente = openGenericInput(openInputComments)
+            break;
+            case 'link': componente = openGenericInput(openInputLink)
             break;
             case 'activeBnt': activeBntChangeState(container)
             break;
@@ -314,6 +325,8 @@ const changeConfirm = (elementClickd:any):void => {
             case'inputChoseSeason': cardTochange.season = item.value
             break;
             case'inputChoseChapter': cardTochange.chapeter = item.value
+            break;
+            case'inputChoseLink': cardTochange.link = item.value
             break;
         }
    })
@@ -455,6 +468,15 @@ const openInputComments= ():string => {
     const string = `
         <h3>Comentarios</h3>
         <textarea name="" id="" cols="30" rows="10">${MyList[MyListCurrentItem].comments}</textarea>
+    `
+
+    return string
+}
+
+const openInputLink= ():string => {
+    const string = `
+        <h3>Coloque aqui o link onde você acompanha a obra :</h3> 
+        <input type="text" maxlength="1000" data="inputChoseLink" value="${MyList[MyListCurrentItem].link}">
     `
 
     return string
