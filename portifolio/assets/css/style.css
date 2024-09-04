@@ -10,6 +10,9 @@
   --font_title: "Bungee Shade", sans-serif;
   --font_subTitle: "Madimi One", sans-serif;
   --skillsBg: transparent url(../img/skills.png) no-repeat center center;
+  --mask_state: 0;
+  --textBgColor: rgba(0, 0, 0, 0.452);
+  --bg_contact: #9bc2e2;
 }
 
 .modeDark {
@@ -17,6 +20,9 @@
   --cor_2: #787878;
   --cor_font: rgb(192, 212, 231);
   --skillsBg: transparent url(../img/skillsDark.png) no-repeat center center;
+  --mask_state: 100;
+  --textBgColor: rgba(255, 255, 255, 0.452);
+  --bg_contact: rgb(85, 121, 160);
 }
 
 * {
@@ -207,9 +213,9 @@ main {
   font-family: var(--font_default);
   font-weight: 500;
   padding: 15px;
-  background-color: rgba(255, 255, 255, 0.233);
+  background-color: var(--textBgColor);
   border-radius: 0 15px 15px 15px;
-  color: var(--cor_font);
+  color: var(--cor_1);
 }
 .secAboutMe__img {
   width: 550px;
@@ -305,7 +311,7 @@ main {
 }
 .secProjects__projectsContainer {
   position: relative;
-  top: 18%;
+  top: 12%;
   width: 80%;
   height: 55%;
   margin: auto;
@@ -425,6 +431,81 @@ main {
   padding: 5px;
   background-color: #797BB8;
   border-radius: 0 999px 999px 0;
+}
+.secProjects__mask--black {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.185);
+  pointer-events: none;
+  opacity: var(--mask_state);
+  z-index: 10;
+  transition: 0.5s;
+}
+
+.secContact {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
+  background: var(--bg_contact);
+}
+.secContact__contact {
+  width: 40%;
+  height: 100%;
+  position: relative;
+}
+.secContact__contact div {
+  width: 600px;
+  position: absolute;
+  top: 40%;
+  left: 60%;
+  transform: translate(-50%, -50%);
+}
+.secContact__contact div h2 {
+  font-family: var(--font_title);
+  text-align: center;
+  font-size: 3rem;
+  line-height: 3rem;
+  color: var(--cor_font);
+  margin: 30px 0;
+  transition: 0.5s;
+}
+.secContact__contact div h3 {
+  width: 100%;
+  font-family: var(--font_subTitle);
+  font-weight: 900;
+  font-size: 2rem;
+  color: var(--cor_font);
+  margin: 15px 0;
+  margin-left: 50px;
+  transition: 0.5s;
+}
+.secContact__contact div p {
+  width: 100%;
+  margin-left: 50px;
+  font-family: var(--font_default);
+  font-size: 1.5rem;
+  color: var(--cor_font);
+  transition: 0.5s;
+}
+.secContact__contact div a {
+  text-decoration: none;
+  color: var(--cor_font);
+  transition: 0.5s;
+}
+.secContact__img {
+  width: 60%;
+  height: 100%;
+  position: relative;
+}
+.secContact__img img {
+  width: 100%;
+  position: absolute;
+  top: 100%;
+  left: 100%;
+  transform: translate(-100%, -100%);
 }
 
 .U-reset_transform {

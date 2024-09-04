@@ -1,8 +1,8 @@
+import { slideToSection } from "./slideToSection.js"
+
 const navBar = document.querySelector('[data="navBar"]') as HTMLDivElement
 const navBarPointer = navBar.querySelector('[data="navBar__pointer"]') as HTMLDivElement
-const sections = document.querySelectorAll('[data="section"]') as NodeListOf<HTMLDivElement>
-let firstInteraction = false
-const navBarPointerColors: string[] = ["var(--cor_1)", "var(--cor_2)", "var(--cor_2)"]
+const navBarPointerColors: string[] = ["--cor_1", "--cor_2", "--cor_2", "--bg_contact"]
 
 export const navBarActivateFunctions = () => {
     setTimeout(() => navBar.style.animation = "bgAnimated 5s infinite", 1000)
@@ -11,8 +11,12 @@ export const navBarActivateFunctions = () => {
         const elementClicked = event.target as HTMLElement
 
         if(elementClicked.tagName == "BUTTON") {
+            const elementClickedAsButton = elementClicked as HTMLButtonElement
+            const elementClickedGetId = parseInt(elementClickedAsButton.value)
+
             setPointerPosition(elementClicked)
-            slideToSection(elementClicked)
+            slideToSection(elementClickedGetId)
+            setPointerColor(elementClickedGetId)
         }
     })
 }
@@ -31,20 +35,7 @@ const setPointerPosition = (elementClicked: HTMLElement): void => {
     navBarPointer.style.top = navBarPointerPosition + "px"
 }
 
-const slideToSection = (elementClicked: HTMLElement): void => {    
-    const elementClickedAsButton = elementClicked as HTMLButtonElement
-    const index: number = parseInt(elementClickedAsButton.value )
-
-    sections[index].click()
-    setPointerColor(index)
-
-    if(!firstInteraction && elementClickedAsButton.value == '1') {
-        firstInteraction = true
-        resetSecSkillsBg()
-    }
-}
-
 const setPointerColor = (number: number):void => {
-    navBarPointer.style.borderRight = `15px solid ${navBarPointerColors[number]}`
+    navBarPointer.style.borderRight = `15px solid var(${navBarPointerColors[number]})`
 }
 

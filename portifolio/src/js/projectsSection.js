@@ -1,9 +1,7 @@
-import { projects } from "./projects.js";
-
-const projectsContainer = document.querySelector('[data="projects"]') as HTMLDivElement
-
+import { getAllProjects, getProject } from "./projects.js";
+const projectsContainer = document.querySelector('[data="projects"]');
 export const loadProjects = () => {
-
+    const projects = getAllProjects();
     projectsContainer.innerHTML = projects.map(project => {
         return `
             <li>
@@ -13,21 +11,39 @@ export const loadProjects = () => {
                         <img src="${project.bgImgDirectory}" alt="Imagem do site ${project.name}">
                     </div>
                     <div class="secProjects__itemTechnologies">
-                        <div class="secProjects__mask"></div>
+                        <div class="secProjects__mask" data="interactive" id='${project.id}'></div>
                         <div class="secProjects__bgGradiente"></div>
                         <div class="secProjects__technologiesContainer">
                             ${project.projectTechnologies.map(technology => {
-                                return `
+            return `
                                     <div>
                                         <img src="assets/img/skillIcons/${technology}_icon.png" alt="ícone do html">
                                         <h4>${technology.toUpperCase()}</h3>
                                     </div>
-                                `
-                            }).join("")}
+                                `;
+        }).join("")}
                         </div>
                     </div>
                 </div>
             </li>       
-        `
-    }).join("")
-}
+        `;
+    }).join("");
+};
+export const projectsInteraction = () => {
+    projectsContainer.addEventListener('click', clickEvent => {
+        const elementClicked = clickEvent.target;
+        if (elementClicked.getAttribute('data') != 'interactive')
+            return;
+        const id = parseInt(elementClicked.id);
+        const linkProject = createLink(id);
+        linkProject.click();
+        linkProject.remove();
+    });
+};
+const createLink = (id) => {
+    const link = document.createElement('a');
+    link.style.display = 'none';
+    link.href = `${getProject(id).link}`;
+    link.target = 'blank';
+    return link;
+};

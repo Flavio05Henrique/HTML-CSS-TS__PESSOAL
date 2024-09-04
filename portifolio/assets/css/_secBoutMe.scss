@@ -33,7 +33,6 @@
         font-family: var(--font_subTitle);
         font-weight: 500;
         color: var(--cor_font);
-        // animation: U-animationBasic 1.5s;
     }
 
     p {
@@ -41,9 +40,9 @@
         font-family: var(--font_default);
         font-weight: 500;
         padding: 15px;
-        background-color: rgba(255, 255, 255, 0.233);
+        background-color: var(--textBgColor);
         border-radius: 0 15px 15px 15px;
-        color: var(--cor_font);
+        color: var(--cor_1);
     }
 
     &__img {

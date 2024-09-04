@@ -1,57 +1,25 @@
-export const projects = [
+const projects = [
     {
+        'id': 0,
         'name': "Minha galeria de obras",
         'bgImgDirectory': "assets/img/proj/projMinhaGaleriaDeObras.jpg",
-        'projectTechnologies': ["html", "css", "javaScript", "typeScript", "sass"]
+        'projectTechnologies': ["html", "css", "javaScript", "typeScript", "sass"],
+        'link': "https://flavio05henrique.github.io/MinhaGaleriaDeObras/"
     },
     {
-        'name': "Minha galeria de obras",
-        'bgImgDirectory': "assets/img/proj/projMinhaGaleriaDeObras.jpg",
-        'projectTechnologies': ["html", "css", "javaScript", "typeScript", "sass"]
+        'id': 1,
+        'name': "Geek Word",
+        'bgImgDirectory': "assets/img/proj/projGeekWord.jpg",
+        'projectTechnologies': ["html", "css", "javaScript", "typeScript", "sass"],
+        'link': "https://flavio05henrique.github.io/GeekWorld/"
     },
     {
-        'name': "Minha galeria de obras",
-        'bgImgDirectory': "assets/img/proj/projMinhaGaleriaDeObras.jpg",
-        'projectTechnologies': ["html", "css", "javaScript", "typeScript", "sass"]
+        'id': 2,
+        'name': "Pinterest--Copia",
+        'bgImgDirectory': "assets/img/proj/projCopiaDoPinterest.jpg",
+        'projectTechnologies': ["html", "css", "javaScript"],
+        'link': "https://flavio05henrique.github.io/Pinterest---copia/"
     },
-    {
-        'name': "Minha galeria de obras",
-        'bgImgDirectory': "assets/img/proj/projMinhaGaleriaDeObras.jpg",
-        'projectTechnologies': ["html", "css", "javaScript", "typeScript", "sass"]
-    },
-    {
-        'name': "Minha galeria de obras",
-        'bgImgDirectory': "assets/img/proj/projMinhaGaleriaDeObras.jpg",
-        'projectTechnologies': ["html", "css", "javaScript", "typeScript", "sass"]
-    },
-    {
-        'name': "Minha galeria de obras",
-        'bgImgDirectory': "assets/img/proj/projMinhaGaleriaDeObras.jpg",
-        'projectTechnologies': ["html", "css", "javaScript", "typeScript", "sass"]
-    },
-    {
-        'name': "Minha galeria de obras",
-        'bgImgDirectory': "assets/img/proj/projMinhaGaleriaDeObras.jpg",
-        'projectTechnologies': ["html", "css", "javaScript", "typeScript", "sass"]
-    },
-    {
-        'name': "Minha galeria de obras",
-        'bgImgDirectory': "assets/img/proj/projMinhaGaleriaDeObras.jpg",
-        'projectTechnologies': ["html", "css", "javaScript", "typeScript", "sass"]
-    },
-    {
-        'name': "Minha galeria de obras",
-        'bgImgDirectory': "assets/img/proj/projMinhaGaleriaDeObras.jpg",
-        'projectTechnologies': ["html", "css", "javaScript", "typeScript", "sass"]
-    },
-    {
-        'name': "Minha galeria de obras",
-        'bgImgDirectory': "assets/img/proj/projMinhaGaleriaDeObras.jpg",
-        'projectTechnologies': ["html", "css", "javaScript", "typeScript", "sass"]
-    },
-    {
-        'name': "Minha galeria de obras",
-        'bgImgDirectory': "assets/img/proj/projMinhaGaleriaDeObras.jpg",
-        'projectTechnologies': ["html", "css", "javaScript", "typeScript", "sass"]
-    }
 ];
+export const getAllProjects = () => projects;
+export const getProject = (id) => projects[id];

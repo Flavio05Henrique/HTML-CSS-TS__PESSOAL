@@ -15,6 +15,9 @@
     --font_title: "Bungee Shade", sans-serif;
     --font_subTitle: "Madimi One", sans-serif;
     --skillsBg : transparent url(../img/skills.png) no-repeat center center;
+    --mask_state: 0;
+    --textBgColor: rgba(0, 0, 0, 0.452);
+    --bg_contact:  #9bc2e2;;
 }
 
 .modeDark {
@@ -22,6 +25,9 @@
     --cor_2: #787878;
     --cor_font: rgb(192, 212, 231);
     --skillsBg : transparent url(../img/skillsDark.png) no-repeat center center;
+    --mask_state: 100;
+    --textBgColor: rgba(255, 255, 255, 0.452);
+    --bg_contact:  rgb(85, 121, 160);
 }
 
 * {
