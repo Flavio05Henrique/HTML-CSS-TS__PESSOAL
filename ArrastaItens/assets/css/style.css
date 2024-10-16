@@ -20,8 +20,9 @@ body {
 .container {
   height: 800px;
   padding: 15px;
-  background-color: rgb(131, 219, 219);
+  background-color: black;
   position: relative;
+  transition: 0.5s;
 }
 .container__auxiliary {
   position: relative;
@@ -41,5 +42,13 @@ body {
   opacity: 100%;
 }
 .item__shadow {
-  background-color: bisque;
+  background-color: transparent;
+  border: 1px solid white;
+  border-style: dashed;
+}
+
+@keyframes open {
+  0% {
+    height: 0px;
+  }
 }/*# sourceMappingURL=style.css.map */

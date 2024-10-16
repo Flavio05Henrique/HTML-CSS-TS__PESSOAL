@@ -1,32 +1,25 @@
-import { htmlElementItemMove } from "./htmlELements.js"
+import { htmlElementItemMove, htmlElementItemMoveShadow } from "./htmlELements.js"
+
 
 const container =  document.querySelector('.container') as HTMLDivElement
 const containerAuxiliary = document.querySelector('.container__auxiliary') as HTMLElement
 
-interface HtmlDimensions {
-    'width': any,
-    'heigh': any
+const mouseInfo: MouseInfo = {
+    'positionX': 0,
+    'positionY': 0,
+    'positionStartedX': 0,
+    'positionStartedY': 0,
+    'pressed': false,
 }
 
-interface htmlPosition {
-    'x': number,
-    'y': number
-}
-
-let mousePointX: number = 0
-let mousePointY: number = 0
-let mousePointInitX: number = 0
-let mousePointInitY: number = 0
 let mouseMovementY = 0  
 let mouseMovementX = 0
-let clickOn: boolean = false
 let elementClickedCopy: HTMLElement
-let positionAdjustmentX: number
-let positionAdjustmentY: number
+let counter = 0
 
-let containerPosition: htmlPosition
-let elementDraggablePosition: htmlPosition
-let draggableElementHtmlDimensions: htmlPosition
+let containerPosition: HtmlPosition
+let elementDraggablePosition: HtmlPosition
+let draggableElementHtmlDimensions: HtmlPosition
 let draggableElementCurrentPositionInArray: number
 let draggableElementInitPositionInArray: number
 
@@ -36,8 +29,6 @@ const initialize = (): void => {
     containerPosition = getHtmlElementPosition(containerAuxiliary)
     const exampleElement = container.querySelector('[data="interactive_item_"]') as HTMLElement
     draggableElementHtmlDimensions = getHtmlElementPosition(exampleElement)
-    positionAdjustmentX =  draggableElementHtmlDimensions.x 
-    positionAdjustmentY =  draggableElementHtmlDimensions.y 
 }
 
 const createList = (list: any[]): void => {
@@ -62,96 +53,96 @@ containerAuxiliary.addEventListener('mousedown', event => {
 
     elementClicked.style.position = "absolute" 
     elementClicked.style.pointerEvents = "none"
+
     elementDraggablePosition = getHtmlElementPosition(elementClicked)
+
     containerAuxiliary.appendChild(elementClicked)
+
     elementClickedCopy = elementClicked
+
     setMousePositionInit(event.clientX, event.clientY)
     setMousePosition(event.clientX, event.clientY)
-    setElementItemPosition()
+    setHtmlElementItemPosition()
+    
     const id = parseInt(elementClicked.id)
-    draggableItemsList[id] = `
-        <div class="item item__shadow" id="${elementClicked.id}">
-        </div>
-    `
+    draggableItemsList[id] = htmlElementItemMoveShadow(elementClicked.id)
     draggableElementCurrentPositionInArray = id
     draggableElementInitPositionInArray = id
-    updateDraggableItems()
-    clickOn = true
+    updateContainerItems()
+    
+    mouseInfo.pressed = true
 })
 
 containerAuxiliary.addEventListener('mouseup', event => {
-    // elementClicked.style.position = "static" 
+    elementClickedCopy.removeAttribute('style')
+    elementClickedCopy.id = draggableElementCurrentPositionInArray + ''
+    draggableItemsList[draggableElementCurrentPositionInArray] = elementClickedCopy.outerHTML
     containerAuxiliary.removeChild(elementClickedCopy)
-    clickOn = false
+    updateContainerItems()
+
+    mouseInfo.pressed = false
 })
   
 
 containerAuxiliary.addEventListener('mousemove', event => {
         const mousePositionX = event.clientX
         const mousePositionY = event.clientY
-        const stepsUp = 100
-        const stepsDown = -100
-        const mousePositionXPrevious = mousePointX
-        const mousePositionYPrevious = mousePointY
+        const stepsUp = 60
+        const stepsDown = -60
+        const mousePositionXPrevious = mouseInfo.positionX
+        const mousePositionYPrevious = mouseInfo.positionY
         let mouseDirectionX = 0
         let mouseDirectionY = 0
         
-        
-        
-        
-        
-        // console.log("x: ", mousePointX, "y: ", mousePointY)
-        if(elementClickedCopy && clickOn) {
+        if(elementClickedCopy && mouseInfo.pressed) {
             setMousePosition(mousePositionX, mousePositionY)
 
-            mouseDirectionX = mousePointX > mousePositionXPrevious ? 1 : -1
-            mouseDirectionY = mousePointY > mousePositionYPrevious ? 1 : -1
+            mouseDirectionX = mouseInfo.positionX > mousePositionXPrevious ? 1 : -1
+            mouseDirectionY = mouseInfo.positionY > mousePositionYPrevious ? 1 : -1
 
             mouseMovementX += mouseDirectionX
-            mouseMovementY += mousePointY - mousePositionYPrevious
+            mouseMovementY += mouseInfo.positionY - mousePositionYPrevious
 
             
             if(mouseMovementY >= stepsUp || mouseMovementY <= stepsDown) {
                 const hoverElement = document.elementFromPoint(mousePositionX, mousePositionY) as HTMLElement
                 const hoverElementId = parseInt(hoverElement.id)
                 const id = draggableElementCurrentPositionInArray
-                const initId = draggableElementInitPositionInArray
-                
-                console.log('andou')
+                const initId = parseInt(elementClickedCopy.id)
+
                 mouseMovementY = 0
-                // console.log(htmlElementItemMove(id))
-                if(hoverElementId == id) return
-                draggableItemsList[hoverElementId] = htmlElementItemMove(initId, hoverElementId)
-                draggableItemsList[id] = htmlElementItemMove(hoverElementId, id)
+
+                if(hoverElement.getAttribute('data') !== 'interactive_item_') return
+                
+                draggableItemsList[hoverElementId] = htmlElementItemMoveShadow(hoverElementId)
+
+                hoverElement.id = id + ''
+                draggableItemsList[id] = hoverElement.outerHTML
+
                 draggableElementCurrentPositionInArray = hoverElementId
-                console.log(draggableElementCurrentPositionInArray)
-                    // console.log(draggableElementPositionInArray)
+                updateContainerItems()
+                console.log('counter')
             }
-            // console.log(mouseMovementY)
-            // console.log('mouse')
-            // console.log(mousePositionX - mousePointInitX)
-            // console.log(mousePointX - mousePointInitX)
-            updateDraggableItems()
-            setElementItemPosition()
+            setHtmlElementItemPosition()
         }     
 })
 
 const setMousePosition = (x: number, y: number): void => {
-    mousePointX = x - mousePointInitX + (elementDraggablePosition.x - containerPosition.x)
-    mousePointY = y - mousePointInitY + (elementDraggablePosition.y - containerPosition.y)
+    mouseInfo.positionX = x - mouseInfo.positionStartedX + (elementDraggablePosition.x - containerPosition.x)
+    mouseInfo.positionY = y - mouseInfo.positionStartedY + (elementDraggablePosition.y - containerPosition.y)
 }
 
 const setMousePositionInit = (x: number, y: number): void => {
-    mousePointInitX = x 
-    mousePointInitY = y 
+    mouseInfo.positionStartedX = x 
+    mouseInfo.positionStartedY = y 
 }
 
-const setElementItemPosition = (): void => {
-    elementClickedCopy.style.top =  mousePointY  + "px"
-    elementClickedCopy.style.left = mousePointX  + "px"
+const setHtmlElementItemPosition = (): void => {
+    elementClickedCopy.style.top =  mouseInfo.positionY  + "px"
+    elementClickedCopy.style.left = mouseInfo.positionX  + "px"
 }
 
-const updateDraggableItems = (): void => {
+const updateContainerItems = (): void => {
     container.innerHTML = draggableItemsList.join('')
 }
 
@@ -164,13 +155,13 @@ const getHtmlElementHtmlDimensions = (element: HTMLElement): HtmlDimensions => {
     return HtmlDimensions
 }
 
-const getHtmlElementPosition = (element: HTMLElement): htmlPosition => {
-    const position = {
+const getHtmlElementPosition = (element: HTMLElement): HtmlPosition => {
+    const HtmlPosition = {
         'x': element.getBoundingClientRect().left,
         'y': element.getBoundingClientRect().top
     }
 
-    return position
+    return HtmlPosition
 }
 
 createElements(3)

@@ -3,3 +3,8 @@ export const htmlElementItemMove = (num : number = 0, id: number) :string => {
                 ${num}
             </div>`
 }
+
+export const htmlElementItemMoveShadow = (id: number|string): string => {
+    return `<div class="item item__shadow" id="${id}">
+            </div>`
+}

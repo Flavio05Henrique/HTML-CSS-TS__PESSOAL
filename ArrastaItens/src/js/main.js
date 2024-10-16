@@ -1,16 +1,17 @@
-import { htmlElementItemMove } from "./htmlELements.js";
+import { htmlElementItemMove, htmlElementItemMoveShadow } from "./htmlELements.js";
 const container = document.querySelector('.container');
 const containerAuxiliary = document.querySelector('.container__auxiliary');
-let mousePointX = 0;
-let mousePointY = 0;
-let mousePointInitX = 0;
-let mousePointInitY = 0;
+const mouseInfo = {
+    'positionX': 0,
+    'positionY': 0,
+    'positionStartedX': 0,
+    'positionStartedY': 0,
+    'pressed': false,
+};
 let mouseMovementY = 0;
 let mouseMovementX = 0;
-let clickOn = false;
 let elementClickedCopy;
-let positionAdjustmentX;
-let positionAdjustmentY;
+let counter = 0;
 let containerPosition;
 let elementDraggablePosition;
 let draggableElementHtmlDimensions;
@@ -21,8 +22,6 @@ const initialize = () => {
     containerPosition = getHtmlElementPosition(containerAuxiliary);
     const exampleElement = container.querySelector('[data="interactive_item_"]');
     draggableElementHtmlDimensions = getHtmlElementPosition(exampleElement);
-    positionAdjustmentX = draggableElementHtmlDimensions.x;
-    positionAdjustmentY = draggableElementHtmlDimensions.y;
 };
 const createList = (list) => {
     draggableItemsList = list;
@@ -48,75 +47,68 @@ containerAuxiliary.addEventListener('mousedown', event => {
     elementClickedCopy = elementClicked;
     setMousePositionInit(event.clientX, event.clientY);
     setMousePosition(event.clientX, event.clientY);
-    setElementItemPosition();
+    setHtmlElementItemPosition();
     const id = parseInt(elementClicked.id);
-    draggableItemsList[id] = `
-        <div class="item item__shadow" id="${elementClicked.id}">
-        </div>
-    `;
+    draggableItemsList[id] = htmlElementItemMoveShadow(elementClicked.id);
     draggableElementCurrentPositionInArray = id;
     draggableElementInitPositionInArray = id;
-    updateDraggableItems();
-    clickOn = true;
+    updateContainerItems();
+    mouseInfo.pressed = true;
 });
 containerAuxiliary.addEventListener('mouseup', event => {
-    // elementClicked.style.position = "static" 
+    elementClickedCopy.removeAttribute('style');
+    elementClickedCopy.id = draggableElementCurrentPositionInArray + '';
+    draggableItemsList[draggableElementCurrentPositionInArray] = elementClickedCopy.outerHTML;
     containerAuxiliary.removeChild(elementClickedCopy);
-    clickOn = false;
+    updateContainerItems();
+    mouseInfo.pressed = false;
 });
 containerAuxiliary.addEventListener('mousemove', event => {
     const mousePositionX = event.clientX;
     const mousePositionY = event.clientY;
-    const stepsUp = 100;
-    const stepsDown = -100;
-    const mousePositionXPrevious = mousePointX;
-    const mousePositionYPrevious = mousePointY;
+    const stepsUp = 60;
+    const stepsDown = -60;
+    const mousePositionXPrevious = mouseInfo.positionX;
+    const mousePositionYPrevious = mouseInfo.positionY;
     let mouseDirectionX = 0;
     let mouseDirectionY = 0;
-    // console.log("x: ", mousePointX, "y: ", mousePointY)
-    if (elementClickedCopy && clickOn) {
+    if (elementClickedCopy && mouseInfo.pressed) {
         setMousePosition(mousePositionX, mousePositionY);
-        mouseDirectionX = mousePointX > mousePositionXPrevious ? 1 : -1;
-        mouseDirectionY = mousePointY > mousePositionYPrevious ? 1 : -1;
+        mouseDirectionX = mouseInfo.positionX > mousePositionXPrevious ? 1 : -1;
+        mouseDirectionY = mouseInfo.positionY > mousePositionYPrevious ? 1 : -1;
         mouseMovementX += mouseDirectionX;
-        mouseMovementY += mousePointY - mousePositionYPrevious;
+        mouseMovementY += mouseInfo.positionY - mousePositionYPrevious;
         if (mouseMovementY >= stepsUp || mouseMovementY <= stepsDown) {
             const hoverElement = document.elementFromPoint(mousePositionX, mousePositionY);
             const hoverElementId = parseInt(hoverElement.id);
             const id = draggableElementCurrentPositionInArray;
-            const initId = draggableElementInitPositionInArray;
-            console.log('andou');
+            const initId = parseInt(elementClickedCopy.id);
             mouseMovementY = 0;
-            // console.log(htmlElementItemMove(id))
-            if (hoverElementId == id)
+            if (hoverElement.getAttribute('data') !== 'interactive_item_')
                 return;
-            draggableItemsList[hoverElementId] = htmlElementItemMove(initId, hoverElementId);
-            draggableItemsList[id] = htmlElementItemMove(hoverElementId, id);
+            draggableItemsList[hoverElementId] = htmlElementItemMoveShadow(hoverElementId);
+            hoverElement.id = id + '';
+            draggableItemsList[id] = hoverElement.outerHTML;
             draggableElementCurrentPositionInArray = hoverElementId;
-            console.log(draggableElementCurrentPositionInArray);
-            // console.log(draggableElementPositionInArray)
+            updateContainerItems();
+            console.log('counter');
         }
-        // console.log(mouseMovementY)
-        // console.log('mouse')
-        // console.log(mousePositionX - mousePointInitX)
-        // console.log(mousePointX - mousePointInitX)
-        updateDraggableItems();
-        setElementItemPosition();
+        setHtmlElementItemPosition();
     }
 });
 const setMousePosition = (x, y) => {
-    mousePointX = x - mousePointInitX + (elementDraggablePosition.x - containerPosition.x);
-    mousePointY = y - mousePointInitY + (elementDraggablePosition.y - containerPosition.y);
+    mouseInfo.positionX = x - mouseInfo.positionStartedX + (elementDraggablePosition.x - containerPosition.x);
+    mouseInfo.positionY = y - mouseInfo.positionStartedY + (elementDraggablePosition.y - containerPosition.y);
 };
 const setMousePositionInit = (x, y) => {
-    mousePointInitX = x;
-    mousePointInitY = y;
+    mouseInfo.positionStartedX = x;
+    mouseInfo.positionStartedY = y;
 };
-const setElementItemPosition = () => {
-    elementClickedCopy.style.top = mousePointY + "px";
-    elementClickedCopy.style.left = mousePointX + "px";
+const setHtmlElementItemPosition = () => {
+    elementClickedCopy.style.top = mouseInfo.positionY + "px";
+    elementClickedCopy.style.left = mouseInfo.positionX + "px";
 };
-const updateDraggableItems = () => {
+const updateContainerItems = () => {
     container.innerHTML = draggableItemsList.join('');
 };
 const getHtmlElementHtmlDimensions = (element) => {
@@ -127,11 +119,11 @@ const getHtmlElementHtmlDimensions = (element) => {
     return HtmlDimensions;
 };
 const getHtmlElementPosition = (element) => {
-    const position = {
+    const HtmlPosition = {
         'x': element.getBoundingClientRect().left,
         'y': element.getBoundingClientRect().top
     };
-    return position;
+    return HtmlPosition;
 };
 createElements(3);
 initialize();

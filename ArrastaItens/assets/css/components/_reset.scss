@@ -20,8 +20,9 @@ body {
 .container {
     height: 800px;
     padding: 15px;
-    background-color: rgb(131, 219, 219);
+    background-color: black;
     position: relative;
+    transition: 0.5s;
 
     &__auxiliary {
         position: relative;
@@ -36,7 +37,6 @@ body {
     margin-bottom: 5px;
     font-size: 3rem;
     font-weight: bold;
-    // cursor: grab;
     border: 1px solid black;
 
     &:active {
@@ -45,7 +45,19 @@ body {
     }
 
     &__shadow {
-        background-color: bisque;
+        background-color: transparent;
+        border: 1px solid white;
+        border-style: dashed;
+        // animation: open 0.1s;
+    }
+}
+
+@keyframes open {
+    0% {
+        height: 0px;
+    }
+    100% {
+
     }
 }
 

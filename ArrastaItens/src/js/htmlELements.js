@@ -3,3 +3,7 @@ export const htmlElementItemMove = (num = 0, id) => {
                 ${num}
             </div>`;
 };
+export const htmlElementItemMoveShadow = (id) => {
+    return `<div class="item item__shadow" id="${id}">
+            </div>`;
+};
