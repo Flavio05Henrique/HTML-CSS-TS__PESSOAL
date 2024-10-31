@@ -7,21 +7,3 @@ export const createDraggableItem = (): IDraggableItem => {
 
     return draggableItem
 }
-
-let draggableItensList:string[] = []
-
-export const DraggableItemList = {
-    'getList': (): string[] => {
-        return [...draggableItensList]
-    },
-    'setList': (list: string[]) => {
-        draggableItensList = list
-    },
-    'setItem': (item: string) => {
-        draggableItensList.push(item)
-    },
-    'replace': (item: string, id: number) => {
-        draggableItensList[id] = item
-    }
-}
-

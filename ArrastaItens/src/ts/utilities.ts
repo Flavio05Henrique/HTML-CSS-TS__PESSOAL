@@ -7,12 +7,11 @@ export const getHtmlElementPosition = (element: HTMLElement): IHtmlPosition => {
     return HtmlPosition
 }
 
-// const getHtmlElementHtmlDimensions = (element: HTMLElement): IHtmlDimensions => {
-//     const HtmlDimensions = {
-//          'width': element.clientWidth,
-//          'heigh': element.clientHeight
-//      }
- 
-//      return HtmlDimensions
-//  }
+export const setElementStyle = (element: HTMLElement, style: string): void =>  {
+    element.setAttribute('style', style)
+}
+
+export const clearElementStyle = (element: HTMLElement): void => {
+    element.removeAttribute('style')
+}
  

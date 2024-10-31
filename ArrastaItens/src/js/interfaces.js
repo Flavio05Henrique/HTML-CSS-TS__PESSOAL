@@ -1,3 +1,1 @@
 "use strict";
-// interface draggableItemsApplicationConfig {
-// } 

@@ -5,10 +5,9 @@ export const getHtmlElementPosition = (element) => {
     };
     return HtmlPosition;
 };
-// const getHtmlElementHtmlDimensions = (element: HTMLElement): IHtmlDimensions => {
-//     const HtmlDimensions = {
-//          'width': element.clientWidth,
-//          'heigh': element.clientHeight
-//      }
-//      return HtmlDimensions
-//  }
+export const setElementStyle = (element, style) => {
+    element.setAttribute('style', style);
+};
+export const clearElementStyle = (element) => {
+    element.removeAttribute('style');
+};

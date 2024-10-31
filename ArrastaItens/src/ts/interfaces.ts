@@ -17,7 +17,8 @@ interface IMouseInfo {
     'movimenteRelativePositionStartedY': number,
     'pressed': boolean,
     'stepsUp': number,
-    'stepsDown': number
+    'stepsDown': number,
+    'draggableItem': IDraggableItem
 }
 
 interface IDraggableItem {
@@ -25,7 +26,3 @@ interface IDraggableItem {
     'position': IHtmlPosition,
     'currentPositionInArray': number
 }
-
-// interface draggableItemsApplicationConfig {
-    
-// } 
