@@ -1,4 +1,4 @@
-import { containerInteractions } from "../draggableItensContainer.js";
+import { containerInteractions } from "../app/draggableItensContainer.js";
 export const showInfos = (mouseInfo) => {
     const info = {
         'mouse': mouseInfo,

@@ -1,4 +1,4 @@
-import { mouseInfo } from "./draggableApp.js";
+import { mouseInfo } from "./mouseInfo.js";
 import { containerInteractions } from "./draggableItensContainer.js";
 import { draggableItemList } from "./draggableItensList.js";
 export const mouseUpEvents = () => {
@@ -6,6 +6,7 @@ export const mouseUpEvents = () => {
     draggableItem.removeAttribute('style');
     draggableItem.id = mouseInfo.draggableItem.currentPositionInArray + '';
     draggableItemList.replace(draggableItem.outerHTML, mouseInfo.draggableItem.currentPositionInArray);
-    containerInteractions.containerAuxiliary.removeChild(draggableItem);
+    if (containerInteractions.containerAuxiliary.contains(draggableItem))
+        containerInteractions.containerAuxiliary.removeChild(draggableItem);
     mouseInfo.pressed = false;
 };

@@ -1,14 +1,16 @@
-import { mouseInfo } from "./draggableApp.js";
+import { mouseInfo } from "./mouseInfo.js";
 import { draggableItemList } from "./draggableItensList.js";
 import { htmlElementItemMoveShadow } from "./htmlELements.js";
+import { searchElementMovable } from "./utilities.js";
 export const mouseMoveEvents = (mousePositionX, mousePositionY) => {
-    const hoverElement = document.elementFromPoint(mousePositionX, mousePositionY);
-    const hoverElementId = parseInt(hoverElement.id);
-    const currentDraggableItemId = mouseInfo.draggableItem.currentPositionInArray;
     mouseInfo.movimenteRelativePositionStartedY = 0;
     mouseInfo.movimenteRelativePositionStartedX = 0;
-    if (hoverElement.getAttribute('data') !== 'interactive_item_')
+    const getHoverElement = document.elementFromPoint(mousePositionX, mousePositionY);
+    const hoverElement = searchElementMovable(getHoverElement);
+    if (hoverElement == null)
         return;
+    const hoverElementId = parseInt(hoverElement.id);
+    const currentDraggableItemId = mouseInfo.draggableItem.currentPositionInArray;
     draggableItemList.replace(htmlElementItemMoveShadow(hoverElementId), hoverElementId);
     hoverElement.id = currentDraggableItemId + '';
     draggableItemList.replace(hoverElement.outerHTML, currentDraggableItemId);

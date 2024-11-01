@@ -23,6 +23,21 @@ interface IMouseInfo {
 
 interface IDraggableItem {
     'mySelf': HTMLElement,
+    'interactivePart': HTMLElement
     'position': IHtmlPosition,
     'currentPositionInArray': number
 }
+
+interface IContainer {
+    'container': HTMLElement,
+    'containerAuxiliary': HTMLElement,
+    'position': IHtmlPosition,
+    'update': () => void
+}
+
+interface IForInicialize {
+    'container': HTMLElement,
+    'containerAuxiliary': HTMLElement,
+    'list': string[]
+}
+

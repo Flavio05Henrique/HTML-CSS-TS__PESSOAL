@@ -1,5 +1,5 @@
-import { mouseInfo } from "../draggableApp.js";
-import { containerInteractions } from "../draggableItensContainer.js";
+import { mouseInfo } from "../app/mouseInfo.js";
+import { containerInteractions } from "../app/draggableItensContainer.js";
 
 
 

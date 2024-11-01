@@ -1,9 +1,7 @@
-import { mouseInfo } from "./draggableApp.js";
-import { containerInteractions } from "./draggableItensContainer.js";
+import { mouseInfo } from "./mouseInfo.js";
 import { setElementStyle } from "./utilities.js";
 // const draggableItem = createDraggableItem()
-const containerPosition = containerInteractions.position;
-export const moveDraggableItem = (draggableItem) => {
+export const moveDraggableItem = (draggableItem, containerPosition) => {
     draggableItem.mySelf.style.top = (draggableItem.position.y - containerPosition.y) + (mouseInfo.positionY - mouseInfo.positionStartedY) + "px";
     draggableItem.mySelf.style.left = (draggableItem.position.x - containerPosition.x) + (mouseInfo.positionX - mouseInfo.positionStartedX) + "px";
 };

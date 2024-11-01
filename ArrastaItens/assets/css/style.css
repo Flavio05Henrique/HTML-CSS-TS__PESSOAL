@@ -49,6 +49,17 @@ body {
   border: 1px solid white;
   border-style: dashed;
 }
+.item__draggable__bnt {
+  width: 100px;
+  height: 100px;
+  color: wheat;
+  background-color: black;
+  border: none;
+  cursor: grab;
+}
+.item__draggable__bnt:active {
+  cursor: grabbing;
+}
 
 .itemGrid {
   width: 300px;

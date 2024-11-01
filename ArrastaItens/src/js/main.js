@@ -1,17 +1,20 @@
-import { draggableApp } from "./draggableApp.js";
-import { containerInteractions } from "./draggableItensContainer.js";
-import { draggableItemList } from "./draggableItensList.js";
-import { htmlElementItemMove } from "./htmlELements.js";
+import { draggableApp } from "./app/draggableApp.js";
+import { htmlElementItemMove } from "./app/htmlELements.js";
+const container = document.querySelector('[data-c="container"]');
+const containerAuxiliary = document.querySelector('[data="container__auxiliary"]');
 const createElements = (numOfItens) => {
     let i;
     const list = [];
-    const container = containerInteractions.container;
     container.innerHTML = "";
     for (i = 0; i <= numOfItens; i++) {
         container.innerHTML += htmlElementItemMove(i, i);
         list.push(htmlElementItemMove(i, i));
     }
-    draggableItemList.setList(list);
+    return list;
 };
-createElements(5);
-draggableApp().init();
+const init = {
+    'container': container,
+    'containerAuxiliary': containerAuxiliary,
+    'list': createElements(5)
+};
+draggableApp.init(init);
